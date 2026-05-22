@@ -1,5 +1,5 @@
 name: 'Setup Node Dependencies'
-description: 'Install Node.js and npm dependencies'
+description: 'Install Node.js and pnpm dependencies'
 inputs:
   skip-build:
     description: 'Skip building libraries'
@@ -12,26 +12,31 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10.30.3
+
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: v22.17.0
-        cache: 'npm'
-        cache-dependency-path: './package-lock.json'
+        cache: 'pnpm'
+        cache-dependency-path: './pnpm-lock.yaml'
 
     - name: Install node dependencies
       shell: ${{ inputs.shell }}
-      run: npm ci --legacy-peer-deps
+      run: pnpm install --frozen-lockfile
 
     - name: Build libraries
       if: inputs.skip-build != 'true'
       shell: ${{ inputs.shell }}
       run: |
-        npm run build:graphql-docs
-        npm run build:bruno-query
-        npm run build:bruno-common
-        npm run sandbox:bundle-libraries --workspace=packages/bruno-js
-        npm run build:bruno-converters
-        npm run build:bruno-requests
-        npm run build:schema-types
-        npm run build:bruno-filestore
+        pnpm build:graphql-docs
+        pnpm build:bruno-query
+        pnpm build:bruno-common
+        pnpm --filter @usebruno/js sandbox:bundle-libraries
+        pnpm build:bruno-converters
+        pnpm build:bruno-requests
+        pnpm build:schema-types
+        pnpm build:bruno-filestore

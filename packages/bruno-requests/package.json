@@ -12,12 +12,12 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "prebuild": "npm run clean",
+    "prebuild": "pnpm clean",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepack": "npm run test && npm run build"
+    "prepack": "pnpm test && pnpm build"
   },
   "dependencies": {
     "@faker-js/faker": "^9.7.0",

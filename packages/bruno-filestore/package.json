@@ -12,12 +12,12 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "prebuild": "npm run clean",
+    "prebuild": "pnpm clean",
     "build": "rollup -c && tsc --emitDeclarationOnly",
     "watch": "rollup -c -w",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepack": "npm run test && npm run build"
+    "prepack": "pnpm test && pnpm build"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.0",

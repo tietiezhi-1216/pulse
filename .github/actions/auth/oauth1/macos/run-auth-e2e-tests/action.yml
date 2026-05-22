@@ -6,7 +6,7 @@ runs:
     - name: Run Auth E2E tests
       shell: bash
       run: |
-        npm run test:e2e:auth
+        pnpm test:e2e:auth
 
     - name: Upload Playwright Report
       if: ${{ !cancelled() }}

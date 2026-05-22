@@ -8,7 +8,7 @@ runs:
       run: |
         set -euo pipefail
 
-        xvfb-run npm run test:e2e:auth
+        xvfb-run pnpm test:e2e:auth
 
     - name: Upload Playwright Report
       if: ${{ !cancelled() }}

@@ -10,44 +10,44 @@ runs:
   steps:
     - name: Test Package bruno-js
       shell: ${{ inputs.shell }}
-      run: npm run test:ci --workspace=packages/bruno-js
+      run: pnpm --filter ./packages/bruno-js test:ci
 
     - name: Test Package bruno-cli
       shell: ${{ inputs.shell }}
-      run: npm run test:ci --workspace=packages/bruno-cli
+      run: pnpm --filter ./packages/bruno-cli test:ci
 
     - name: Test Package bruno-query
       shell: ${{ inputs.shell }}
-      run: npm run test --workspace=packages/bruno-query
+      run: pnpm --filter ./packages/bruno-query test
 
     - name: Test Package bruno-lang
       shell: ${{ inputs.shell }}
-      run: npm run test --workspace=packages/bruno-lang
+      run: pnpm --filter ./packages/bruno-lang test
 
     - name: Test Package bruno-schema
       shell: ${{ inputs.shell }}
-      run: npm run test --workspace=packages/bruno-schema
+      run: pnpm --filter ./packages/bruno-schema test
 
     - name: Test Package bruno-app
       shell: ${{ inputs.shell }}
-      run: npm run test --workspace=packages/bruno-app
+      run: pnpm --filter ./packages/bruno-app test
 
     - name: Test Package bruno-common
       shell: ${{ inputs.shell }}
-      run: npm run test --workspace=packages/bruno-common
+      run: pnpm --filter ./packages/bruno-common test
 
     - name: Test Package bruno-converters
       shell: ${{ inputs.shell }}
-      run: npm run test:ci --workspace=packages/bruno-converters
+      run: pnpm --filter ./packages/bruno-converters test:ci
 
     - name: Test Package bruno-electron
       shell: ${{ inputs.shell }}
-      run: npm run test:ci --workspace=packages/bruno-electron
+      run: pnpm --filter ./packages/bruno-electron test:ci
 
     - name: Test Package bruno-requests
       shell: ${{ inputs.shell }}
-      run: npm run test --workspace=packages/bruno-requests
+      run: pnpm --filter ./packages/bruno-requests test
 
     - name: Test Package bruno-filestore
       shell: ${{ inputs.shell }}
-      run: npm run test --workspace=packages/bruno-filestore
+      run: pnpm --filter ./packages/bruno-filestore test

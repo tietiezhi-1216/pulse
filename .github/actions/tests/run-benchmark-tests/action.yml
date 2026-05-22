@@ -13,12 +13,12 @@ runs:
     - name: Run Benchmark Tests (Ubuntu)
       if: inputs.os == 'ubuntu'
       shell: bash
-      run: xvfb-run npm run test:benchmark
+      run: xvfb-run pnpm test:benchmark
 
     - name: Run Benchmark Tests
       if: inputs.os != 'ubuntu'
       shell: bash
-      run: npm run test:benchmark
+      run: pnpm test:benchmark
 
     - name: Update Baseline
       if: inputs.update-baseline == 'true'

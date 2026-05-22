@@ -6,7 +6,7 @@ runs:
     - name: Run E2E tests
       shell: pwsh
       run: |
-        npm run test:e2e:ssl
+        pnpm test:e2e:ssl
 
     - name: Upload Playwright Report
       if: ${{ !cancelled() }}
