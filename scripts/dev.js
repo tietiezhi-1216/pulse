@@ -32,10 +32,10 @@ let detectedPort = null;
 // Regex to match rsbuild's local URL output (e.g., "➜ Local:    http://localhost:3000/")
 const portRegex = /Local:\s+http:\/\/localhost:(\d+)/;
 
-console.log(`\n${colors.bright}${colors.yellow}🚀 Starting Bruno development environment...${colors.reset}\n`);
+console.log(`\n${colors.bright}${colors.yellow}🚀 Starting Pulse development environment...${colors.reset}\n`);
 
 // Start the rsbuild dev server
-const webProcess = spawn('npm', ['run', 'dev'], {
+const webProcess = spawn('pnpm', ['dev'], {
   cwd: webDir,
   stdio: ['inherit', 'pipe', 'pipe'],
   shell: true
@@ -68,7 +68,7 @@ webProcess.on('close', (code) => {
 function startElectron(port) {
   log.info(`Starting Electron with ${colors.cyan}BRUNO_DEV_PORT=${port}${colors.reset}`);
 
-  electronProcess = spawn('npm', ['run', 'dev'], {
+  electronProcess = spawn('pnpm', ['dev'], {
     cwd: electronDir,
     stdio: 'inherit',
     shell: true,

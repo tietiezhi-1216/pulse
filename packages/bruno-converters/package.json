@@ -11,14 +11,15 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "test": "node --experimental-vm-modules $(npx which jest) --colors --collectCoverage",
+    "test": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js --colors --collectCoverage",
     "test:ci": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js --colors --collectCoverage",
-    "prebuild": "npm run clean",
+    "prebuild": "pnpm clean",
     "build": "rollup -c",
     "watch": "rollup -c -w",
-    "prepack": "npm run test && npm run build"
+    "prepack": "pnpm test && pnpm build"
   },
   "dependencies": {
+    "@usebruno/common": "0.1.0",
     "@usebruno/schema": "^0.7.0",
     "js-yaml": "^4.1.1",
     "jscodeshift": "^17.3.0",

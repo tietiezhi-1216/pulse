@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
 /**
-# Bruno Development Script
+# Pulse Development Script
 #
-# This script sets up and runs the Bruno development environment with hot-reloading.
+# This script sets up and runs the Pulse development environment with hot-reloading.
 # It manages concurrent processes for various packages and provides cleanup on exit.
 #
 # Usage:
 #   From the root of the project, run:
 #       node ./scripts/dev-hot-reload.js [options]
 #   or
-#       npm run dev:watch -- [options]
+#       pnpm dev:watch -- [options]
 */
 
 const { execSync } = require('child_process');
@@ -71,11 +71,11 @@ function log(level, msg) {
 // Show help documentation
 function showHelp() {
   console.log(`
-  Development Environment Setup for Bruno
+  Development Environment Setup for Pulse
 
   Usage:
       From the root of the project, run:
-          npm run dev:watch -- [options]
+          pnpm dev:watch -- [options]
       or
           node scripts/dev-hot-reload.js [options]
 
@@ -85,13 +85,13 @@ function showHelp() {
 
   Examples:
       # Start development environment
-      npm run dev:watch
+      pnpm dev:watch
 
       # Start after cleaning node_modules
-      npm run dev:watch -- --setup
+      pnpm dev:watch -- --setup
 
       # Show this help
-      npm run dev:watch -- --help
+      pnpm dev:watch -- --help
 `);
 }
 
@@ -132,7 +132,7 @@ function cleanNodeModules() {
 
 function reinstallDependencies() {
   log(LOG_LEVELS.INFO, 'Re-installing dependencies...');
-  execSync('npm install --legacy-peer-deps', { stdio: 'inherit' });
+  execSync('pnpm install', { stdio: 'inherit' });
   log(LOG_LEVELS.SUCCESS, 'Dependencies re-installation completed');
 }
 
@@ -146,42 +146,42 @@ function startDevelopment() {
   // concurrently command objects: { command, name, prefixColor, env, cwd, ipc }
   const commandObjects = [
     {
-      command: 'npm run watch --workspace=packages/bruno-common',
+      command: 'pnpm --filter @usebruno/common watch',
       name: 'common',
       prefixColor: 'magenta'
     },
     {
-      command: 'npm run watch --workspace=packages/bruno-converters',
+      command: 'pnpm --filter @usebruno/converters watch',
       name: 'converters',
       prefixColor: 'green'
     },
     {
-      command: 'npm run watch --workspace=packages/bruno-query',
+      command: 'pnpm --filter @usebruno/query watch',
       name: 'query',
       prefixColor: 'blue'
     },
     {
-      command: 'npm run watch --workspace=packages/bruno-graphql-docs',
+      command: 'pnpm --filter @usebruno/graphql-docs watch',
       name: 'graphql',
       prefixColor: 'white'
     },
     {
-      command: 'npm run watch --workspace=packages/bruno-requests',
+      command: 'pnpm --filter @usebruno/requests watch',
       name: 'requests',
       prefixColor: 'gray'
     },
     {
-      command: 'npm run watch --workspace=packages/bruno-filestore',
+      command: 'pnpm --filter @usebruno/filestore watch',
       name: 'filestore',
       prefixColor: '#FA8072'
     },
     {
-      command: 'npm run dev:web',
+      command: 'pnpm dev:web',
       name: 'react',
       prefixColor: 'cyan'
     },
     {
-      command: `sleep ${CONFIG.ELECTRON_START_DELAY} && nodemon ${watchPaths} --ext js,jsx,ts,tsx --delay ${CONFIG.NODEMON_WATCH_DELAY}ms --exec "npm run dev --workspace=packages/bruno-electron"`,
+      command: `sleep ${CONFIG.ELECTRON_START_DELAY} && nodemon ${watchPaths} --ext js,jsx,ts,tsx --delay ${CONFIG.NODEMON_WATCH_DELAY}ms --exec "pnpm --filter pulse dev"`,
       name: 'electron',
       prefixColor: 'yellow',
       delay: CONFIG.ELECTRON_START_DELAY
@@ -223,7 +223,7 @@ function startDevelopment() {
     }
   }
 
-  log(LOG_LEVELS.INFO, 'Initializing Bruno development environment...');
+  log(LOG_LEVELS.INFO, 'Initializing Pulse development environment...');
 
   // Ensure required global packages and node version
   ensureNodeVersion(CONFIG.NODE_VERSION);

@@ -1,11 +1,11 @@
 {
   "version": "2.0.0",
-  "name": "bruno",
-  "description": "Opensource API Client for Exploring and Testing APIs",
-  "homepage": "https://www.usebruno.com",
+  "name": "pulse",
+  "description": "AI-ready, local-first API client forked from Bruno",
+  "homepage": "https://github.com/pulse-api/pulse",
   "repository": {
     "type": "git",
-    "url": "https://github.com/usebruno/bruno.git"
+    "url": "https://github.com/pulse-api/pulse.git"
   },
   "private": true,
   "main": "src/index.js",
@@ -21,7 +21,7 @@
     "dist:rpm": "electron-builder --linux rpm --config electron-builder-config.js",
     "dist:snap": "electron-builder --linux snap --config electron-builder-config.js",
     "pack": "electron-builder --dir",
-    "test": "node --experimental-vm-modules $(npx which jest)",
+    "test": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js",
     "test:ci": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js"
   },
   "jest": {

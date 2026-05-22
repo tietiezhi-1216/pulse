@@ -71,7 +71,7 @@ function forceInstallPlatformDeps() {
 
   const toInstall = deps[process.platform];
   execCommand(
-    `npm i --legacy-peer-deps --no-save --force ${toInstall.join(' ')}`,
+    `pnpm add -w --config.save=false --force ${toInstall.join(' ')}`,
     'Installing platform specific dependencies'
   );
 }
@@ -87,20 +87,20 @@ async function setup() {
     }
 
     // Install dependencies
-    execCommand('npm i --legacy-peer-deps', 'Installing dependencies');
+    execCommand('pnpm install', 'Installing dependencies');
     forceInstallPlatformDeps();
 
     // Build packages
-    execCommand('npm run build:graphql-docs', 'Building graphql-docs');
-    execCommand('npm run build:bruno-query', 'Building bruno-query');
-    execCommand('npm run build:bruno-common', 'Building bruno-common');
-    execCommand('npm run build:bruno-converters', 'Building bruno-converters');
-    execCommand('npm run build:bruno-requests', 'Building bruno-requests');
-    execCommand('npm run build:schema-types', 'Building schema-types');
-    execCommand('npm run build:bruno-filestore', 'Building bruno-filestore');
+    execCommand('pnpm build:graphql-docs', 'Building graphql-docs');
+    execCommand('pnpm build:bruno-query', 'Building bruno-query');
+    execCommand('pnpm build:bruno-common', 'Building bruno-common');
+    execCommand('pnpm build:bruno-converters', 'Building bruno-converters');
+    execCommand('pnpm build:bruno-requests', 'Building bruno-requests');
+    execCommand('pnpm build:schema-types', 'Building schema-types');
+    execCommand('pnpm build:bruno-filestore', 'Building bruno-filestore');
 
     // Bundle JS sandbox libraries
-    execCommand('npm run sandbox:bundle-libraries --workspace=packages/bruno-js', 'Bundling JS sandbox libraries');
+    execCommand('pnpm --filter @usebruno/js sandbox:bundle-libraries', 'Bundling JS sandbox libraries');
 
     console.log(`\n${icons.success} Setup completed successfully!\n`);
   } catch (error) {

@@ -1,0 +1,34 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pulse app icon">
+  <defs>
+    <linearGradient id="bg" x1="128" y1="88" x2="896" y2="936" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#23D3EE"/>
+      <stop offset="0.52" stop-color="#536DFE"/>
+      <stop offset="1" stop-color="#B65CFF"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="178" y1="524" x2="846" y2="524" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E7FBFF"/>
+      <stop offset="0.5" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E9D6FF"/>
+    </linearGradient>
+    <filter id="shadow" x="60" y="60" width="904" height="904" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="30" stdDeviation="36" flood-color="#07111F" flood-opacity="0.35"/>
+    </filter>
+    <filter id="glow" x="116" y="300" width="792" height="432" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.72 0 0 0 0 0.92 0 0 0 0 1 0 0 0 0.55 0"/>
+      <feBlend in="SourceGraphic" mode="screen"/>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" rx="228" fill="#0E1118"/>
+  <g filter="url(#shadow)">
+    <rect x="80" y="80" width="864" height="864" rx="196" fill="url(#bg)"/>
+  </g>
+  <circle cx="512" cy="512" r="292" fill="#0E1118" opacity="0.16"/>
+  <circle cx="512" cy="512" r="218" fill="#0E1118" opacity="0.12"/>
+  <g filter="url(#glow)">
+    <path d="M178 528h132l72-164 120 336 116-384 86 212h142" fill="none" stroke="url(#wave)" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <circle cx="310" cy="528" r="34" fill="#F8FDFF"/>
+  <circle cx="618" cy="528" r="34" fill="#F8FDFF"/>
+  <circle cx="846" cy="528" r="34" fill="#F8FDFF"/>
+</svg>

@@ -1,8 +1,8 @@
 require('dotenv').config({ path: process.env.DOTENV_PATH });
 
 const config = {
-  appId: 'com.usebruno.app',
-  productName: 'Bruno',
+  appId: 'app.pulse.client',
+  productName: 'Pulse',
   electronVersion: '37.6.1',
   directories: {
     buildResources: 'resources',
@@ -15,15 +15,10 @@ const config = {
     }
   ],
   files: ['**/*'],
-  afterSign: 'notarize.js',
   mac: {
     artifactName: '${name}_${version}_${arch}_${os}.${ext}',
     category: 'public.app-category.developer-tools',
     target: [
-      {
-        target: 'pkg',
-        arch: ['x64', 'arm64']
-      },
       {
         target: 'dmg',
         arch: ['x64', 'arm64']
@@ -35,15 +30,15 @@ const config = {
     ],
     icon: 'resources/icons/mac/icon.icns',
     hardenedRuntime: true,
-    identity: 'Anoop MD (W7LPPWA48L)',
+    identity: null,
     entitlements: 'resources/entitlements.mac.plist',
     entitlementsInherit: 'resources/entitlements.mac.plist',
     notarize: false,
     protocols: [
       {
-        name: 'Bruno',
+        name: 'Pulse',
         schemes: [
-          'bruno'
+          'pulse'
         ]
       }
     ]
@@ -67,13 +62,13 @@ const config = {
     ],
     protocols: [
       {
-        name: 'Bruno',
-        schemes: ['bruno']
+        name: 'Pulse',
+        schemes: ['pulse']
       }
     ],
     category: 'Development',
     desktop: {
-      MimeType: 'x-scheme-handler/bruno;'
+      MimeType: 'x-scheme-handler/pulse;'
     }
   },
   deb: {
@@ -101,7 +96,7 @@ const config = {
       }
     ],
     sign: null,
-    publisherName: 'Bruno Software Inc'
+    publisherName: 'Pulse Contributors'
   },
   nsis: {
     include: 'resources/installer.nsh',

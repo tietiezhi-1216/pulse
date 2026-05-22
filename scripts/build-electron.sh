@@ -3,6 +3,9 @@
 # Remove out directory
 rm -rf packages/bruno-electron/out
 
+# Build web app and workspace libraries
+pnpm build:web
+
 # Remove web directory
 rm -rf packages/bruno-electron/web
 
@@ -22,22 +25,22 @@ find packages/bruno-electron/web -name '*.map' -type f -delete
 
 if [ "$1" == "snap" ]; then
   echo "Building snap distribution"
-  npm run dist:snap --workspace=packages/bruno-electron 
+  pnpm --filter pulse dist:snap
 elif [ "$1" == "mac" ]; then
   echo "Building mac distribution"
-  npm run dist:mac --workspace=packages/bruno-electron
+  pnpm --filter pulse dist:mac
 elif [ "$1" == "win" ]; then
   echo "Building windows distribution"
-  npm run dist:win --workspace=packages/bruno-electron
+  pnpm --filter pulse dist:win
 elif [ "$1" == "deb" ]; then
   echo "Building debian distribution"
-  npm run dist:deb --workspace=packages/bruno-electron
+  pnpm --filter pulse dist:deb
 elif [ "$1" == "rpm" ]; then
   echo "Building rpm distribution"
-  npm run dist:rpm --workspace=packages/bruno-electron
+  pnpm --filter pulse dist:rpm
 elif [ "$1" == "linux" ]; then
   echo "Building linux distribution"
-  npm run dist:linux --workspace=packages/bruno-electron
+  pnpm --filter pulse dist:linux
 else
   echo "Please pass a build distribution type"
 fi

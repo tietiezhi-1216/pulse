@@ -71,6 +71,9 @@ async function main() {
     // Remove out directory
     await deleteFileIfExists('packages/bruno-electron/out');
 
+    // Build web app and workspace libraries
+    await execCommandWithOutput('pnpm build:web');
+
     // Remove web directory
     await deleteFileIfExists('packages/bruno-electron/web');
 
@@ -110,7 +113,7 @@ async function main() {
     // Remove sourcemaps
     await removeSourceMapFiles('packages/bruno-electron/web');
 
-    // Run npm dist command
+    // Run pnpm dist command
     console.log('Building the Electron distribution');
 
     // Determine the OS and set the appropriate argument
@@ -123,7 +126,7 @@ async function main() {
       osArg = 'linux';
     }
 
-    await execCommandWithOutput(`npm run dist:${osArg} --workspace=packages/bruno-electron`);
+    await execCommandWithOutput(`pnpm --filter pulse dist:${osArg}`);
   } catch (error) {
     console.error('An error occurred:', error);
   }
