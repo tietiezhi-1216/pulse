@@ -67,15 +67,15 @@ describe('executeRequestOnFailHandler', () => {
   it('should pass the correct hard error object to the handler for DNS failure', async () => {
     const mockHandler = jest.fn();
     const request = { onFailHandler: mockHandler };
-
-    let error;
-    try {
-      await axios.get('https://this-domain-definitely-does-not-exist-12345.com/api/test', {
+    const error = new axios.AxiosError(
+      'getaddrinfo ENOTFOUND this-domain-definitely-does-not-exist-12345.com',
+      'ENOTFOUND',
+      {
+        method: 'get',
+        url: 'https://this-domain-definitely-does-not-exist-12345.com/api/test',
         timeout: 5000
-      });
-    } catch (err) {
-      error = err;
-    }
+      }
+    );
 
     // Verify this is actually a hard error (no response)
     expect(error.response).toBeUndefined();
@@ -89,15 +89,15 @@ describe('executeRequestOnFailHandler', () => {
   it('should pass the correct hard error object to the handler for connection timeout', async () => {
     const mockHandler = jest.fn();
     const request = { onFailHandler: mockHandler };
-
-    let error;
-    try {
-      await axios.get('http://192.168.255.255:9999/api/test', {
+    const error = new axios.AxiosError(
+      'timeout of 100ms exceeded',
+      'ECONNABORTED',
+      {
+        method: 'get',
+        url: 'http://192.168.255.255:9999/api/test',
         timeout: 100
-      });
-    } catch (err) {
-      error = err;
-    }
+      }
+    );
 
     // Verify this is actually a hard error (no response)
     expect(error.response).toBeUndefined();
