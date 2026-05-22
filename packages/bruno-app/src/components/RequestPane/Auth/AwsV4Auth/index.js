@@ -4,12 +4,14 @@ import { useTheme } from 'providers/Theme';
 import { useDispatch } from 'react-redux';
 import SingleLineEditor from 'components/SingleLineEditor';
 import { updateAuth } from 'providers/ReduxStore/slices/collections';
-import { sendRequest, saveRequest } from 'providers/ReduxStore/slices/collections/actions';
+import { sendRequest } from 'providers/ReduxStore/slices/collections/actions';
 import StyledWrapper from './StyledWrapper';
 import SensitiveFieldWarning from 'components/SensitiveFieldWarning';
 import { useDetectSensitiveField } from 'hooks/useDetectSensitiveField';
+import { useTranslation } from 'react-i18next';
 
 const AwsV4Auth = ({ item, collection, updateAuth, request, save }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { storedTheme } = useTheme();
 
@@ -133,7 +135,7 @@ const AwsV4Auth = ({ item, collection, updateAuth, request, save }) => {
 
   return (
     <StyledWrapper className="mt-2 w-full">
-      <label className="block mb-1">Access Key ID</label>
+      <label className="block mb-1">{t('AUTH_FIELDS.ACCESS_KEY_ID')}</label>
       <div className="single-line-editor-wrapper mb-3">
         <SingleLineEditor
           value={awsv4Auth.accessKeyId || ''}
@@ -147,7 +149,7 @@ const AwsV4Auth = ({ item, collection, updateAuth, request, save }) => {
         />
       </div>
 
-      <label className="block mb-1">Secret Access Key</label>
+      <label className="block mb-1">{t('AUTH_FIELDS.SECRET_ACCESS_KEY')}</label>
       <div className="single-line-editor-wrapper mb-3 flex items-center">
         <SingleLineEditor
           value={awsv4Auth.secretAccessKey || ''}
@@ -164,7 +166,7 @@ const AwsV4Auth = ({ item, collection, updateAuth, request, save }) => {
         {showWarning && <SensitiveFieldWarning fieldName="awsv4-secret-access-key" warningMessage={warningMessage} />}
       </div>
 
-      <label className="block mb-1">Session Token</label>
+      <label className="block mb-1">{t('AUTH_FIELDS.SESSION_TOKEN')}</label>
       <div className="single-line-editor-wrapper mb-3">
         <SingleLineEditor
           value={awsv4Auth.sessionToken || ''}
@@ -178,7 +180,7 @@ const AwsV4Auth = ({ item, collection, updateAuth, request, save }) => {
         />
       </div>
 
-      <label className="block mb-1">Service</label>
+      <label className="block mb-1">{t('AUTH_FIELDS.SERVICE')}</label>
       <div className="single-line-editor-wrapper mb-3">
         <SingleLineEditor
           value={awsv4Auth.service || ''}
@@ -192,7 +194,7 @@ const AwsV4Auth = ({ item, collection, updateAuth, request, save }) => {
         />
       </div>
 
-      <label className="block mb-1">Region</label>
+      <label className="block mb-1">{t('AUTH_FIELDS.REGION')}</label>
       <div className="single-line-editor-wrapper mb-3">
         <SingleLineEditor
           value={awsv4Auth.region || ''}
@@ -206,7 +208,7 @@ const AwsV4Auth = ({ item, collection, updateAuth, request, save }) => {
         />
       </div>
 
-      <label className="block mb-1">Profile Name</label>
+      <label className="block mb-1">{t('AUTH_FIELDS.PROFILE_NAME')}</label>
       <div className="single-line-editor-wrapper">
         <SingleLineEditor
           value={awsv4Auth.profileName || ''}

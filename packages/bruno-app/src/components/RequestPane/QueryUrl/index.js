@@ -24,8 +24,10 @@ import { hasRequestChanges } from 'utils/collections';
 import StyledWrapper from './StyledWrapper';
 import GenerateCodeItem from 'components/Sidebar/Collections/Collection/CollectionItem/GenerateCodeItem/index';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 const QueryUrl = ({ item, collection, handleRun }) => {
+  const { t } = useTranslation();
   const { theme, storedTheme } = useTheme();
   const dispatch = useDispatch();
   const method = item.draft ? get(item, 'draft.request.method') : get(item, 'request.method');
@@ -88,7 +90,7 @@ const QueryUrl = ({ item, collection, handleRun }) => {
     if (item?.request?.url !== '' || (item.draft?.request?.url !== undefined && item.draft?.request?.url !== '')) {
       setGenerateCodeItemModalOpen(true);
     } else {
-      toast.error('URL is required');
+      toast.error(t('REQUEST.URL_REQUIRED'));
     }
   };
 
@@ -109,7 +111,7 @@ const QueryUrl = ({ item, collection, handleRun }) => {
     try {
       const request = getRequestFromCurlCommand(pastedData, 'graphql-request');
       if (!request || !request.url) {
-        toast.error('Invalid cURL command');
+        toast.error(t('REQUEST.INVALID_CURL'));
         return;
       }
       // Update URL
@@ -164,13 +166,13 @@ const QueryUrl = ({ item, collection, handleRun }) => {
           }));
         }
 
-        toast.success('GraphQL query imported successfully');
+        toast.success(t('REQUEST.GRAPHQL_IMPORT_SUCCESS'));
       }
     } catch (error) {
       console.error('Error parsing cURL command:', error);
-      toast.error('Failed to parse GraphQL query');
+      toast.error(t('REQUEST.GRAPHQL_PARSE_FAILED'));
     }
-  }, [dispatch, item.uid, collection.uid]);
+  }, [dispatch, item.uid, collection.uid, t]);
 
   const handleHttpPaste = useCallback((event) => {
     // Only enable curl paste detection for HTTP requests
@@ -195,7 +197,7 @@ const QueryUrl = ({ item, collection, handleRun }) => {
       // Parse the curl command
       const request = getRequestFromCurlCommand(pastedData);
       if (!request || !request.url) {
-        toast.error('Invalid cURL command');
+        toast.error(t('REQUEST.INVALID_CURL'));
         return;
       }
 
@@ -376,13 +378,13 @@ const QueryUrl = ({ item, collection, handleRun }) => {
         }
       }
 
-      toast.success('cURL command imported successfully');
+      toast.success(t('REQUEST.CURL_IMPORT_SUCCESS'));
     } catch (error) {
       console.error('Error parsing cURL command:', error);
-      toast.error('Failed to parse cURL command');
+      toast.error(t('REQUEST.CURL_PARSE_FAILED'));
     }
   },
-  [dispatch, item.uid, item.type, collection.uid]
+  [dispatch, item.uid, item.type, collection.uid, t]
   );
   const handleCancelRequest = (e) => {
     e.preventDefault();
@@ -402,7 +404,7 @@ const QueryUrl = ({ item, collection, handleRun }) => {
           <SingleLineEditor
             ref={editorRef}
             value={url}
-            placeholder="Enter URL or paste a cURL request"
+            placeholder={t('REQUEST.URL_PLACEHOLDER')}
             onSave={(finalValue) => onSave(finalValue)}
             theme={storedTheme}
             onChange={(newValue) => onUrlChange(newValue)}
@@ -415,17 +417,17 @@ const QueryUrl = ({ item, collection, handleRun }) => {
           />
           <div className="flex items-center h-full mx-2 gap-3" id="request-actions">
             <div
-              title="Generate Code"
+              title={t('REQUEST.GENERATE_CODE')}
               className="infotip"
               onClick={(e) => {
                 handleGenerateCode(e);
               }}
             >
               <IconCode color={theme.requestTabs.icon.color} strokeWidth={1.5} size={20} className="cursor-pointer" />
-              <span className="infotiptext text-xs">Generate Code</span>
+              <span className="infotiptext text-xs">{t('REQUEST.GENERATE_CODE')}</span>
             </div>
             <div
-              title="Save Request"
+              title={t('REQUEST.SAVE_REQUEST')}
               className="infotip"
               onClick={(e) => {
                 e.stopPropagation();
@@ -440,7 +442,7 @@ const QueryUrl = ({ item, collection, handleRun }) => {
                 className={`${hasChanges ? 'cursor-pointer' : 'cursor-default'}`}
               />
               <span className="infotiptext text-xs">
-                Save <span className="shortcut">({saveShortcut})</span>
+                {t('COMMON.SAVE')} <span className="shortcut">({saveShortcut})</span>
               </span>
             </div>
           </div>

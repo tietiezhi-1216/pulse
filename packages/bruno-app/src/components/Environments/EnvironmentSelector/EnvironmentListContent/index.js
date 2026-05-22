@@ -2,6 +2,7 @@ import React from 'react';
 import { IconPlus, IconDownload, IconSettings } from '@tabler/icons';
 import ToolHint from 'components/ToolHint';
 import ColorBadge from 'components/ColorBadge';
+import { useTranslation } from 'react-i18next';
 
 const EnvironmentListContent = ({
   environments,
@@ -12,6 +13,8 @@ const EnvironmentListContent = ({
   onCreateClick,
   onImportClick
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div>
       {environments && environments.length > 0 ? (
@@ -22,7 +25,7 @@ const EnvironmentListContent = ({
               onClick={() => onEnvironmentSelect(null)}
             >
               <span className="w-2 shrink-0" />
-              <span>No Environment</span>
+              <span>{t('ENVIRONMENTS.NO_ENVIRONMENT')}</span>
             </div>
             <ToolHint
               anchorSelect="[data-tooltip-content]"
@@ -52,23 +55,23 @@ const EnvironmentListContent = ({
             <div className="dropdown-item configure-button">
               <button onClick={onSettingsClick} id="configure-env" data-testid="configure-env">
                 <IconSettings size={16} strokeWidth={1.5} />
-                <span>Configure</span>
+                <span>{t('COMMON.CONFIGURE')}</span>
               </button>
             </div>
           </div>
         </>
       ) : (
         <div className="empty-state">
-          <h3>Ready to get started?</h3>
+          <h3>{t('ENVIRONMENTS.EMPTY_TITLE')}</h3>
           <p>{description}</p>
           <div className="space-y-2">
             <button onClick={onCreateClick} id="create-env">
               <IconPlus size={16} strokeWidth={1.5} />
-              Create
+              {t('COMMON.CREATE')}
             </button>
             <button onClick={onImportClick} id="import-env">
               <IconDownload size={16} strokeWidth={1.5} />
-              Import
+              {t('COMMON.IMPORT')}
             </button>
           </div>
         </div>

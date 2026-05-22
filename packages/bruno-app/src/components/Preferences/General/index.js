@@ -35,10 +35,10 @@ const General = () => {
         return originalValue === '' ? undefined : value;
       })
       .nullable()
-      .test('isNumber', 'Request Timeout must be a number', (value) => {
+      .test('isNumber', t('PREFERENCES.GENERAL.REQUEST_TIMEOUT_NUMBER_ERROR'), (value) => {
         return value === undefined || !isNaN(value);
       })
-      .test('isValidTimeout', 'Request Timeout must be equal or greater than 0', (value) => {
+      .test('isValidTimeout', t('PREFERENCES.GENERAL.REQUEST_TIMEOUT_MIN_ERROR'), (value) => {
         return value === undefined || Number(value) >= 0;
       }),
     autoSave: Yup.object({
@@ -47,13 +47,13 @@ const General = () => {
         .transform((value, originalValue) => {
           return originalValue === '' ? undefined : value;
         })
-        .test('isNumber', 'Save Delay must be a number', (value) => {
+        .test('isNumber', t('PREFERENCES.GENERAL.SAVE_DELAY_NUMBER_ERROR'), (value) => {
           return value === undefined || !isNaN(value);
         })
-        .test('isValidInterval', 'Save Delay must be at least 500ms', (value) => {
+        .test('isValidInterval', t('PREFERENCES.GENERAL.SAVE_DELAY_MIN_ERROR'), (value) => {
           return value === undefined || Number(value) >= 500;
         })
-    }).test('intervalRequired', 'Save Delay is required when Auto Save is enabled', (value) => {
+    }).test('intervalRequired', t('PREFERENCES.GENERAL.SAVE_DELAY_REQUIRED_ERROR'), (value) => {
       // If autosave is enabled, interval must be provided
       if (value.enabled && (value.interval === undefined || value.interval === '')) {
         return false;

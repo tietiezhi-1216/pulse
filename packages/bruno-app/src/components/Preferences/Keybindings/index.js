@@ -11,6 +11,7 @@ import { KEY_BINDING_SECTIONS } from 'providers/Hotkeys/keyMappings.js';
 import { Tooltip } from 'react-tooltip';
 import ToggleSwitch from 'components/ToggleSwitch/index';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 const SEP = '+bind+';
 const getOS = () => (isMacOS() ? 'mac' : 'windows');
@@ -297,7 +298,19 @@ const ERROR = {
   DUPLICATE: 'DUPLICATE'
 };
 
+const KEYBINDING_SECTION_LABEL_KEYS = {
+  'Tabs': 'TABS',
+  'Sidebar': 'SIDEBAR',
+  'Requests': 'REQUESTS',
+  'Collections & Environment': 'COLLECTIONS_ENVIRONMENT',
+  'Search': 'SEARCH',
+  'View': 'VIEW',
+  'Developer Tool': 'DEVELOPER_TOOL',
+  'Others': 'OTHERS'
+};
+
 const Keybindings = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const preferences = useSelector((state) => state.app.preferences);
   const { theme } = useTheme();
@@ -454,13 +467,13 @@ const Keybindings = () => {
     const sig = comboSignature(arr);
 
     if (!sig) {
-      return { code: ERROR.EMPTY, message: `Shortcut can’t be empty.` };
+      return { code: ERROR.EMPTY, message: t('PREFERENCES.KEYBINDINGS.ERRORS.EMPTY') };
     }
 
     if (isOnlyModifiers(arr)) {
       return {
         code: ERROR.ONLY_MODIFIERS,
-        message: 'Add a non-modifier key (e.g. Ctrl + K).'
+        message: t('PREFERENCES.KEYBINDINGS.ERRORS.ONLY_MODIFIERS')
       };
     }
 
@@ -469,8 +482,8 @@ const Keybindings = () => {
         code: ERROR.MISSING_REQUIRED_MOD,
         message:
           os === 'mac'
-            ? 'macOS shortcuts must include at least one modifier (command/alt/shift/ctrl).'
-            : 'Windows shortcuts must include at least one modifier (ctrl/alt/shift).'
+            ? t('PREFERENCES.KEYBINDINGS.ERRORS.MISSING_MAC_MODIFIER')
+            : t('PREFERENCES.KEYBINDINGS.ERRORS.MISSING_WINDOWS_MODIFIER')
       };
     }
 
@@ -478,21 +491,21 @@ const Keybindings = () => {
     if (nonModifierCount > 1) {
       return {
         code: ERROR.MULTIPLE_NON_MODIFIERS,
-        message: 'Only one non-modifier key allowed (e.g. Cmd + Shift + K).'
+        message: t('PREFERENCES.KEYBINDINGS.ERRORS.MULTIPLE_NON_MODIFIERS')
       };
     }
 
     if (RESERVED_BY_OS[os]?.has(sig)) {
       return {
         code: ERROR.RESERVED,
-        message: 'This shortcut is reserved by the OS.'
+        message: t('PREFERENCES.KEYBINDINGS.ERRORS.RESERVED')
       };
     }
 
     if (buildUsedSignatures(action).has(sig)) {
       return {
         code: ERROR.DUPLICATE,
-        message: 'This shortcut is already in use.'
+        message: t('PREFERENCES.KEYBINDINGS.ERRORS.DUPLICATE')
       };
     }
 
@@ -586,7 +599,7 @@ const Keybindings = () => {
     };
 
     dispatch(savePreferences(updatedPreferences));
-    toast.success('All shortcuts have been reset to default');
+    toast.success(t('PREFERENCES.KEYBINDINGS.RESET_ALL_SUCCESS'));
   };
 
   const startEditing = (action) => {
@@ -800,7 +813,7 @@ const Keybindings = () => {
   return (
     <StyledWrapper className="w-full">
       <div className="section-header">
-        <span>Keybindings</span>
+        <span>{t('PREFERENCES.KEYBINDINGS.SECTION_TITLE')}</span>
 
         <div className="section-actions">
           <ToggleSwitch
@@ -816,7 +829,7 @@ const Keybindings = () => {
             data-testid="reset-all-keybindings-btn"
             disabled={!hasCustomizedKeybindings}
           >
-            Reset Default
+            {t('PREFERENCES.KEYBINDINGS.RESET_DEFAULT')}
           </button>
         </div>
       </div>
@@ -827,15 +840,17 @@ const Keybindings = () => {
             <table>
               <thead>
                 <tr>
-                  <td>Command</td>
-                  <td>Keybinding</td>
+                  <td>{t('PREFERENCES.KEYBINDINGS.COMMAND')}</td>
+                  <td>{t('PREFERENCES.KEYBINDINGS.KEYBINDING')}</td>
                 </tr>
               </thead>
               <tbody>
                 {groupedKeyMappings.map((section, sectionIndex) => (
                   <Fragment key={section.heading}>
                     <tr className="section-heading-row">
-                      <td colSpan={2}>{section.heading}</td>
+                      <td colSpan={2}>
+                        {t(`PREFERENCES.KEYBINDINGS.SECTIONS.${KEYBINDING_SECTION_LABEL_KEYS[section.heading]}`, section.heading)}
+                      </td>
                     </tr>
                     {section.rows.map((row, rowIndex) => {
                       const { action } = row;
@@ -866,7 +881,9 @@ const Keybindings = () => {
                             setHoveredAction((prev) => (prev === action ? null : prev))}
                           onClick={() => !isReadOnly && !isEditing && startEditing(action)}
                         >
-                          <td data-testid={`keybinding-name-${action}`}>{row.name}</td>
+                          <td data-testid={`keybinding-name-${action}`}>
+                            {t(`PREFERENCES.KEYBINDINGS.ACTIONS.${action}`, row.name)}
+                          </td>
 
                           <td>
                             <div className="keybinding-row">
@@ -929,7 +946,7 @@ const Keybindings = () => {
                                       onClick={(e) => {
                                         e.stopPropagation(); resetRowToDefault(action);
                                       }}
-                                      title="Reset to default"
+                                      title={t('PREFERENCES.KEYBINDINGS.RESET_TO_DEFAULT')}
                                     >
                                       <IconReload size={14} stroke={1.5} />
                                     </button>
@@ -939,7 +956,7 @@ const Keybindings = () => {
                                     <span
                                       className="pencil-icon"
                                       data-testid={`keybinding-edit-${action}`}
-                                      title="Customize keys"
+                                      title={t('PREFERENCES.KEYBINDINGS.CUSTOMIZE_KEYS')}
                                     >
                                       <IconPencil size={14} stroke={1.5} />
                                     </span>
@@ -950,7 +967,7 @@ const Keybindings = () => {
                                       type="button"
                                       className="edit-btn"
                                       data-testid={`keybinding-locked-${action}`}
-                                      title="Reserved shortcut"
+                                      title={t('PREFERENCES.KEYBINDINGS.RESERVED_SHORTCUT')}
                                     >
                                       <IconLock size={14} stroke={1.5} />
                                     </button>
@@ -973,7 +990,7 @@ const Keybindings = () => {
             </table>
           </div>
         ) : (
-          <div className="empty-state">No key bindings available</div>
+          <div className="empty-state">{t('PREFERENCES.KEYBINDINGS.NO_BINDINGS')}</div>
         )}
       </div>
     </StyledWrapper>

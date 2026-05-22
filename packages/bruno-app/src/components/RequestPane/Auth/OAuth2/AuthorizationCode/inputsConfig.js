@@ -1,28 +1,28 @@
 const inputsConfig = [
   {
     key: 'authorizationUrl',
-    label: 'Authorization URL'
+    labelKey: 'OAUTH2.AUTHORIZATION_URL'
   },
   {
     key: 'accessTokenUrl',
-    label: 'Access Token URL'
+    labelKey: 'OAUTH2.ACCESS_TOKEN_URL'
   },
   {
     key: 'clientId',
-    label: 'Client ID'
+    labelKey: 'OAUTH2.CLIENT_ID'
   },
   {
     key: 'clientSecret',
-    label: 'Client Secret',
+    labelKey: 'OAUTH2.CLIENT_SECRET',
     isSecret: true
   },
   {
     key: 'scope',
-    label: 'Scope'
+    labelKey: 'OAUTH2.SCOPE'
   },
   {
     key: 'state',
-    label: 'State'
+    labelKey: 'OAUTH2.STATE'
   }
 ];
 

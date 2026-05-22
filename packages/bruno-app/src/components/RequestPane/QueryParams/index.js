@@ -16,8 +16,10 @@ import StyledWrapper from './StyledWrapper';
 import BulkEditor from '../../BulkEditor';
 import { usePersistedState } from 'hooks/usePersistedState';
 import { useTrackScroll } from 'hooks/useTrackScroll';
+import { useTranslation } from 'react-i18next';
 
 const QueryParams = ({ item, collection }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { storedTheme } = useTheme();
   const tabs = useSelector((state) => state.tabs.tabs);
@@ -78,15 +80,15 @@ const QueryParams = ({ item, collection }) => {
   const queryColumns = [
     {
       key: 'name',
-      name: 'Name',
+      name: t('COMMON.NAME'),
       isKeyField: true,
-      placeholder: 'Name',
+      placeholder: t('COMMON.NAME'),
       width: '30%'
     },
     {
       key: 'value',
-      name: 'Value',
-      placeholder: 'Value',
+      name: t('COMMON.VALUE'),
+      placeholder: t('COMMON.VALUE'),
       render: ({ value, onChange }) => (
         <MultiLineEditor
           value={value || ''}
@@ -97,7 +99,7 @@ const QueryParams = ({ item, collection }) => {
           collection={collection}
           item={item}
           variablesAutocomplete={true}
-          placeholder={!value ? 'Value' : ''}
+          placeholder={!value ? t('COMMON.VALUE') : ''}
         />
       )
     }
@@ -106,15 +108,15 @@ const QueryParams = ({ item, collection }) => {
   const pathColumns = [
     {
       key: 'name',
-      name: 'Name',
+      name: t('COMMON.NAME'),
       isKeyField: true,
       width: '30%',
       readOnly: true
     },
     {
       key: 'value',
-      name: 'Value',
-      placeholder: 'Value',
+      name: t('COMMON.VALUE'),
+      placeholder: t('COMMON.VALUE'),
       render: ({ row, value, onChange }) => (
         <MultiLineEditor
           value={value || ''}
@@ -153,7 +155,7 @@ const QueryParams = ({ item, collection }) => {
   return (
     <StyledWrapper className="w-full flex flex-col" ref={wrapperRef}>
       <div className="flex-1">
-        <div className="mb-3 title text-xs">Query</div>
+        <div className="mb-3 title text-xs">{t('REQUEST.QUERY')}</div>
         <EditableTable
           tableId="query-params"
           columns={queryColumns}
@@ -168,17 +170,17 @@ const QueryParams = ({ item, collection }) => {
         />
         <div className="bulk-edit-bar flex justify-end mt-2">
           <button className="btn-action text-link select-none" onClick={toggleBulkEditMode}>
-            Bulk Edit
+            {t('REQUEST.BULK_EDIT')}
           </button>
         </div>
 
         <div className="mb-3 title text-xs flex items-stretch">
-          <span>Path</span>
+          <span>{t('REQUEST.PATH')}</span>
           <InfoTip className="tooltip-mod" infotipId="path-param-InfoTip">
             <div>
-              Path variables are automatically added whenever the
+              {t('REQUEST.PATH_PARAMS_HINT_PREFIX')}
               <code className="font-mono mx-2">:name</code>
-              template is used in the URL. <br /> For example:
+              {t('REQUEST.PATH_PARAMS_HINT_SUFFIX')} <br /> {t('REQUEST.PATH_PARAMS_HINT_EXAMPLE')}
               <code className="font-mono mx-2">
                 https://example.com/v1/users/<span>:id</span>
               </code>

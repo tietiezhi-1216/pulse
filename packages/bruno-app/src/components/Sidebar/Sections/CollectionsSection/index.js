@@ -37,8 +37,10 @@ import Collections from 'components/Sidebar/Collections';
 import SidebarSection from 'components/Sidebar/SidebarSection';
 import { openDevtoolsAndSwitchToTerminal } from 'utils/terminal';
 import useKeybinding from 'hooks/useKeybinding';
+import { useTranslation } from 'react-i18next';
 
 const CollectionsSection = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const showSearch = useSelector((state) => state.app.showSidebarSearch);
 
@@ -81,7 +83,7 @@ const CollectionsSection = () => {
       }
     };
     dispatch(savePreferences(updatedPreferences)).catch(() => {
-      toast.error('Failed to save preferences');
+      toast.error(t('PREFERENCES.GENERAL.FAILED_TO_UPDATE'));
     });
   };
 
@@ -163,11 +165,11 @@ const CollectionsSection = () => {
   const getSortLabel = () => {
     switch (collectionSortOrder) {
       case 'alphabetical':
-        return 'Sort Z-A';
+        return t('SIDEBAR.SORT_Z_A');
       case 'reverseAlphabetical':
-        return 'Clear sort';
+        return t('SIDEBAR.CLEAR_SORT');
       default:
-        return 'Sort A-Z';
+        return t('SIDEBAR.SORT_A_Z');
     }
   };
 
@@ -186,20 +188,20 @@ const CollectionsSection = () => {
     }
 
     dispatch(openCollection(options)).catch((err) => {
-      toast.error('An error occurred while opening the collection');
+      toast.error(t('WORKSPACE.OPEN_COLLECTION_ERROR'));
     });
   };
 
   const handleStartRequest = () => {
     const scratchCollectionUid = activeWorkspace?.scratchCollectionUid;
     if (!scratchCollectionUid) {
-      toast.error('Unable to create request');
+      toast.error(t('REQUEST.CREATE_FAILED'));
       return;
     }
 
     const scratchCollection = collections.find((c) => c.uid === scratchCollectionUid);
     if (!scratchCollection) {
-      toast.error('Unable to create request');
+      toast.error(t('REQUEST.CREATE_FAILED'));
       return;
     }
 
@@ -230,7 +232,7 @@ const CollectionsSection = () => {
         isTransient: true
       })
     ).catch((err) => {
-      toast.error('An error occurred while creating the request');
+      toast.error(t('REQUEST.CREATE_ERROR'));
     });
   };
 
@@ -244,7 +246,7 @@ const CollectionsSection = () => {
     {
       id: 'create',
       leftSection: IconPlus,
-      label: 'Create collection',
+      label: t('ACTIONS.CREATE_COLLECTION'),
       onClick: () => {
         dispatch(setIsCreatingCollection(true));
       }
@@ -252,7 +254,7 @@ const CollectionsSection = () => {
     {
       id: 'open',
       leftSection: IconFolder,
-      label: 'Open collection',
+      label: t('ACTIONS.OPEN_COLLECTION'),
       onClick: () => {
         handleOpenCollection();
       }
@@ -260,7 +262,7 @@ const CollectionsSection = () => {
     {
       id: 'import',
       leftSection: IconDownload,
-      label: 'Import collection',
+      label: t('ACTIONS.IMPORT_COLLECTION'),
       onClick: () => {
         setImportCollectionModalOpen(true);
       }
@@ -279,7 +281,7 @@ const CollectionsSection = () => {
     {
       id: 'close-all',
       leftSection: IconSquareX,
-      label: 'Close all',
+      label: t('SIDEBAR.CLOSE_ALL'),
       onClick: () => {
         selectAllCollectionsToClose();
       }
@@ -287,7 +289,7 @@ const CollectionsSection = () => {
     {
       id: 'open-in-terminal',
       leftSection: IconTerminal2,
-      label: 'Open in Terminal',
+      label: t('SIDEBAR.OPEN_IN_TERMINAL'),
       onClick: () => {
         openDevtoolsAndSwitchToTerminal(dispatch, activeWorkspace?.pathname);
       }
@@ -298,7 +300,7 @@ const CollectionsSection = () => {
     <>
       <ActionIcon
         onClick={handleToggleSearch}
-        label="Search requests"
+        label={t('SIDEBAR.SEARCH_REQUESTS_LABEL')}
       >
         <IconSearch size={14} stroke={1.5} aria-hidden="true" />
       </ActionIcon>
@@ -398,7 +400,7 @@ const CollectionsSection = () => {
       )}
       <SidebarSection
         id="collections"
-        title="Collections"
+        title={t('COMMON.COLLECTIONS')}
         icon={IconBox}
         actions={sectionActions}
       >

@@ -10,8 +10,10 @@ import { DEFAULT_COLLECTION_FORMAT } from 'utils/common/constants';
 import { multiLineMsg } from 'utils/common';
 import { formatIpcError } from 'utils/common/error';
 import StyledWrapper from './StyledWrapper';
+import { useTranslation } from 'react-i18next';
 
 const InlineCollectionCreator = ({ onComplete, onCancel, onOpenAdvanced }) => {
+  const { t } = useTranslation();
   const inputRef = useRef(null);
   const containerRef = useRef(null);
   const dispatch = useDispatch();
@@ -42,13 +44,13 @@ const InlineCollectionCreator = ({ onComplete, onCancel, onOpenAdvanced }) => {
     };
 
     if (defaultLocation) {
-      window.ipcRenderer?.invoke('renderer:find-unique-folder-name', 'Untitled Collection', defaultLocation)
+      window.ipcRenderer?.invoke('renderer:find-unique-folder-name', t('COLLECTION_FORM.UNTITLED_COLLECTION'), defaultLocation)
         ?.then((name) => focusAndSelect(name))
         ?.catch(() => focusAndSelect());
     } else {
       focusAndSelect();
     }
-  }, [defaultLocation]);
+  }, [defaultLocation, t]);
 
   const handleCancel = () => {
     if (isCreating || openingAdvancedRef.current) return;
@@ -66,7 +68,7 @@ const InlineCollectionCreator = ({ onComplete, onCancel, onOpenAdvanced }) => {
       if (fromOutside) {
         onCancel();
       } else {
-        toast.error('Collection name is required');
+        toast.error(t('COLLECTION_FORM.VALIDATION.COLLECTION_NAME_REQUIRED'));
       }
       return;
     }
@@ -80,7 +82,7 @@ const InlineCollectionCreator = ({ onComplete, onCancel, onOpenAdvanced }) => {
     }
 
     if (!defaultLocation) {
-      toast.error('Please set a default location in Preferences > General');
+      toast.error(t('COLLECTION_FORM.DEFAULT_LOCATION_REQUIRED'));
       onCancel();
       return;
     }
@@ -89,13 +91,13 @@ const InlineCollectionCreator = ({ onComplete, onCancel, onOpenAdvanced }) => {
     try {
       const folderName = sanitizeName(name);
       await dispatch(createCollection(name, folderName, defaultLocation, { format: DEFAULT_COLLECTION_FORMAT }));
-      toast.success('Collection created!');
+      toast.success(t('COLLECTION_FORM.CREATED'));
       onComplete();
     } catch (e) {
-      toast.error(multiLineMsg('An error occurred while creating the collection', formatIpcError(e)));
+      toast.error(multiLineMsg(t('COLLECTION_FORM.CREATE_ERROR'), formatIpcError(e)));
       setIsCreating(false);
     }
-  }, [isCreating, defaultLocation, dispatch, onCancel, onComplete]);
+  }, [isCreating, defaultLocation, dispatch, onCancel, onComplete, t]);
 
   // Click outside to create
   useEffect(() => {
@@ -127,7 +129,7 @@ const InlineCollectionCreator = ({ onComplete, onCancel, onOpenAdvanced }) => {
             ref={inputRef}
             type="text"
             className="inline-collection-input"
-            defaultValue="Untitled Collection"
+            defaultValue={t('COLLECTION_FORM.UNTITLED_COLLECTION')}
             onKeyDown={handleKeyDown}
             autoComplete="off"
             autoCorrect="off"
@@ -142,7 +144,7 @@ const InlineCollectionCreator = ({ onComplete, onCancel, onOpenAdvanced }) => {
               openingAdvancedRef.current = true;
               onOpenAdvanced(inputRef.current?.value?.trim());
             }}
-            title="Advanced options"
+            title={t('COLLECTION_FORM.ADVANCED_OPTIONS')}
             disabled={isCreating}
           >
             <IconSettings size={13} strokeWidth={1.5} />
@@ -153,7 +155,7 @@ const InlineCollectionCreator = ({ onComplete, onCancel, onOpenAdvanced }) => {
             className="inline-action-btn save"
             onClick={handleCreate}
             onMouseDown={(e) => e.preventDefault()}
-            title="Create"
+            title={t('COMMON.CREATE')}
             disabled={isCreating}
           >
             <IconCheck size={14} strokeWidth={2} />
@@ -162,7 +164,7 @@ const InlineCollectionCreator = ({ onComplete, onCancel, onOpenAdvanced }) => {
             className="inline-action-btn cancel"
             onClick={handleCancel}
             onMouseDown={(e) => e.preventDefault()}
-            title="Cancel"
+            title={t('COMMON.CANCEL')}
             disabled={isCreating}
           >
             <IconX size={14} strokeWidth={2} />

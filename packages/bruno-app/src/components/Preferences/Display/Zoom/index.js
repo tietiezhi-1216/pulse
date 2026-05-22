@@ -6,6 +6,7 @@ import StyledWrapper from './StyledWrapper';
 import { IconReload } from '@tabler/icons';
 import { IconChevronDown, IconCheck } from '@tabler/icons';
 import Button from 'ui/Button/index';
+import { useTranslation } from 'react-i18next';
 const { percentageToZoomLevel } = require('@usebruno/common');
 
 // Zoom options for dropdown (50% to 150%)
@@ -26,6 +27,7 @@ const ZOOM_OPTIONS = [
 const DEFAULT_ZOOM = 100;
 
 const Zoom = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const preferences = useSelector((state) => state.app.preferences);
   const dropdownRef = useRef(null);
@@ -88,7 +90,7 @@ const Zoom = () => {
   return (
     <StyledWrapper>
       <div>
-        <label className="block">Interface Zoom</label>
+        <label className="block">{t('PREFERENCES.DISPLAY.INTERFACE_ZOOM')}</label>
       </div>
       <div className="flex flex-row gap-1 items-center mt-2">
         <div className="zoom-field" ref={dropdownRef}>

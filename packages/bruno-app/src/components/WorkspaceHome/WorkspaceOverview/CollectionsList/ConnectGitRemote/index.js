@@ -6,8 +6,10 @@ import toast from 'react-hot-toast';
 import Modal from 'components/Modal';
 import { isGitRepositoryUrl } from 'utils/git';
 import { connectCollectionToGit } from 'providers/ReduxStore/slices/workspaces/actions';
+import { Trans, useTranslation } from 'react-i18next';
 
 const ConnectGitRemote = ({ collectionPath, collectionName, initialUrl = '', onClose }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const inputRef = useRef();
   const activeWorkspaceUid = useSelector((state) => state.workspaces.activeWorkspaceUid);
@@ -20,8 +22,8 @@ const ConnectGitRemote = ({ collectionPath, collectionName, initialUrl = '', onC
     validationSchema: Yup.object({
       remoteUrl: Yup.string()
         .trim()
-        .required('Git remote URL is required')
-        .test('is-git-url', 'Enter a valid Git URL', (value) => isGitRepositoryUrl(value))
+        .required(t('COLLECTIONS_LIST.GIT_REMOTE_URL_REQUIRED'))
+        .test('is-git-url', t('COLLECTIONS_LIST.GIT_REMOTE_URL_INVALID'), (value) => isGitRepositoryUrl(value))
     }),
     onSubmit: (values) => {
       dispatch(
@@ -32,7 +34,7 @@ const ConnectGitRemote = ({ collectionPath, collectionName, initialUrl = '', onC
         })
       )
         .then(() => {
-          toast.success('Git remote connected');
+          toast.success(t('COLLECTIONS_LIST.GIT_REMOTE_CONNECTED'));
           onClose();
         })
         .catch(() => {
@@ -45,8 +47,8 @@ const ConnectGitRemote = ({ collectionPath, collectionName, initialUrl = '', onC
     inputRef.current?.focus();
   }, []);
 
-  const title = initialUrl ? 'Update Git Remote' : 'Connect to Git';
-  const confirmText = initialUrl ? 'Update' : 'Connect';
+  const title = initialUrl ? t('COLLECTIONS_LIST.UPDATE_GIT_REMOTE') : t('COLLECTIONS_LIST.CONNECT_TO_GIT');
+  const confirmText = initialUrl ? t('COMMON.UPDATE') : t('COMMON.CONNECT');
 
   return (
     <Modal size="md" title={title} confirmText={confirmText} handleConfirm={() => formik.handleSubmit()} handleCancel={onClose}>
@@ -54,21 +56,27 @@ const ConnectGitRemote = ({ collectionPath, collectionName, initialUrl = '', onC
         {collectionName ? (
           <div className="text-sm text-muted mb-3 leading-relaxed break-words space-y-2">
             <p className="m-0">
-              Linking{' '}
-              <span className="font-medium text-inherit break-words" title={collectionName}>
-                {collectionName}
-              </span>{' '}
-              to a remote Git repository.
+              <Trans
+                i18nKey="COLLECTIONS_LIST.LINKING_TO_GIT_REMOTE"
+                values={{ collectionName }}
+                components={{
+                  collectionName: <span className="font-medium text-inherit break-words" title={collectionName} />
+                }}
+              />
             </p>
             <p className="m-0">
-              The URL is saved in <span className="font-mono">workspace.yml</span> only. Your collection files on disk are not
-              modified.
+              <Trans
+                i18nKey="COLLECTIONS_LIST.GIT_REMOTE_WORKSPACE_ONLY"
+                components={{
+                  workspaceFile: <span className="font-mono">workspace.yml</span>
+                }}
+              />
             </p>
           </div>
         ) : null}
         <div>
           <label htmlFor="remoteUrl" className="block font-medium">
-            Git Remote URL
+            {t('COLLECTIONS_LIST.GIT_REMOTE_URL')}
           </label>
           <input
             id="remoteUrl"

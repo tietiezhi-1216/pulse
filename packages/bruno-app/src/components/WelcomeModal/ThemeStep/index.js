@@ -3,12 +3,7 @@ import { rgba } from 'polished';
 import { IconBrightnessUp, IconMoon, IconDeviceDesktop } from '@tabler/icons';
 import themes, { getLightThemes, getDarkThemes } from 'themes/index';
 import StyledWrapper from './StyledWrapper';
-
-const themeModes = [
-  { key: 'light', label: 'Light', icon: IconBrightnessUp },
-  { key: 'dark', label: 'Dark', icon: IconMoon },
-  { key: 'system', label: 'System', icon: IconDeviceDesktop }
-];
+import { useTranslation } from 'react-i18next';
 
 const ThemePreviewBox = ({ themeId, isDark }) => {
   const themeData = themes[themeId] || themes[isDark ? 'dark' : 'light'];
@@ -29,18 +24,24 @@ const ThemePreviewBox = ({ themeId, isDark }) => {
 };
 
 const ThemeStep = ({ storedTheme, setStoredTheme, themeVariantLight, setThemeVariantLight, themeVariantDark, setThemeVariantDark }) => {
+  const { t } = useTranslation();
   const lightThemeList = getLightThemes();
   const darkThemeList = getDarkThemes();
+  const themeModes = [
+    { key: 'light', label: t('PREFERENCES.THEMES.LIGHT'), icon: IconBrightnessUp },
+    { key: 'dark', label: t('PREFERENCES.THEMES.DARK'), icon: IconMoon },
+    { key: 'system', label: t('PREFERENCES.THEMES.SYSTEM'), icon: IconDeviceDesktop }
+  ];
 
   const showLight = storedTheme === 'light' || storedTheme === 'system';
   const showDark = storedTheme === 'dark' || storedTheme === 'system';
 
   return (
     <StyledWrapper className="step-body">
-      <div className="step-label">Appearance</div>
-      <div className="step-title">Choose your theme</div>
+      <div className="step-label">{t('PREFERENCES.THEMES.SECTION_TITLE')}</div>
+      <div className="step-title">{t('WELCOME_MODAL.THEME_TITLE')}</div>
       <div className="step-description">
-        Pick a look that feels right. You can always change this later in Preferences.
+        {t('WELCOME_MODAL.THEME_DESC')}
       </div>
 
       <div className="theme-mode-buttons">
