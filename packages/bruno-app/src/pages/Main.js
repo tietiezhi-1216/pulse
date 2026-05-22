@@ -4,6 +4,7 @@ import { AppProvider } from 'providers/App';
 import { ToastProvider } from 'providers/Toaster';
 import { HotkeysProvider } from 'providers/Hotkeys';
 import { PromptVariablesProvider } from 'providers/PromptVariables';
+import i18n from '../i18n';
 
 import ReduxStore from 'providers/ReduxStore';
 import ThemeProvider from 'providers/Theme/index';
@@ -30,11 +31,10 @@ function Main({ children }) {
   if (!window.ipcRenderer) {
     return (
       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mx-10 my-10 rounded relative" role="alert">
-        <strong class="font-bold">ERROR:</strong>
-        <span className="block inline ml-1">"ipcRenderer" not found in window object.</span>
+        <strong class="font-bold">{i18n.t('COMMON.ERROR')}</strong>
+        <span className="block inline ml-1">{i18n.t('BROWSER_ERROR.IPC_MISSING')}</span>
         <div>
-          You most likely opened Bruno inside your web browser. Bruno only works within Electron, you can start Electron
-          in an adjacent terminal using "npm run dev:electron".
+          {i18n.t('BROWSER_ERROR.ELECTRON_ONLY')}
         </div>
       </div>
     );

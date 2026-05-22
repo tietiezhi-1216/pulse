@@ -46,7 +46,7 @@ const initialState = {
     },
     general: {
       defaultLocation: '',
-      language: 'system'
+      language: 'zh-CN'
     },
     onboarding: {
       hasLaunchedBefore: false,

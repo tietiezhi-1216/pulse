@@ -17,7 +17,7 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    lng: resolveLanguage('system'), // "cimode" can be used to debug / show translation placeholder
+    lng: resolveLanguage('zh-CN'), // "cimode" can be used to debug / show translation placeholder
     fallbackLng: 'en',
 
     ns: 'translation', // Use translation as the default Namespace that will be loaded by default

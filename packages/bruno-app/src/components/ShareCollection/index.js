@@ -118,7 +118,7 @@ const ShareCollection = ({ onClose, collectionUid }) => {
             onClick={() => !isDisabled && setSelectedFormat(EXPORT_FORMATS.ZIP)}
           >
             <div className="card-header">
-              <span className="card-title">Bruno Collection (ZIP)</span>
+              <span className="card-title">Pulse Collection (ZIP)</span>
               <span className="recommended-badge">Recommended</span>
             </div>
             <p className="card-description">OpenCollection format organized as folders and files</p>
@@ -133,7 +133,7 @@ const ShareCollection = ({ onClose, collectionUid }) => {
               </div>
               <div className="feature-item">
                 <IconCheck size={14} className="checkmark" />
-                <span>Extract and open directly in Bruno</span>
+                <span>Extract and open directly in Pulse</span>
               </div>
             </div>
             <p className="best-for">Best for: Team collaboration, version control, publishing</p>

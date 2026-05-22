@@ -18,8 +18,10 @@ import { DEFAULT_COLLECTION_FORMAT } from 'utils/common/constants';
 import StyledWrapper from './StyledWrapper';
 import get from 'lodash/get';
 import Button from 'ui/Button';
+import { useTranslation } from 'react-i18next';
 
 const CreateCollection = ({ onClose, defaultLocation: propDefaultLocation, initialCollectionName = '' }) => {
+  const { t } = useTranslation();
   const inputRef = useRef();
   const dispatch = useDispatch();
   const workspaces = useSelector((state) => state.workspaces?.workspaces || []);
@@ -46,19 +48,19 @@ const CreateCollection = ({ onClose, defaultLocation: propDefaultLocation, initi
     validationSchema: Yup.object({
       collectionName: Yup.string()
         .trim()
-        .min(1, 'Collection name can\'t be empty')
-        .max(255, 'Must be 255 characters or less')
-        .required('Collection name is required'),
+        .min(1, t('COLLECTION_FORM.VALIDATION.COLLECTION_NAME_EMPTY'))
+        .max(255, t('COLLECTION_FORM.VALIDATION.MAX_255'))
+        .required(t('COLLECTION_FORM.VALIDATION.COLLECTION_NAME_REQUIRED')),
       collectionFolderName: Yup.string()
-        .min(1, 'Must be at least 1 character')
-        .max(255, 'Must be 255 characters or less')
+        .min(1, t('COLLECTION_FORM.VALIDATION.MIN_1'))
+        .max(255, t('COLLECTION_FORM.VALIDATION.MAX_255'))
         .test('is-valid-collection-name', function (value) {
           const isValid = validateName(value);
           return isValid ? true : this.createError({ message: validateNameError(value) });
         })
-        .required('Folder name is required'),
-      collectionLocation: Yup.string().min(1, 'Location is required').required('Location is required'),
-      format: Yup.string().oneOf(['bru', 'yml'], 'invalid format').required('Format is required')
+        .required(t('COLLECTION_FORM.VALIDATION.FOLDER_NAME_REQUIRED')),
+      collectionLocation: Yup.string().min(1, t('COLLECTION_FORM.VALIDATION.LOCATION_REQUIRED')).required(t('COLLECTION_FORM.VALIDATION.LOCATION_REQUIRED')),
+      format: Yup.string().oneOf(['bru', 'yml'], t('COLLECTION_FORM.VALIDATION.INVALID_FORMAT')).required(t('COLLECTION_FORM.VALIDATION.FORMAT_REQUIRED'))
     }),
     onSubmit: async (values) => {
       try {
@@ -67,10 +69,10 @@ const CreateCollection = ({ onClose, defaultLocation: propDefaultLocation, initi
           values.collectionLocation,
           { format: values.format }));
 
-        toast.success('Collection created!');
+        toast.success(t('COLLECTION_FORM.CREATED'));
         onClose();
       } catch (e) {
-        toast.error(multiLineMsg('An error occurred while creating the collection', formatIpcError(e)));
+        toast.error(multiLineMsg(t('COLLECTION_FORM.CREATE_ERROR'), formatIpcError(e)));
       }
     }
   });
@@ -104,7 +106,7 @@ const CreateCollection = ({ onClose, defaultLocation: propDefaultLocation, initi
           className="btn-advanced"
           type="button"
         >
-          Options
+          {t('COLLECTION_FORM.OPTIONS')}
         </button>
         <IconCaretDown className="caret ml-1" size={14} strokeWidth={2} />
       </div>
@@ -114,11 +116,11 @@ const CreateCollection = ({ onClose, defaultLocation: propDefaultLocation, initi
   return (
     <Portal>
       <StyledWrapper>
-        <Modal size="md" title="Create Collection" hideFooter={true} handleCancel={onClose}>
+        <Modal size="md" title={t('ACTIONS.CREATE_COLLECTION')} hideFooter={true} handleCancel={onClose}>
           <form className="bruno-form" onSubmit={formik.handleSubmit}>
             <div>
               <label htmlFor="collection-name" className="flex items-center font-medium">
-                Name
+                {t('COLLECTION_FORM.NAME')}
               </label>
               <input
                 id="collection-name"
@@ -150,13 +152,13 @@ const CreateCollection = ({ onClose, defaultLocation: propDefaultLocation, initi
               ) : null}
 
               <label htmlFor="collection-location" className="font-medium mt-3 flex items-center">
-                Location
+                {t('COLLECTION_FORM.LOCATION')}
                 <Help>
                   <p>
-                    Bruno stores your collections on your computer's filesystem.
+                    {t('COLLECTION_FORM.LOCATION_HELP_1')}
                   </p>
                   <p className="mt-2">
-                    Choose the location where you want to store this collection.
+                    {t('COLLECTION_FORM.LOCATION_HELP_2')}
                   </p>
                 </Help>
               </label>
@@ -184,20 +186,20 @@ const CreateCollection = ({ onClose, defaultLocation: propDefaultLocation, initi
                   className="text-link cursor-pointer hover:underline"
                   onClick={browse}
                 >
-                  Browse
+                  {t('COMMON.BROWSE')}
                 </span>
               </div>
               {formik.values.collectionName?.trim()?.length > 0 && (
                 <div className="mt-4">
                   <div className="flex items-center justify-between">
                     <label htmlFor="filename" className="flex items-center font-medium">
-                      Folder Name
+                      {t('COLLECTION_FORM.FOLDER_NAME')}
                       <Help width="300">
                         <p>
-                          The name of the folder used to store the collection.
+                          {t('COLLECTION_FORM.FOLDER_NAME_HELP_1')}
                         </p>
                         <p className="mt-2">
-                          You can choose a folder name different from your collection's name or one compatible with filesystem rules.
+                          {t('COLLECTION_FORM.FOLDER_NAME_HELP_2')}
                         </p>
                       </Help>
                     </label>
@@ -246,16 +248,16 @@ const CreateCollection = ({ onClose, defaultLocation: propDefaultLocation, initi
               {showFileFormat && (
                 <div className="mt-4">
                   <label htmlFor="format" className="flex items-center font-medium">
-                    File Format
+                    {t('COLLECTION_FORM.FILE_FORMAT')}
                     <Help width="300">
                       <p>
-                        Choose the file format for storing requests in this collection.
+                        {t('COLLECTION_FORM.FILE_FORMAT_HELP_1')}
                       </p>
                       <p className="mt-2">
-                        <strong>OpenCollection (YAML):</strong> Industry-standard YAML format (.yml files)
+                        <strong>{t('COLLECTION_FORM.OPEN_COLLECTION_LABEL')}</strong> {t('COLLECTION_FORM.OPEN_COLLECTION_DESC')}
                       </p>
                       <p className="mt-1">
-                        <strong>BRU:</strong> Bruno's native file format (.bru files)
+                        <strong>{t('COLLECTION_FORM.BRU_LABEL')}</strong> {t('COLLECTION_FORM.BRU_DESC')}
                       </p>
                     </Help>
                   </label>
@@ -286,16 +288,16 @@ const CreateCollection = ({ onClose, defaultLocation: propDefaultLocation, initi
                       setShowFileFormat(!showFileFormat);
                     }}
                   >
-                    {showFileFormat ? 'Hide File Format' : 'Show File Format'}
+                    {showFileFormat ? t('COLLECTION_FORM.HIDE_FILE_FORMAT') : t('COLLECTION_FORM.SHOW_FILE_FORMAT')}
                   </div>
                 </Dropdown>
               </div>
               <div className="flex justify-end">
                 <Button type="button" color="secondary" variant="ghost" onClick={onClose} className="mr-2">
-                  Cancel
+                  {t('COMMON.CANCEL')}
                 </Button>
                 <Button type="submit">
-                  Create
+                  {t('COMMON.CREATE')}
                 </Button>
               </div>
             </div>

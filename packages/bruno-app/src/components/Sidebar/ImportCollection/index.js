@@ -8,6 +8,7 @@ import GitHubTab from './GitHubTab';
 import UrlTab from './UrlTab';
 import FullscreenLoader from './FullscreenLoader/index';
 import { useTheme } from 'providers/Theme';
+import { useTranslation } from 'react-i18next';
 
 const IMPORT_TABS = {
   FILE: 'file',
@@ -16,6 +17,7 @@ const IMPORT_TABS = {
 };
 
 const ImportCollection = ({ onClose, handleSubmit }) => {
+  const { t } = useTranslation();
   const { theme } = useTheme();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -37,7 +39,7 @@ const ImportCollection = ({ onClose, handleSubmit }) => {
   }
 
   return (
-    <Modal size="md" title="Import Collection" hideFooter={true} handleCancel={onClose} dataTestId="import-collection-modal">
+    <Modal size="md" title={t('ACTIONS.IMPORT_COLLECTION')} hideFooter={true} handleCancel={onClose} dataTestId="import-collection-modal">
       <StyledWrapper className="flex flex-col h-full w-[600px] max-w-[600px]">
         <div className="flex w-full mb-6">
           <div className="flex justify-start w-full tabs">
@@ -47,7 +49,7 @@ const ImportCollection = ({ onClose, handleSubmit }) => {
               data-testid="file-tab"
             >
               <IconFileImport size={18} strokeWidth={1.5} className="mr-2" />
-              File
+              {t('IMPORT_COLLECTION.FILE')}
             </div>
             <div
               className={getTabClassname(IMPORT_TABS.GITHUB)}
@@ -55,7 +57,7 @@ const ImportCollection = ({ onClose, handleSubmit }) => {
               data-testid="github-tab"
             >
               <IconBrandGit size={18} strokeWidth={1.5} className="mr-2" />
-              Git Repository
+              {t('IMPORT_COLLECTION.GIT_REPOSITORY')}
             </div>
             <div
               className={getTabClassname(IMPORT_TABS.URL)}
@@ -63,7 +65,7 @@ const ImportCollection = ({ onClose, handleSubmit }) => {
               data-testid="url-tab"
             >
               <IconUnlink size={18} strokeWidth={1.5} className="mr-2" />
-              URL
+              {t('IMPORT_COLLECTION.URL')}
             </div>
           </div>
         </div>

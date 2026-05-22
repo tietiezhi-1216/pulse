@@ -4,36 +4,69 @@ const { BrowserWindow } = require('electron');
 const { version } = require('../../package.json');
 const aboutPulse = require('./about-bruno');
 
+const isZh = `${process.env.LANG || ''}`.toLowerCase().includes('zh');
+const label = isZh
+  ? {
+      collection: '集合',
+      openCollection: '打开集合',
+      openRecent: '最近打开',
+      clearRecent: '清除最近记录',
+      quit: '退出',
+      forceQuit: '强制退出',
+      edit: '编辑',
+      view: '视图',
+      actualSize: '实际大小',
+      zoomIn: '放大',
+      zoomOut: '缩小',
+      about: '关于 Pulse',
+      documentation: '文档'
+    }
+  : {
+      collection: 'Collection',
+      openCollection: 'Open Collection',
+      openRecent: 'Open Recent',
+      clearRecent: 'Clear Recent',
+      quit: 'Quit',
+      forceQuit: 'Force Quit',
+      edit: 'Edit',
+      view: 'View',
+      actualSize: 'Actual Size',
+      zoomIn: 'Zoom In',
+      zoomOut: 'Zoom Out',
+      about: 'About Pulse',
+      documentation: 'Documentation'
+    };
+
 const template = [
   {
-    label: 'Collection',
+    label: label.collection,
     submenu: [
       {
-        label: 'Open Collection',
+        label: label.openCollection,
         click() {
           ipcMain.emit('main:open-collection');
         }
       },
       {
-        label: 'Open Recent',
+        label: label.openRecent,
         role: 'recentdocuments',
         visible: os.platform() == 'darwin',
         submenu: [
           {
-            label: 'Clear Recent',
+            label: label.clearRecent,
             role: 'clearrecentdocuments'
           }
         ]
       },
       { type: 'separator' },
       {
-        label: 'Quit',
+        label: label.quit,
         click() {
           ipcMain.emit('main:start-quit-flow');
         }
       },
       {
-        label: 'Force Quit',
+        label: label.forceQuit,
         click() {
           process.exit();
         }
@@ -41,7 +74,7 @@ const template = [
     ]
   },
   {
-    label: 'Edit',
+    label: label.edit,
     submenu: [
       { role: 'undo' },
       { role: 'redo' },
@@ -56,12 +89,12 @@ const template = [
     ]
   },
   {
-    label: 'View',
+    label: label.view,
     submenu: [
       { role: 'toggledevtools' },
       { type: 'separator' },
       {
-        label: 'Actual Size',
+        label: label.actualSize,
         accelerator: 'CommandOrControl+0',
         registerAccelerator: false,
         click() {
@@ -69,7 +102,7 @@ const template = [
         }
       },
       {
-        label: 'Zoom In',
+        label: label.zoomIn,
         accelerator: 'CommandOrControl+Plus',
         registerAccelerator: false,
         click() {
@@ -77,7 +110,7 @@ const template = [
         }
       },
       {
-        label: 'Zoom Out',
+        label: label.zoomOut,
         accelerator: 'CommandOrControl+-',
         registerAccelerator: false,
         click() {
@@ -96,7 +129,7 @@ const template = [
     role: 'help',
     submenu: [
       {
-        label: 'About Pulse',
+        label: label.about,
         click: () => {
           const aboutWindow = new BrowserWindow({
             width: 350,
@@ -109,7 +142,7 @@ const template = [
           aboutWindow.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(aboutPulse({ version }))}`);
         }
       },
-      { label: 'Documentation', click: () => ipcMain.emit('main:open-docs') }
+      { label: label.documentation, click: () => ipcMain.emit('main:open-docs') }
     ]
   }
 ];

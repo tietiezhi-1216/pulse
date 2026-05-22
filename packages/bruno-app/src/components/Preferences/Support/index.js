@@ -11,13 +11,13 @@ const Support = () => {
       <div className="section-header">{t('COMMON.SUPPORT')}</div>
       <div className="rows">
         <div className="mb-2">
-          <a href="https://docs.usebruno.com" target="_blank" className="flex items-end">
+          <a href="https://github.com/tietiezhi-1216/pulse" target="_blank" className="flex items-end">
             <IconBook size={18} strokeWidth={2} />
             <span className="label ml-2">{t('COMMON.DOCUMENTATION')}</span>
           </a>
         </div>
         <div className="mt-2">
-          <a href="https://github.com/usebruno/bruno/issues" target="_blank" className="flex items-end">
+          <a href="https://github.com/tietiezhi-1216/pulse/issues" target="_blank" className="flex items-end">
             <IconSpeakerphone size={18} strokeWidth={2} />
             <span className="label ml-2">{t('COMMON.REPORT_ISSUES')}</span>
           </a>
@@ -29,7 +29,7 @@ const Support = () => {
           </a>
         </div>
         <div className="mt-2">
-          <a href="https://github.com/usebruno/bruno" target="_blank" className="flex items-end">
+          <a href="https://github.com/tietiezhi-1216/pulse" target="_blank" className="flex items-end">
             <IconBrandGithub size={18} strokeWidth={2} />
             <span className="label ml-2">{t('COMMON.GITHUB')}</span>
           </a>

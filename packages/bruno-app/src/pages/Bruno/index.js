@@ -22,6 +22,7 @@ import useWsEventListeners from 'utils/network/ws-event-listeners';
 import Portal from 'components/Portal';
 import SaveTransientRequestContainer from 'components/SaveTransientRequest/Container';
 import SaveTransientRequest from 'components/SaveTransientRequest';
+import { useTranslation } from 'react-i18next';
 
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
@@ -74,6 +75,7 @@ const TransientRequestModalsRenderer = ({ modals }) => {
 };
 
 export default function Main() {
+  const { t } = useTranslation();
   const activeTabUid = useSelector((state) => state.tabs.activeTabUid);
   const activeApiSpecUid = useSelector((state) => state.apiSpec.activeApiSpecUid);
   const isDragging = useSelector((state) => state.app.isDragging);
@@ -118,9 +120,9 @@ export default function Main() {
       {showRosettaBanner ? (
         <Portal>
           <div className="fixed bottom-0 left-0 right-0 z-10 bg-amber-100 border border-amber-400 text-amber-700 px-4 py-3" role="alert">
-            <strong className="font-bold">WARNING:</strong>
+            <strong className="font-bold">{t('COMMON.WARNING')}</strong>
             <div>
-              It looks like Bruno was launched as the Intel (x64) build under Rosetta on your Apple Silicon Mac. This can cause reduced performance and unexpected behavior.
+              {t('WARNINGS.ROSETTA')}
             </div>
             <button className="absolute right-2 top-0 text-xl" onClick={() => setShowRosettaBanner(!showRosettaBanner)}>
               &times;

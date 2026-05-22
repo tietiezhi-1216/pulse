@@ -24,6 +24,8 @@ import StyledWrapper from './StyledWrapper';
 import ResponseLayoutToggle from 'components/ResponsePane/ResponseLayoutToggle';
 import { isMacOS, isWindowsOS, isLinuxOS } from 'utils/common/platform';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 const getOsClass = () => {
   if (isMacOS()) return 'os-mac';
@@ -34,12 +36,13 @@ const getOsClass = () => {
 
 // Helper to get display name for workspace
 export const getWorkspaceDisplayName = (name) => {
-  if (!name) return 'Untitled Workspace';
+  if (!name) return null;
   return name;
 };
 
 const AppTitleBar = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const osClass = getOsClass();
@@ -132,7 +135,9 @@ const AppTitleBar = () => {
   const WorkspaceName = forwardRef((props, ref) => {
     return (
       <div ref={ref} className="workspace-name-container" {...props}>
-        <span data-testid="workspace-name" className={classNames('workspace-name', { 'italic text-muted': !activeWorkspace?.name })}>{getWorkspaceDisplayName(activeWorkspace?.name)}</span>
+        <span data-testid="workspace-name" className={classNames('workspace-name', { 'italic text-muted': !activeWorkspace?.name })}>
+          {getWorkspaceDisplayName(activeWorkspace?.name) || t('WORKSPACE.UNTITLED')}
+        </span>
         <IconChevronDown size={14} stroke={1.5} className="chevron-icon" />
       </div>
     );
@@ -147,15 +152,15 @@ const AppTitleBar = () => {
 
   const handleWorkspaceSwitch = (workspaceUid) => {
     dispatch(switchWorkspace(workspaceUid));
-    toast.success(`Switched to ${getWorkspaceDisplayName(workspaces.find((w) => w.uid === workspaceUid)?.name)}`);
+    toast.success(t('WORKSPACE.SWITCHED_TO', { name: getWorkspaceDisplayName(workspaces.find((w) => w.uid === workspaceUid)?.name) || t('WORKSPACE.UNTITLED') }));
   };
 
   const handleOpenWorkspace = async () => {
     try {
       await dispatch(openWorkspaceDialog());
-      toast.success('Workspace opened successfully');
+      toast.success(t('WORKSPACE.OPENED'));
     } catch (error) {
-      toast.error(error.message || 'Failed to open workspace');
+      toast.error(error.message || t('WORKSPACE.OPEN_FAILED'));
     }
   };
 
@@ -208,7 +213,7 @@ const AppTitleBar = () => {
 
       return {
         id: workspace.uid,
-        label: getWorkspaceDisplayName(workspace.name),
+        label: getWorkspaceDisplayName(workspace.name) || t('WORKSPACE.UNTITLED'),
         onClick: () => handleWorkspaceSwitch(workspace.uid),
         className: `workspace-item ${isActive ? 'active' : ''}`,
         rightSection: (
@@ -217,7 +222,7 @@ const AppTitleBar = () => {
               <ActionIcon
                 className={`pin-btn ${isPinned ? 'pinned' : ''}`}
                 onClick={(e) => handlePinWorkspace(workspace.uid, e)}
-                label={isPinned ? 'Unpin workspace' : 'Pin workspace'}
+                label={isPinned ? t('ACTIONS.UNPIN_WORKSPACE') : t('ACTIONS.PIN_WORKSPACE')}
                 size="sm"
               >
                 {isPinned ? <IconPinned size={14} stroke={1.5} /> : <IconPin size={14} stroke={1.5} />}
@@ -231,35 +236,35 @@ const AppTitleBar = () => {
 
     // Add label and action items
     items.push(
-      { type: 'label', label: 'Workspaces' },
+      { type: 'label', label: t('WORKSPACE.WORKSPACES') },
       {
         id: 'create-workspace',
         leftSection: IconPlus,
-        label: 'Create workspace',
+        label: t('ACTIONS.CREATE_WORKSPACE'),
         onClick: handleCreateWorkspace
       },
       {
         id: 'open-workspace',
         leftSection: IconFolder,
-        label: 'Open workspace',
+        label: t('ACTIONS.OPEN_WORKSPACE'),
         onClick: handleOpenWorkspace
       },
       {
         id: 'import-workspace',
         leftSection: IconDownload,
-        label: 'Import workspace',
+        label: t('ACTIONS.IMPORT_WORKSPACE'),
         onClick: handleImportWorkspace
       },
       {
         id: 'manage-workspaces',
         leftSection: IconSettings,
-        label: 'Manage workspaces',
+        label: t('ACTIONS.MANAGE_WORKSPACES'),
         onClick: handleManageWorkspaces
       }
     );
 
     return items;
-  }, [sortedWorkspaces, activeWorkspaceUid, preferences, handlePinWorkspace, handleCreateWorkspace]);
+  }, [sortedWorkspaces, activeWorkspaceUid, preferences, handlePinWorkspace, handleCreateWorkspace, t]);
 
   return (
     <StyledWrapper className={`app-titlebar ${osClass} ${isFullScreen ? 'fullscreen' : ''}`}>
@@ -274,7 +279,7 @@ const AppTitleBar = () => {
         <div className="titlebar-left">
           {showWindowControls && <AppMenu />}
 
-          <ActionIcon onClick={handleHomeClick} label="Home" size="lg" className="home-button">
+          <ActionIcon onClick={handleHomeClick} label={t('COMMON.HOME')} size="lg" className="home-button">
             <IconHome size={16} stroke={1.5} />
           </ActionIcon>
 
@@ -289,10 +294,10 @@ const AppTitleBar = () => {
           </MenuDropdown>
         </div>
 
-        {/* Center section: Bruno logo + text */}
+        {/* Center section: Pulse logo + text */}
         <div className="titlebar-center">
           <Bruno width={18} />
-          <span className="bruno-text">Bruno</span>
+          <span className="bruno-text">{t('COMMON.APP_NAME')}</span>
         </div>
 
         {/* Right section: Action buttons */}
@@ -301,7 +306,7 @@ const AppTitleBar = () => {
             {/* Toggle sidebar */}
             <ActionIcon
               onClick={handleToggleSidebar}
-              label={sidebarCollapsed ? 'Show sidebar' : 'Hide sidebar'}
+              label={sidebarCollapsed ? t('ACTIONS.SHOW_SIDEBAR') : t('ACTIONS.HIDE_SIDEBAR')}
               size="lg"
               data-testid="toggle-sidebar-button"
             >
@@ -311,7 +316,7 @@ const AppTitleBar = () => {
             {/* Toggle devtools */}
             <ActionIcon
               onClick={handleToggleDevtools}
-              label={isConsoleOpen ? 'Hide devtools' : 'Show devtools'}
+              label={isConsoleOpen ? t('ACTIONS.HIDE_DEVTOOLS') : t('ACTIONS.SHOW_DEVTOOLS')}
               size="lg"
               data-testid="toggle-devtools-button"
             >

@@ -64,6 +64,7 @@
     "build:web": "pnpm build:workspace-libs && pnpm --filter @usebruno/app build",
     "dev:electron": "pnpm --filter pulse dev",
     "dev:electron:debug": "pnpm --filter pulse debug",
+    "generate:icons": "node ./scripts/generate-pulse-icons.mjs",
     "storybook": "pnpm --filter @usebruno/app storybook",
     "build:bruno-common": "pnpm --filter @usebruno/common build",
     "build:bruno-requests": "pnpm --filter @usebruno/requests build",

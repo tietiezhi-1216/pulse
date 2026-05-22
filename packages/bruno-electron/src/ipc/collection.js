@@ -2451,7 +2451,7 @@ const registerMainEventHandlers = (mainWindow, watcher) => {
   });
 
   ipcMain.on('main:open-docs', () => {
-    const docsURL = 'https://docs.usebruno.com';
+    const docsURL = 'https://github.com/tietiezhi-1216/pulse';
     shell.openExternal(docsURL);
   });
 
