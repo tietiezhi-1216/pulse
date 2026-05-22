@@ -5,7 +5,8 @@
         "REPORT_ISSUES": "Report Issues",
         "GITHUB": "GitHub",
         "DISCORD": "Discord",
-        "TWITTER": "Twitter"
+        "TWITTER": "Twitter",
+        "SUPPORT": "Support"
     },
     "WELCOME": {
         "ABOUT_BRUNO": "Opensource IDE for exploring and testing APIs",
@@ -19,5 +20,42 @@
         "GLOBAL_SEARCH_TIP_PART1": "Press",
         "GLOBAL_SEARCH_TIP_PART2": "(mac) or",
         "GLOBAL_SEARCH_TIP_PART3": "(windows) anytime to quickly search collections, folders, and requests"
+    },
+    "PREFERENCES": {
+        "TABS": {
+            "GENERAL": "General",
+            "THEMES": "Themes",
+            "DISPLAY": "Display",
+            "PROXY": "Proxy",
+            "KEYBINDINGS": "Keybindings",
+            "CACHE": "Cache",
+            "SUPPORT": "Support",
+            "BETA": "Beta"
+        },
+        "GENERAL": {
+            "SECTION_TITLE": "General Settings",
+            "LANGUAGE": "Language",
+            "LANGUAGE_SYSTEM": "System",
+            "LANGUAGE_ENGLISH": "English",
+            "LANGUAGE_SIMPLIFIED_CHINESE": "Simplified Chinese",
+            "SSL_TLS_CERTIFICATE_VERIFICATION": "SSL/TLS Certificate Verification",
+            "USE_CUSTOM_CA_CERTIFICATE": "Use Custom CA Certificate",
+            "SELECT_FILE": "Select File",
+            "KEEP_DEFAULT_CA_CERTIFICATES": "Keep Default CA Certificates",
+            "STORE_COOKIES_AUTOMATICALLY": "Store Cookies automatically",
+            "SEND_COOKIES_AUTOMATICALLY": "Send Cookies automatically",
+            "USE_SYSTEM_BROWSER_FOR_OAUTH2": "Use System Browser for OAuth2 Authorization",
+            "REQUEST_TIMEOUT": "Request Timeout (in ms)",
+            "ENABLE_AUTO_SAVE": "Enable Auto Save",
+            "SAVE_DELAY": "Save Delay (in ms)",
+            "DEFAULT_LOCATION": "Default Location",
+            "DEFAULT_LOCATION_HELP": "Used as the default location for new workspaces and collections",
+            "DEFAULT_LOCATION_PLACEHOLDER": "Click to browse for default location",
+            "BROWSE": "Browse",
+            "FAILED_TO_UPDATE": "Failed to update preferences"
+        },
+        "DISPLAY": {
+            "SECTION_TITLE": "Display"
+        }
     }
 }

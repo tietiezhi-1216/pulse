@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { get } from 'lodash';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { refreshScreenWidth } from 'providers/ReduxStore/slices/app';
 import ConfirmAppClose from './ConfirmAppClose';
 import useIpcEvents from './useIpcEvents';
 import useTelemetry from './useTelemetry';
 import StyledWrapper from './StyledWrapper';
 import useOpenAPISyncPolling from './useOpenAPISyncPolling';
+import i18n from '../../i18n';
+import { resolveLanguage } from '../../i18n/languages';
 import { version } from '../../../package.json';
 
 export const AppContext = React.createContext();
@@ -16,6 +18,7 @@ export const AppProvider = (props) => {
   useIpcEvents();
   useOpenAPISyncPolling();
   const dispatch = useDispatch();
+  const languagePreference = useSelector((state) => get(state, 'app.preferences.general.language', 'system'));
 
   useEffect(() => {
     dispatch(refreshScreenWidth());
@@ -52,6 +55,14 @@ export const AppProvider = (props) => {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    const nextLanguage = resolveLanguage(languagePreference);
+
+    if (i18n.language !== nextLanguage) {
+      i18n.changeLanguage(nextLanguage);
+    }
+  }, [languagePreference]);
 
   return (
     <AppContext.Provider {...props} value={{ version }}>
