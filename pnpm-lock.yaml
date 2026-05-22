@@ -974,6 +974,9 @@ importers:
       '@usebruno/query':
         specifier: 0.1.0
         version: link:../bruno-query
+      '@usebruno/requests':
+        specifier: workspace:*
+        version: link:../bruno-requests
       ajv:
         specifier: ^8.12.0
         version: 8.20.0
@@ -1125,6 +1128,9 @@ importers:
       grpc-js-reflection-client:
         specifier: ^1.3.0
         version: 1.4.0(@grpc/grpc-js@1.14.4)
+      hexy:
+        specifier: ^0.3.5
+        version: 0.3.5
       http-proxy-agent:
         specifier: ~7.0.2
         version: 7.0.2
@@ -1134,9 +1140,18 @@ importers:
       is-ip:
         specifier: ^5.0.1
         version: 5.0.1
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      moment:
+        specifier: ^2.30.1
+        version: 2.30.1
       pac-resolver:
         specifier: ^7.0.1
         version: 7.0.1
+      qs:
+        specifier: ^6.15.2
+        version: 6.15.2
       quickjs-emscripten:
         specifier: ^0.32.0
         version: 0.32.0
@@ -7594,9 +7609,6 @@ packages:
 
   lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-
-  lodash@4.17.23:
-    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
 
   lodash@4.18.1:
     resolution: {integrity: sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==}
@@ -16998,7 +17010,7 @@ snapshots:
       '@types/hoist-non-react-statics': 3.3.7(@types/react@18.3.29)
       deepmerge: 2.2.1
       hoist-non-react-statics: 3.3.2
-      lodash: 4.18.1
+      lodash: 4.17.21
       lodash-es: 4.18.1
       react: 19.0.0
       react-fast-compare: 2.0.4
@@ -17419,7 +17431,7 @@ snapshots:
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
-      lodash: 4.18.1
+      lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.3.3
     optionalDependencies:
@@ -18288,7 +18300,7 @@ snapshots:
       console-browserify: 1.1.0
       exit: 0.1.2
       htmlparser2: 3.8.3
-      lodash: 4.17.23
+      lodash: 4.17.21
       minimatch: 3.0.8
       strip-json-comments: 1.0.4
 
@@ -18471,8 +18483,6 @@ snapshots:
   lodash.uniq@4.5.0: {}
 
   lodash@4.17.21: {}
-
-  lodash@4.17.23: {}
 
   lodash@4.18.1: {}
 
@@ -21563,7 +21573,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.29.2
       '@types/lodash': 4.17.24
-      lodash: 4.18.1
+      lodash: 4.17.21
       lodash-es: 4.18.1
       nanoclone: 0.2.1
       property-expr: 2.0.6

@@ -78,6 +78,31 @@ const addCryptoUtilsShimToContext = async (vm) => {
   vm.evalCode(`
     // Helper function for typed array serialization
     ${serializeTypedArray.toString()}
+
+    if (typeof globalThis.Buffer === 'undefined') {
+      globalThis.Buffer = {
+        from: function(input) {
+          const bytes = Array.from(input || []);
+
+          return {
+            length: bytes.length,
+            toString: function(encoding) {
+              if (encoding === 'hex') {
+                return bytes.map((byte) => byte.toString(16).padStart(2, '0')).join('');
+              }
+
+              return bytes.map((byte) => String.fromCharCode(byte)).join('');
+            },
+            [Symbol.iterator]: function() {
+              return bytes[Symbol.iterator]();
+            },
+            at: function(index) {
+              return bytes.at(index);
+            }
+          };
+        }
+      };
+    }
     
     // Create crypto module object following Node.js specifications
     const cryptoModule = {

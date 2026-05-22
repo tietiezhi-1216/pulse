@@ -66,8 +66,9 @@ jobs:
 
       - name: Configure Chrome Sandbox
         run: |
-          sudo chown root node_modules/electron/dist/chrome-sandbox
-          sudo chmod 4755 node_modules/electron/dist/chrome-sandbox
+          CHROME_SANDBOX="$(pnpm --filter pulse exec node -e "const path = require('node:path'); process.stdout.write(path.join(path.dirname(require.resolve('electron/package.json')), 'dist/chrome-sandbox'));")"
+          sudo chown root "$CHROME_SANDBOX"
+          sudo chmod 4755 "$CHROME_SANDBOX"
 
       - name: Run playwright Tests
         uses: ./.github/actions/tests/run-e2e-tests

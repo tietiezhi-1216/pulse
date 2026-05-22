@@ -11,5 +11,6 @@ runs:
           libglib2.0-0 libnss3 libdbus-1-3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libgtk-3-0 libasound2t64 \
           xvfb libxml2-utils
 
-        sudo chown root /home/runner/work/bruno/bruno/node_modules/electron/dist/chrome-sandbox
-        sudo chmod 4755 /home/runner/work/bruno/bruno/node_modules/electron/dist/chrome-sandbox
+        CHROME_SANDBOX="$(pnpm --filter pulse exec node -e "const path = require('node:path'); process.stdout.write(path.join(path.dirname(require.resolve('electron/package.json')), 'dist/chrome-sandbox'));")"
+        sudo chown root "$CHROME_SANDBOX"
+        sudo chmod 4755 "$CHROME_SANDBOX"
