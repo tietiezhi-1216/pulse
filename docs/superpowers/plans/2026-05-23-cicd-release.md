@@ -193,8 +193,8 @@ jobs:
       - name: Build Linux deb and rpm packages
         if: matrix.name == 'Linux'
         run: |
-          pnpm --filter pulse dist:deb
-          pnpm --filter pulse dist:rpm
+          pnpm --filter pulse dist:deb -- --publish never
+          pnpm --filter pulse dist:rpm -- --publish never
 
       - name: Upload desktop artifacts
         uses: actions/upload-artifact@v6

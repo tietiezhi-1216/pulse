@@ -126,7 +126,7 @@ async function main() {
       osArg = 'linux';
     }
 
-    await execCommandWithOutput(`pnpm --filter pulse dist:${osArg}`);
+    await execCommandWithOutput(`pnpm --filter pulse dist:${osArg} -- --publish never`);
   } catch (error) {
     console.error('An error occurred:', error);
     process.exitCode = 1;
