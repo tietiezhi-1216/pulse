@@ -8,9 +8,11 @@ import SingleLineEditor from 'components/SingleLineEditor/index';
 import MultiLineEditor from 'components/MultiLineEditor/index';
 import StyledWrapper from './StyledWrapper';
 import Table from 'components/Table/index';
+import { useTranslation } from 'react-i18next';
 
 const AdditionalParams = ({ item = {}, request, updateAuth, collection, handleSave }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { storedTheme } = useTheme();
 
   const oAuth = get(request, 'auth.oauth2', {});
@@ -154,13 +156,20 @@ const AdditionalParams = ({ item = {}, request, updateAuth, collection, handleSa
 
   const availableTabs = getAvailableTabs(grantType);
 
-  const renderTab = (tabKey, tabLabel) => (
+  const getSendInLabel = (value) => {
+    if (value === 'headers') return t('AUTH_FIELDS.HEADERS');
+    if (value === 'queryparams') return t('REQUEST.QUERY_PARAMS');
+    if (value === 'body') return t('AUTH_FIELDS.BODY');
+    return value;
+  };
+
+  const renderTab = (tabKey, tabLabelKey) => (
     <div
       key={tabKey}
       className={`tab ${activeTab === tabKey ? 'active' : ''}`}
       onClick={() => setActiveTab(tabKey)}
     >
-      {tabLabel}
+      {t(tabLabelKey)}
     </div>
   );
 
@@ -171,20 +180,20 @@ const AdditionalParams = ({ item = {}, request, updateAuth, collection, handleSa
           <IconAdjustmentsHorizontal size={14} className="oauth2-icon" />
         </div>
         <span className="oauth2-section-label">
-          Additional Parameters
+          {t('OAUTH2.ADDITIONAL_PARAMETERS')}
         </span>
       </div>
 
       <div className="tabs flex w-full gap-2 my-2">
-        {availableTabs.includes('authorization') && renderTab('authorization', 'Authorization')}
-        {availableTabs.includes('token') && renderTab('token', 'Token')}
-        {availableTabs.includes('refresh') && renderTab('refresh', 'Refresh')}
+        {availableTabs.includes('authorization') && renderTab('authorization', 'OAUTH2.AUTHORIZATION')}
+        {availableTabs.includes('token') && renderTab('token', 'OAUTH2.TOKEN')}
+        {availableTabs.includes('refresh') && renderTab('refresh', 'OAUTH2.REFRESH')}
       </div>
       <Table
         headers={[
-          { name: 'Key', accessor: 'name', width: '30%' },
-          { name: 'Value', accessor: 'value', width: '30%' },
-          { name: 'Send In', accessor: 'sendIn', width: '150px' },
+          { name: t('COMMON.KEY'), accessor: 'name', width: '30%' },
+          { name: t('COMMON.VALUE'), accessor: 'value', width: '30%' },
+          { name: t('OAUTH2.SEND_IN'), accessor: 'sendIn', width: '150px' },
           { name: '', accessor: '', width: '15%' }
         ]}
       >
@@ -236,7 +245,7 @@ const AdditionalParams = ({ item = {}, request, updateAuth, collection, handleSa
                   >
                     {sendInOptionsMap[grantType || 'authorization_code'][activeTab].map((optionValue) => (
                       <option key={optionValue} value={optionValue}>
-                        {optionValue}
+                        {getSendInLabel(optionValue)}
                       </option>
                     ))}
                   </select>
@@ -281,7 +290,7 @@ const AdditionalParams = ({ item = {}, request, updateAuth, collection, handleSa
         onClick={addButtonDisabled ? null : handleAddNewAdditionalParam}
       >
         <IconPlus size={16} strokeWidth={1.5} style={{ marginLeft: '2px' }} />
-        <span className="ml-1 text-gray-500">Add Parameter</span>
+        <span className="ml-1 text-gray-500">{t('OAUTH2.ADD_PARAMETER')}</span>
       </div>
     </StyledWrapper>
   );

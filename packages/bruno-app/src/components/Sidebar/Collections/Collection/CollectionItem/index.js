@@ -61,9 +61,11 @@ import ActionIcon from 'ui/ActionIcon';
 import MenuDropdown from 'ui/MenuDropdown';
 import { useSidebarAccordion } from 'components/Sidebar/SidebarAccordionContext';
 import useKeybinding from 'hooks/useKeybinding';
+import { useTranslation } from 'react-i18next';
 
 const CollectionItem = ({ item, collectionUid, collectionPathname, searchText }) => {
   const { dropdownContainerRef } = useSidebarAccordion();
+  const { t } = useTranslation();
   const selectorInput = {
     itemUid: item.uid,
     itemPathname: item.pathname,
@@ -382,7 +384,7 @@ const CollectionItem = ({ item, collectionUid, collectionPathname, searchText })
       {
         id: 'rename',
         leftSection: IconEdit,
-        label: 'Rename',
+        label: t('COMMON.RENAME'),
         onClick: () => setRenameItemModalOpen(true)
       }
     );
@@ -390,7 +392,7 @@ const CollectionItem = ({ item, collectionUid, collectionPathname, searchText })
       items.push({
         id: 'run',
         leftSection: IconPlayerPlay,
-        label: 'Run',
+        label: t('COMMON.RUN'),
         onClick: () => {
           handleRun();
         }
@@ -401,7 +403,7 @@ const CollectionItem = ({ item, collectionUid, collectionPathname, searchText })
       items.push({
         id: 'generate-code',
         leftSection: IconCode,
-        label: 'Generate Code',
+        label: t('RESPONSE_EXAMPLE.GENERATE_CODE'),
         onClick: handleGenerateCode
       });
     }
@@ -410,7 +412,7 @@ const CollectionItem = ({ item, collectionUid, collectionPathname, searchText })
       items.push({
         id: 'create-example',
         leftSection: ExampleIcon,
-        label: 'Create Example',
+        label: t('RESPONSE_EXAMPLE.CREATE_EXAMPLE'),
         onClick: () => setCreateExampleModalOpen(true)
       });
     }
@@ -638,7 +640,7 @@ const CollectionItem = ({ item, collectionUid, collectionPathname, searchText })
         isOpen={createExampleModalOpen}
         onClose={() => setCreateExampleModalOpen(false)}
         onSave={handleCreateExample}
-        title="Create Response Example"
+        title={t('RESPONSE_EXAMPLE.CREATE_RESPONSE_EXAMPLE')}
         initialName={getInitialExampleName(item)}
       />
       <div

@@ -5,6 +5,7 @@ import { browseFiles } from 'providers/ReduxStore/slices/collections/actions';
 import { IconX, IconUpload, IconFile } from '@tabler/icons';
 import { isWindowsOS } from 'utils/common/platform';
 import StyledWrapper from './StyledWrapper';
+import { useTranslation } from 'react-i18next';
 
 /**
  * FilePickerEditor component for selecting files
@@ -30,6 +31,7 @@ const FilePickerEditor = ({
   icon: CustomIcon
 }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const filenames = (isSingleFilePicker ? [value] : value || [])
     .filter((v) => v != null && v != '')
     .map((v) => {
@@ -67,10 +69,10 @@ const FilePickerEditor = ({
     if (filenames.length == 1) {
       return filenames[0];
     }
-    return filenames.length + ' file(s) selected';
+    return t('COMMON.SELECTED_FILES', { count: filenames.length });
   };
 
-  const defaultLabel = isSingleFilePicker ? 'Select File' : 'Select Files';
+  const defaultLabel = isSingleFilePicker ? t('COMMON.SELECT_FILE') : t('COMMON.SELECT_FILES');
   const displayLabel = label || defaultLabel;
   const IconComponent = CustomIcon || IconUpload;
 
@@ -109,7 +111,7 @@ const FilePickerEditor = ({
             <button
               className="clear-btn"
               onClick={clear}
-              title="Remove file"
+              title={t('COMMON.REMOVE_FILE')}
               type="button"
             >
               <IconX size={16} />

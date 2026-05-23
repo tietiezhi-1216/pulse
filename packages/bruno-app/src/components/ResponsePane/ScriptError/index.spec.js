@@ -4,6 +4,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
+import i18n from '../../../i18n';
 import ScriptError from './index';
 
 const theme = {
@@ -49,6 +50,10 @@ const mockErrorContext = {
 };
 
 describe('ScriptError', () => {
+  beforeEach(async () => {
+    await i18n.changeLanguage('en');
+  });
+
   it('should render nothing when no errors', () => {
     const { container } = renderWithProviders(<ScriptError item={{}} collection={mockCollection} onClose={jest.fn()} />);
     expect(container.firstChild).toBeNull();

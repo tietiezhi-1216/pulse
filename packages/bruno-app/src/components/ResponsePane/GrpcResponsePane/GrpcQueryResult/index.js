@@ -6,8 +6,10 @@ import { useTheme } from 'providers/Theme/index';
 import StyledWrapper from './StyledWrapper';
 import GrpcError from '../GrpcError';
 import { IconChevronDown, IconChevronUp } from '@tabler/icons';
+import { useTranslation } from 'react-i18next';
 
 const GrpcQueryResult = ({ item, collection }) => {
+  const { t } = useTranslation();
   const { displayedTheme } = useTheme();
   const preferences = useSelector((state) => state.app.preferences);
   const [showErrorMessage, setShowErrorMessage] = useState(true);
@@ -40,7 +42,7 @@ const GrpcQueryResult = ({ item, collection }) => {
   if (!hasResponses && !hasError) {
     return (
       <StyledWrapper className="w-full h-full relative flex flex-col">
-        <div className="empty-state">No messages received</div>
+        <div className="empty-state">{t('RESPONSE_PANEL.NO_MESSAGES_RECEIVED')}</div>
       </StyledWrapper>
     );
   }
@@ -79,8 +81,8 @@ const GrpcQueryResult = ({ item, collection }) => {
                       onClick={() => setExpandedIndex(isExpanded ? -1 : index)}
                     >
                       <span className="message-label">
-                        Response {originalIndex + 1}
-                        {index === 0 && <span className="latest-badge">Latest</span>}
+                        {t('RESPONSE_PANEL.RESPONSE_NUMBER', { number: originalIndex + 1 })}
+                        {index === 0 && <span className="latest-badge">{t('RESPONSE_PANEL.LATEST')}</span>}
                       </span>
                       <button className="toggle-btn">
                         {isExpanded ? (
@@ -112,7 +114,7 @@ const GrpcQueryResult = ({ item, collection }) => {
       )}
       {hasError && !hasResponses && !showErrorMessage && (
         <div className="empty-state">
-          No messages received. A server error occurred but has been dismissed.
+          {t('RESPONSE_PANEL.NO_MESSAGES_AFTER_DISMISSED_ERROR')}
         </div>
       )}
     </StyledWrapper>

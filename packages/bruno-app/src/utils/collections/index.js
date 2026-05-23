@@ -887,7 +887,22 @@ export const isItemAFolder = (item) => {
   return !item.hasOwnProperty('request') && item.type === 'folder';
 };
 
-export const humanizeRequestBodyMode = (mode) => {
+export const humanizeRequestBodyMode = (mode, t) => {
+  const translationKeys = {
+    json: 'BODY_MODES.JSON',
+    text: 'BODY_MODES.TEXT',
+    xml: 'BODY_MODES.XML',
+    sparql: 'BODY_MODES.SPARQL',
+    file: 'BODY_MODES.FILE_BINARY',
+    formUrlEncoded: 'BODY_MODES.FORM_URL_ENCODED',
+    multipartForm: 'BODY_MODES.MULTIPART_FORM',
+    none: 'BODY_MODES.NO_BODY'
+  };
+
+  if (t && translationKeys[mode]) {
+    return t(translationKeys[mode]);
+  }
+
   let label = 'No Body';
   switch (mode) {
     case 'json': {

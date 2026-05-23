@@ -15,11 +15,13 @@ import Button from 'ui/Button';
 import { headerNameRegex, headerValueRegex } from 'utils/common/regex';
 import { usePersistedState } from 'hooks/usePersistedState';
 import { useTrackScroll } from 'hooks/useTrackScroll';
+import { useTranslation } from 'react-i18next';
 
 const headerAutoCompleteList = StandardHTTPHeaders.map((e) => e.header);
 
 const Headers = ({ collection, folder }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { storedTheme } = useTheme();
   const tabs = useSelector((state) => state.tabs.tabs);
   const activeTabUid = useSelector((state) => state.tabs.activeTabUid);
@@ -57,24 +59,24 @@ const Headers = ({ collection, folder }) => {
     if (key === 'name') {
       if (!row.name || row.name.trim() === '') return null;
       if (!headerNameRegex.test(row.name)) {
-        return 'Header name cannot contain spaces or newlines';
+        return t('FOLDER_SETTINGS.HEADERS.INVALID_NAME');
       }
     }
     if (key === 'value') {
       if (!row.value) return null;
       if (!headerValueRegex.test(row.value)) {
-        return 'Header value cannot contain newlines';
+        return t('FOLDER_SETTINGS.HEADERS.INVALID_VALUE');
       }
     }
     return null;
-  }, []);
+  }, [t]);
 
   const columns = [
     {
       key: 'name',
-      name: 'Name',
+      name: t('COMMON.NAME'),
       isKeyField: true,
-      placeholder: 'Name',
+      placeholder: t('COMMON.NAME'),
       width: '30%',
       render: ({ value, onChange }) => (
         <SingleLineEditor
@@ -84,14 +86,14 @@ const Headers = ({ collection, folder }) => {
           onChange={(newValue) => onChange(newValue.replace(/[\r\n]/g, ''))}
           autocomplete={headerAutoCompleteList}
           collection={collection}
-          placeholder={!value ? 'Name' : ''}
+          placeholder={!value ? t('COMMON.NAME') : ''}
         />
       )
     },
     {
       key: 'value',
-      name: 'Value',
-      placeholder: 'Value',
+      name: t('COMMON.VALUE'),
+      placeholder: t('COMMON.VALUE'),
       render: ({ value, onChange }) => (
         <SingleLineEditor
           value={value || ''}
@@ -101,7 +103,7 @@ const Headers = ({ collection, folder }) => {
           collection={collection}
           item={folder}
           autocomplete={MimeTypes}
-          placeholder={!value ? 'Value' : ''}
+          placeholder={!value ? t('COMMON.VALUE') : ''}
         />
       )
     }
@@ -117,7 +119,7 @@ const Headers = ({ collection, folder }) => {
     return (
       <StyledWrapper className="w-full">
         <div className="text-xs mb-4 text-muted">
-          Request headers that will be sent with every request inside this folder.
+          {t('FOLDER_SETTINGS.HEADERS.DESCRIPTION')}
         </div>
         <BulkEditor
           params={headers}
@@ -132,7 +134,7 @@ const Headers = ({ collection, folder }) => {
   return (
     <StyledWrapper className="w-full" ref={wrapperRef}>
       <div className="text-xs mb-4 text-muted">
-        Request headers that will be sent with every request inside this folder.
+        {t('FOLDER_SETTINGS.HEADERS.DESCRIPTION')}
       </div>
       <EditableTable
         tableId="folder-headers"
@@ -147,12 +149,12 @@ const Headers = ({ collection, folder }) => {
       />
       <div className="flex justify-end mt-2">
         <button className="text-link select-none" data-testid="bulk-edit-toggle" onClick={toggleBulkEditMode}>
-          Bulk Edit
+          {t('REQUEST.BULK_EDIT')}
         </button>
       </div>
       <div className="mt-6">
         <Button type="submit" size="sm" onClick={handleSave}>
-          Save
+          {t('COMMON.SAVE')}
         </Button>
       </div>
     </StyledWrapper>

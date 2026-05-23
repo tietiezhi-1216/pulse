@@ -49,3 +49,39 @@ test('preferences persist the selected UI language', () => {
   assert.match(generalPreferencesSource, /name=["']language["']/);
   assert.match(generalPreferencesSource, /SUPPORTED_LANGUAGES/);
 });
+
+test('high-traffic API surfaces do not hard-code user-facing English labels', () => {
+  const checks = [
+    {
+      path: 'packages/bruno-app/src/components/FolderSettings/Headers/index.js',
+      patterns: [/Request headers that will be sent/, /Header name cannot contain/, />Save</, />Bulk Edit</]
+    },
+    {
+      path: 'packages/bruno-app/src/components/FolderSettings/Auth/index.js',
+      patterns: [/Configures authentication for the entire folder/, /Auth inherited from/, />Save</]
+    },
+    {
+      path: 'packages/bruno-app/src/components/BodyModeSelector/index.js',
+      patterns: [/File \/ Binary/, /No Body/, /Multipart Form/]
+    },
+    {
+      path: 'packages/bruno-app/src/components/RequestPane/Settings/index.js',
+      patterns: [/Configure request settings for this item/, /URL Encoding/, /Max Redirects/, /Timeout \(ms\)/]
+    },
+    {
+      path: 'packages/bruno-app/src/components/RequestTabPanel/RequestNotFound/index.js',
+      patterns: [/Request no longer exists/, /Close Tab/]
+    },
+    {
+      path: 'packages/bruno-app/src/components/ResponsePane/LargeResponseWarning/index.js',
+      patterns: [/Large Response Warning/, /Response copied to clipboard/, />Download</]
+    }
+  ];
+
+  for (const check of checks) {
+    const source = readText(check.path);
+    for (const pattern of check.patterns) {
+      assert.doesNotMatch(source, pattern, `${check.path} still contains ${pattern}`);
+    }
+  }
+});

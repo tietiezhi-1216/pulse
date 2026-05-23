@@ -9,9 +9,11 @@ import SingleLineEditor from 'components/SingleLineEditor';
 import BulkEditor from 'components/BulkEditor';
 import InfoTip from 'components/InfoTip';
 import StyledWrapper from './StyledWrapper';
+import { useTranslation } from 'react-i18next';
 
 const ResponseExampleParams = ({ editMode, item, collection, exampleUid }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { storedTheme } = useTheme();
   const tabs = useSelector((state) => state.tabs.tabs);
   const activeTabUid = useSelector((state) => state.tabs.activeTabUid);
@@ -112,9 +114,9 @@ const ResponseExampleParams = ({ editMode, item, collection, exampleUid }) => {
   const queryColumns = [
     {
       key: 'name',
-      name: 'Name',
+      name: t('COMMON.NAME'),
       isKeyField: true,
-      placeholder: 'Name',
+      placeholder: t('COMMON.NAME'),
       width: '40%',
       readOnly: !editMode,
       render: ({ value, onChange }) => (
@@ -127,14 +129,14 @@ const ResponseExampleParams = ({ editMode, item, collection, exampleUid }) => {
           collection={collection}
           variablesAutocomplete={true}
           readOnly={!editMode}
-          placeholder={!value ? 'Name' : ''}
+          placeholder={!value ? t('COMMON.NAME') : ''}
         />
       )
     },
     {
       key: 'value',
-      name: 'Value',
-      placeholder: 'Value',
+      name: t('COMMON.VALUE'),
+      placeholder: t('COMMON.VALUE'),
       width: '60%',
       readOnly: !editMode,
       render: ({ value, onChange }) => (
@@ -147,7 +149,7 @@ const ResponseExampleParams = ({ editMode, item, collection, exampleUid }) => {
           collection={collection}
           variablesAutocomplete={true}
           readOnly={!editMode}
-          placeholder={!value ? 'Value' : ''}
+          placeholder={!value ? t('COMMON.VALUE') : ''}
         />
       )
     }
@@ -156,14 +158,14 @@ const ResponseExampleParams = ({ editMode, item, collection, exampleUid }) => {
   const pathColumns = [
     {
       key: 'name',
-      name: 'Name',
+      name: t('COMMON.NAME'),
       readOnly: true,
       width: '40%'
     },
     {
       key: 'value',
-      name: 'Value',
-      placeholder: 'Value',
+      name: t('COMMON.VALUE'),
+      placeholder: t('COMMON.VALUE'),
       width: '60%',
       readOnly: !editMode,
       render: ({ value, onChange }) => (
@@ -176,7 +178,7 @@ const ResponseExampleParams = ({ editMode, item, collection, exampleUid }) => {
           collection={collection}
           variablesAutocomplete={true}
           readOnly={!editMode}
-          placeholder={!value ? 'Value' : ''}
+          placeholder={!value ? t('COMMON.VALUE') : ''}
         />
       )
     }
@@ -195,7 +197,7 @@ const ResponseExampleParams = ({ editMode, item, collection, exampleUid }) => {
 
   return (
     <StyledWrapper className="w-full mt-4">
-      <div className="mb-3 title text-xs font-bold">Query parameters</div>
+      <div className="mb-3 title text-xs font-bold">{t('REQUEST.QUERY_PARAMETERS')}</div>
       <EditableTable
         tableId="example-query-params"
         columns={queryColumns}
@@ -216,19 +218,19 @@ const ResponseExampleParams = ({ editMode, item, collection, exampleUid }) => {
             className="btn-action text-link select-none"
             onClick={toggleBulkEditMode}
           >
-            Bulk Edit
+            {t('REQUEST.BULK_EDIT')}
           </button>
         </div>
       )}
       {pathParams && pathParams.length > 0 && (
         <>
           <div className="mb-3 title text-xs font-bold flex items-stretch mt-4">
-            <span>Path parameters</span>
+            <span>{t('REQUEST.PATH_PARAMETERS')}</span>
             <InfoTip infotipId="path-param-InfoTip">
               <div>
-                Path variables are automatically added whenever the
+                {t('REQUEST.PATH_PARAMS_HINT_PREFIX')}
                 <code className="font-mono mx-2">:name</code>
-                template is used in the URL. <br /> For example:
+                {t('REQUEST.PATH_PARAMS_HINT_SUFFIX')} <br /> {t('REQUEST.PATH_PARAMS_HINT_EXAMPLE')}
                 <code className="font-mono mx-2">
                   https://example.com/v1/users/<span>:id</span>
                 </code>

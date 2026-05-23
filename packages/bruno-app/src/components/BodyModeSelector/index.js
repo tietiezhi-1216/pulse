@@ -3,29 +3,30 @@ import { IconCaretDown, IconForms, IconBraces, IconCode, IconFileText, IconDatab
 import MenuDropdown from 'ui/MenuDropdown';
 import { humanizeRequestBodyMode } from 'utils/collections';
 import StyledWrapper from './StyledWrapper';
+import { useTranslation } from 'react-i18next';
 
 const DEFAULT_MODES = [
   {
-    name: 'Form',
+    nameKey: 'BODY_MODES.GROUPS.FORM',
     options: [
-      { id: 'multipartForm', label: 'Multipart Form', leftSection: IconForms },
-      { id: 'formUrlEncoded', label: 'Form URL Encoded', leftSection: IconForms }
+      { id: 'multipartForm', labelKey: 'BODY_MODES.MULTIPART_FORM', leftSection: IconForms },
+      { id: 'formUrlEncoded', labelKey: 'BODY_MODES.FORM_URL_ENCODED', leftSection: IconForms }
     ]
   },
   {
-    name: 'Raw',
+    nameKey: 'BODY_MODES.GROUPS.RAW',
     options: [
-      { id: 'json', label: 'JSON', leftSection: IconBraces },
-      { id: 'xml', label: 'XML', leftSection: IconCode },
-      { id: 'text', label: 'TEXT', leftSection: IconFileText },
-      { id: 'sparql', label: 'SPARQL', leftSection: IconDatabase }
+      { id: 'json', labelKey: 'BODY_MODES.JSON', leftSection: IconBraces },
+      { id: 'xml', labelKey: 'BODY_MODES.XML', leftSection: IconCode },
+      { id: 'text', labelKey: 'BODY_MODES.TEXT', leftSection: IconFileText },
+      { id: 'sparql', labelKey: 'BODY_MODES.SPARQL', leftSection: IconDatabase }
     ]
   },
   {
-    name: 'Other',
+    nameKey: 'BODY_MODES.GROUPS.OTHER',
     options: [
-      { id: 'file', label: 'File / Binary', leftSection: IconFile },
-      { id: 'none', label: 'No Body', leftSection: IconX }
+      { id: 'file', labelKey: 'BODY_MODES.FILE_BINARY', leftSection: IconFile },
+      { id: 'none', labelKey: 'BODY_MODES.NO_BODY', leftSection: IconX }
     ]
   }
 ];
@@ -39,16 +40,20 @@ const BodyModeSelector = ({
   wrapperClassName = '',
   placement = 'bottom-end'
 }) => {
+  const { t } = useTranslation();
+
   // Add onClick handlers to mode options
   const menuItems = useMemo(() => {
     return modes.map((group) => ({
       ...group,
+      name: group.nameKey ? t(group.nameKey) : group.name,
       options: group.options.map((option) => ({
         ...option,
+        label: option.labelKey ? t(option.labelKey) : option.label,
         onClick: () => onModeChange(option.id)
       }))
     }));
-  }, [modes, onModeChange]);
+  }, [modes, onModeChange, t]);
 
   return (
     <StyledWrapper className={wrapperClassName}>
@@ -63,7 +68,7 @@ const BodyModeSelector = ({
           groupStyle="select"
         >
           <div className="flex items-center justify-center pl-3 py-1 select-none selected-body-mode">
-            {humanizeRequestBodyMode(currentMode)}
+            {humanizeRequestBodyMode(currentMode, t)}
             {' '}
             <IconCaretDown className="caret ml-2" size={14} strokeWidth={2} />
           </div>

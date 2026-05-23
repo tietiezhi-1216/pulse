@@ -3,9 +3,11 @@ import { IconX, IconTag } from '@tabler/icons';
 import StyledWrapper from './StyledWrapper';
 import SingleLineEditor from 'components/SingleLineEditor/index';
 import { useTheme } from 'providers/Theme/index';
+import { useTranslation } from 'react-i18next';
 
 const TagList = ({ tagsHintList = [], handleAddTag, tags, handleRemoveTag, onSave, handleValidation, collectionFormat }) => {
   const { displayedTheme } = useTheme();
+  const { t } = useTranslation();
   const isBruFormat = collectionFormat === 'bru';
   const tagNameRegex = isBruFormat ? /^[\p{L}\p{N}_-]+$/u : /^[\p{L}\p{N}_-](?:[\p{L}\p{N}_\s-]*[\p{L}\p{N}_-])?$/u;
   const [text, setText] = useState('');
@@ -22,13 +24,13 @@ const TagList = ({ tagsHintList = [], handleAddTag, tags, handleRemoveTag, onSav
     }
     if (!tagNameRegex.test(text)) {
       setError(isBruFormat
-        ? 'Tags in BRU format must only contain letters, numbers, "-", "_".'
-        : 'Tags must only contain letters, numbers, spaces, "-", "_"'
+        ? t('REQUEST_PANEL.SETTINGS.TAG_BRU_INVALID')
+        : t('REQUEST_PANEL.SETTINGS.TAG_INVALID')
       );
       return;
     }
     if (tags.includes(text)) {
-      setError(`Tag "${text}" already exists`);
+      setError(t('REQUEST_PANEL.SETTINGS.TAG_EXISTS', { tag: text }));
       return;
     }
     if (handleValidation) {
@@ -47,7 +49,7 @@ const TagList = ({ tagsHintList = [], handleAddTag, tags, handleRemoveTag, onSav
       <SingleLineEditor
         className="border border-gray-500/50 px-2"
         value={text}
-        placeholder="e.g., smoke, regression"
+        placeholder={t('REQUEST_PANEL.SETTINGS.TAG_PLACEHOLDER')}
         autocomplete={tagsHintList}
         showHintsOnClick={true}
         showHintsFor={[]}
@@ -70,7 +72,7 @@ const TagList = ({ tagsHintList = [], handleAddTag, tags, handleRemoveTag, onSav
                   <span className="tag-text" title={_tag}>
                     {_tag}
                   </span>
-                  <span className="tag-remove" title="Remove tag" onClick={() => handleRemoveTag(_tag)}>
+                  <span className="tag-remove" title={t('COMMON.REMOVE_TAG')} onClick={() => handleRemoveTag(_tag)}>
                     <IconX size={12} strokeWidth={2} aria-hidden="true" />
                   </span>
                 </button>

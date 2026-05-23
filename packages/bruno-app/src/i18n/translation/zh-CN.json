@@ -16,12 +16,17 @@
     "SKIP": "跳过",
     "BACK": "返回",
     "NEXT": "下一步",
+    "CONTINUE": "继续",
     "BROWSE": "浏览",
     "HOME": "首页",
+    "OR": "或",
     "CANCEL": "取消",
     "CREATE": "创建",
+    "CLONE": "克隆",
     "LOADING": "加载中...",
+    "TRY_AGAIN": "重试",
     "SAVE": "保存",
+    "SEND": "发送",
     "RENAME": "重命名",
     "SHARE": "分享",
     "REMOVE": "移除",
@@ -34,9 +39,18 @@
     "CLOSE": "关闭",
     "PREVIOUS": "上一个",
     "IMPORT": "导入",
+    "EXPORT": "导出",
     "CONFIGURE": "配置",
+    "OPEN": "打开",
+    "COPY": "复制",
+    "DOWNLOAD": "下载",
+    "VIEW": "查看",
+    "EDIT": "编辑",
+    "RUN": "运行",
+    "PREVIEW": "预览",
     "NAME": "名称",
     "VALUE": "值",
+    "KEY": "键",
     "RESET": "重置",
     "ACTIONS": "操作",
     "OVERVIEW": "概览",
@@ -49,9 +63,25 @@
     "ADD": "添加",
     "FILE": "文件",
     "PATH": "路径",
+    "SIZE": "大小",
     "DIRECTORY": "目录",
     "NOT_FOUND": "404 | 未找到",
-    "ERROR_OCCURRED": "发生错误！"
+    "ERROR_OCCURRED": "发生错误！",
+    "INPUT_REQUIRED": "需要输入",
+    "SELECT_FILE": "选择文件",
+    "SELECT_FILES": "选择文件",
+    "REMOVE_FILE": "移除文件",
+    "ADD_FILES": "添加文件",
+    "SELECTED_FILES": "已选择 {{count}} 个文件",
+    "FILE_COUNT_ONE": "{{count}} 个文件",
+    "FILE_COUNT_OTHER": "{{count}} 个文件",
+    "MORE_FILES_ONE": "+{{count}} 个更多",
+    "MORE_FILES_OTHER": "+{{count}} 个更多",
+    "REMOVE_TAG": "移除标签",
+    "CHANGE_COLOR": "更改颜色",
+    "NO_COLOR": "无颜色",
+    "CUSTOM_COLOR": "自定义颜色",
+    "ADJUST_COLOR": "调整颜色"
   },
   "ACTIONS": {
     "CREATE_COLLECTION": "创建集合",
@@ -147,7 +177,31 @@
     "OPEN_COLLECTION_ERROR": "打开集合时发生错误",
     "OPENED": "工作区打开成功",
     "OPEN_FAILED": "打开工作区失败",
-    "SWITCHED_TO": "已切换到 {{name}}"
+    "SWITCHED_TO": "已切换到 {{name}}",
+    "WORKSPACE": "工作区",
+    "MANAGE_WORKSPACE": "管理工作区",
+    "NO_WORKSPACES_FOUND": "未找到工作区",
+    "DEFAULT": "默认",
+    "CANNOT_CLOSE_DEFAULT": "不能关闭默认工作区",
+    "CANNOT_REMOVE_DEFAULT": "不能移除默认工作区",
+    "CREATED": "工作区已创建！",
+    "CREATE_FAILED": "创建工作区时发生错误",
+    "RENAMED": "工作区已重命名！",
+    "RENAME_FAILED": "重命名工作区时发生错误",
+    "EXPORTED": "工作区已导出",
+    "EXPORT_FAILED": "导出工作区失败",
+    "NAME_REQUIRED": "名称为必填项",
+    "NAME_MIN_LENGTH": "至少需要 1 个字符",
+    "NAME_MAX_LENGTH": "不能超过 255 个字符",
+    "NAME_EXISTS": "已存在同名工作区",
+    "ADVANCED_OPTIONS": "高级选项",
+    "REMOVE_WORKSPACE": "移除工作区",
+    "RENAME_WORKSPACE": "重命名工作区",
+    "WORKSPACE_NAME": "工作区名称",
+    "REMOVING": "正在移除...",
+    "REMOVE_FAILED": "移除工作区时发生错误",
+    "REMOVE_CONFIRM": "确定要移除工作区 <name>{{name}}</name> 吗？",
+    "REMOVE_HINT": "该工作区仍会保留在文件系统中，之后可以重新打开。"
   },
   "WARNINGS": {
     "ROSETTA": "Pulse 似乎正在 Apple Silicon Mac 上通过 Rosetta 以 Intel（x64）版本运行。这可能导致性能下降或异常行为。"
@@ -462,6 +516,7 @@
     }
   },
   "COLLECTIONS_LIST": {
+    "UNTITLED_COLLECTION": "未命名集合",
     "NEEDS_CLONE": "集合“{{name}}”需要先克隆",
     "MISSING_ON_DISK": "集合“{{name}}”在磁盘上不存在",
     "CANNOT_RENAME_UNCLONED": "不能重命名尚未克隆的集合",
@@ -487,7 +542,8 @@
     "LINKING_TO_GIT_REMOTE": "正在将 <collectionName>{{collectionName}}</collectionName> 连接到远程 Git 仓库。",
     "GIT_REMOTE_WORKSPACE_ONLY": "该 URL 只会保存到 <workspaceFile>workspace.yml</workspaceFile>。磁盘上的集合文件不会被修改。",
     "DISCONNECT_GIT_REMOTE": "要断开 <collectionName>{{collectionName}}</collectionName> 的 Git 远程仓库连接吗？",
-    "REMOVE_GIT_REMOTE_HELP": "这只会从 <workspaceFile>workspace.yml</workspaceFile> 中移除远程 URL。本地集合文件和任何 <gitFolder>.git</gitFolder> 文件夹都会保留。"
+    "REMOVE_GIT_REMOTE_HELP": "这只会从 <workspaceFile>workspace.yml</workspaceFile> 中移除远程 URL。本地集合文件和任何 <gitFolder>.git</gitFolder> 文件夹都会保留。",
+    "SELECT_COLLECTION": "选择集合"
   },
   "AUTH_FIELDS": {
     "USERNAME": "用户名",
@@ -506,6 +562,21 @@
     "TOKEN": "令牌",
     "ADD_TO": "添加到"
   },
+  "BODY_MODES": {
+    "GROUPS": {
+      "FORM": "表单",
+      "RAW": "原始",
+      "OTHER": "其他"
+    },
+    "MULTIPART_FORM": "Multipart 表单",
+    "FORM_URL_ENCODED": "URL 编码表单",
+    "JSON": "JSON",
+    "XML": "XML",
+    "TEXT": "TEXT",
+    "SPARQL": "SPARQL",
+    "FILE_BINARY": "文件 / 二进制",
+    "NO_BODY": "无请求体"
+  },
   "WEBSOCKET": {
     "CONNECTION_CLOSED": "WebSocket 连接已关闭",
     "CLOSE_FAILED": "关闭 WebSocket 连接失败",
@@ -518,7 +589,9 @@
     "KEEP_ALIVE_HINT": "按指定间隔向服务器发送 ping 请求以保持 WebSocket 连接",
     "ZERO_OFF": "0 表示关闭",
     "NO_MESSAGES": "没有可用的 WebSocket 消息",
-    "ADD_MESSAGE": "添加消息"
+    "ADD_MESSAGE": "添加消息",
+    "AUTH_MODE_UNSUPPORTED": "WebSocket 暂不支持 {{mode}}。将改用无认证。",
+    "INHERITED_AUTH_UNSUPPORTED": "WebSocket 不支持当前继承的认证方式。将改用无认证。"
   },
   "FILE_BODY": {
     "FILE": "文件",
@@ -528,6 +601,7 @@
     "ADD_FILE": "添加文件"
   },
   "WORKSPACE_FORM": {
+    "CREATE_WORKSPACE": "创建工作区",
     "CREATE_DESCRIPTION": "为新工作区命名，并选择保存位置。",
     "CREATING": "正在创建...",
     "CREATED": "工作区已创建",
@@ -584,6 +658,7 @@
     "REQUEST_URL": "请求 URL",
     "CURL_COMMAND": "cURL 命令",
     "CURL_PLACEHOLDER": "在这里输入 cURL 请求...",
+    "KEY_VALUE_EDIT": "键值编辑",
     "SHOW_FILESYSTEM_NAME": "显示文件系统名称",
     "HIDE_FILESYSTEM_NAME": "隐藏文件系统名称",
     "REQUEST": "请求",
@@ -601,6 +676,10 @@
     "QUERY": "查询参数",
     "PATH": "路径参数",
     "BULK_EDIT": "批量编辑",
+    "PRE_REQUEST": "请求前",
+    "POST_RESPONSE": "响应后",
+    "QUERY_PARAMETERS": "查询参数",
+    "PATH_PARAMETERS": "路径参数",
     "PATH_PARAMS_HINT_PREFIX": "当 URL 中使用",
     "PATH_PARAMS_HINT_SUFFIX": "模板时，路径变量会自动添加。",
     "PATH_PARAMS_HINT_EXAMPLE": "例如：",
@@ -614,6 +693,7 @@
     "SAMPLE_MESSAGE_GENERATED": "示例消息已生成",
     "SAMPLE_MESSAGE_FAILED": "生成示例消息失败",
     "PRETTIFY_INVALID_JSON": "无法格式化：JSON 格式无效。",
+    "PRETTIFY_INVALID_XML": "无法格式化：XML 格式无效。",
     "NO_GRPC_MESSAGES": "没有可用的 gRPC 消息",
     "SCHEMA": "Schema",
     "DOCS": "文档",
@@ -629,7 +709,43 @@
     "OPEN": "打开 API 规范",
     "ADD_NEW": "添加新的 API 规范",
     "OPEN_ERROR": "打开 API 规范时发生错误",
-    "API_SPEC": "API 规格"
+    "API_SPEC": "API 规格",
+    "CLOSE": "关闭 API 规范",
+    "CLOSED": "API 规范已关闭",
+    "CLOSE_ERROR": "关闭 API 规范时发生错误",
+    "CLOSE_CONFIRM": "确定要在 Pulse 中关闭 API 规范 <name>{{name}}</name> 吗？",
+    "CLOSE_HINT": "它仍会保留在上方位置的文件系统中，之后可以再次打开。",
+    "EMPTY": "未找到 API 规范。",
+    "EMPTY_ACTION": "<open>打开</open> API 规范。",
+    "TEMPLATE": "模板",
+    "BLANK_SPEC": "空白规范",
+    "FROM_COLLECTION": "从 Pulse 集合创建",
+    "COLLECTION_LOCATION": "集合位置",
+    "ENVIRONMENT": "环境",
+    "SPEC_NAME": "规范名称",
+    "SPEC_LOCATION": "规范位置",
+    "DEFAULT_WORKSPACE_APISPEC_FOLDER": "（默认使用工作区的 apispec 文件夹）",
+    "LOAD_COLLECTION_FAILED": "加载集合失败",
+    "LOCATION_REQUIRED": "位置为必填项"
+  },
+  "RESPONSE_EXAMPLE": {
+    "CREATE_RESPONSE_EXAMPLE": "创建响应示例",
+    "CREATE_EXAMPLE": "创建示例",
+    "EXAMPLE_NAME": "示例名称",
+    "DESCRIPTION": "描述",
+    "NAME_REQUIRED": "请输入示例名称",
+    "ENTER_NAME": "输入示例名称",
+    "ENTER_DESCRIPTION": "输入示例描述",
+    "VIEW_MORE": "查看更多",
+    "VIEW_LESS": "收起",
+    "GENERATE_CODE": "生成代码",
+    "EDIT_EXAMPLE": "编辑示例",
+    "RENAME_EXAMPLE": "重命名示例",
+    "RENAMED": "示例已重命名为“{{name}}”",
+    "EXAMPLE": "示例",
+    "GENERATE_CODE_FOR": "生成代码 - {{name}}",
+    "INVALID_URL": "无效 URL：{{url}}",
+    "CHECK_URL": "请检查 URL 后重试"
   },
   "IMPORT_LOCATION": {
     "MAX_500": "不能超过 500 个字符",
@@ -658,6 +774,40 @@
     "FOLDER_MESSAGE": "<name>{{name}}</name> 文件夹设置中有未保存的更改。",
     "COLLECTION_MESSAGE": "<name>{{name}}</name> 集合设置中有未保存的更改。",
     "ENVIRONMENT_MESSAGE": "{{settingsLabel}} 中有未保存的更改。"
+  },
+  "SHARE_COLLECTION": {
+    "OPEN_FORMAT_DESC": "一种开放的 API 集合格式",
+    "PULSE_FORMAT": "Pulse 格式",
+    "PULSE_ZIP": "Pulse 集合（ZIP）",
+    "RECOMMENDED": "推荐",
+    "ZIP_DESCRIPTION": "以文件夹和文件组织的 OpenCollection 格式",
+    "ZIP_FEATURE_STRUCTURE": "使用独立 .yml 文件的文件夹结构",
+    "ZIP_FEATURE_COLLABORATE": "通过拉取请求与团队协作",
+    "ZIP_FEATURE_OPEN": "解压后可直接在 Pulse 中打开",
+    "ZIP_BEST_FOR": "适用于：团队协作、版本控制、发布",
+    "SINGLE_YAML": "单文件（YAML）",
+    "YAML_DESCRIPTION": "打包为一个 .yml 文件的 OpenCollection 格式",
+    "YAML_FEATURE_SINGLE": "所有内容都在一个 YAML 文件中",
+    "YAML_FEATURE_SHARE": "可粘贴到 gist 或附加到 issue",
+    "YAML_BEST_FOR": "适用于：快速以单文件分享",
+    "OTHER_FORMAT": "其他格式",
+    "EXPORT_FOR_POSTMAN": "导出为 Postman 格式",
+    "NON_EXPORTABLE_NOTE": "注意：此集合中的 {{types}} 请求不会被导出",
+    "EXPORTING": "正在导出...",
+    "EXPORTED": "集合已成功导出",
+    "EXPORT_FAILED": "导出集合失败：{{message}}"
+  },
+  "TRANSIENT_REQUESTS": {
+    "TITLE": "未保存的临时请求",
+    "MULTIPLE_TITLE": "你有未保存的临时请求",
+    "COUNT_MESSAGE": "你有 <count>{{count}}</count> 个{{label}}需要保存。",
+    "REQUEST_ONE": "请求",
+    "REQUEST_OTHER": "请求",
+    "SECTION_TITLE_ONE": "临时请求（{{count}}）",
+    "SECTION_TITLE_OTHER": "临时请求（{{count}}）",
+    "PROCEED_HINT": "这些请求需要先保存，然后才能继续。",
+    "DISCARDED": "已丢弃 {{count}} 个{{label}}",
+    "DISCARD_ALL": "全部丢弃"
   },
   "ENVIRONMENTS": {
     "GLOBAL": "全局",
@@ -760,7 +910,8 @@
     "NO_PROTO_FILE_SELECTED": "未选择 proto 文件",
     "REFRESH_SERVER_REFLECTION": "刷新服务器 reflection",
     "REFRESH_PROTO_METHODS": "刷新 proto 文件方法",
-    "GENERATE_GRPCURL": "生成 grpcurl 命令"
+    "GENERATE_GRPCURL": "生成 grpcurl 命令",
+    "INHERITED_AUTH_UNSUPPORTED": "gRPC 不支持当前继承的认证方式。将改用无认证。"
   },
   "OAUTH1": {
     "FILE_REFERENCE_UPLOAD_ONLY": "文件引用请使用下方“上传文件”按钮添加",
@@ -833,9 +984,15 @@
     "EXPIRED": "已过期",
     "TOKEN_FETCH_ERROR_DETAILS": "获取 Token 出错。请查看网络日志了解详情。",
     "TOKEN_TYPE": "Token 类型",
-    "NO_TOKEN_FOUND": "未找到 Token"
+    "NO_TOKEN_FOUND": "未找到 Token",
+    "ADDITIONAL_PARAMETERS": "附加参数",
+    "AUTHORIZATION": "授权",
+    "REFRESH": "刷新",
+    "SEND_IN": "发送位置",
+    "ADD_PARAMETER": "添加参数"
   },
   "COLLECTION_SETTINGS": {
+    "TITLE": "集合设置",
     "TABS": {
       "OVERVIEW": "概览",
       "HEADERS": "请求头",
@@ -938,6 +1095,43 @@
     },
     "AUTH": {
       "DESCRIPTION": "配置整个集合的认证方式。所有在认证标签中选择“继承”的请求都会使用此配置。"
+    },
+    "HEADERS": {
+      "DESCRIPTION": "添加会随当前集合内每个请求一起发送的请求头。"
+    },
+    "SCRIPT": {
+      "DESCRIPTION": "编写会在当前集合内任意请求发送前后运行的前置和后置脚本。"
+    },
+    "TESTS": {
+      "DESCRIPTION": "这些测试会在当前集合内任意请求发送时运行。"
+    }
+  },
+  "FOLDER_SETTINGS": {
+    "TABS": {
+      "HEADERS": "请求头",
+      "SCRIPT": "脚本",
+      "TEST": "测试",
+      "VARS": "变量",
+      "AUTH": "认证",
+      "DOCS": "文档"
+    },
+    "HEADERS": {
+      "DESCRIPTION": "会随此文件夹内每个请求一起发送的请求头。",
+      "INVALID_NAME": "请求头名称不能包含空格或换行",
+      "INVALID_VALUE": "请求头值不能包含换行"
+    },
+    "SCRIPT": {
+      "DESCRIPTION": "会在此文件夹内任意请求发送前后运行的前置和后置脚本。",
+      "PRE_REQUEST": "请求前",
+      "POST_RESPONSE": "响应后"
+    },
+    "TESTS": {
+      "DESCRIPTION": "这些测试会在此文件夹内任意请求发送时运行。"
+    },
+    "AUTH": {
+      "DESCRIPTION": "配置整个文件夹的认证方式。所有在 <auth>认证</auth> 标签中选择 <inherit>继承</inherit> 的请求都会使用此配置。",
+      "INHERITED_FROM": "认证继承自 {{name}}：",
+      "SOURCE_COLLECTION": "集合"
     }
   },
   "REQUEST_PANEL": {
@@ -966,7 +1160,164 @@
     },
     "AUTH": {
       "INHERITED_FROM": "认证继承自 {{name}}："
+    },
+    "HEADERS": {
+      "INVALID_NAME": "Header 名称不能包含空格或换行",
+      "INVALID_VALUE": "Header 值不能包含换行"
+    },
+    "SETTINGS": {
+      "DESCRIPTION": "配置当前项目的请求设置。",
+      "TAGS": "标签",
+      "URL_ENCODING": "URL 编码",
+      "URL_ENCODING_DESCRIPTION": "自动编码 URL 中的查询参数",
+      "FOLLOW_REDIRECTS": "自动跟随重定向",
+      "FOLLOW_REDIRECTS_DESCRIPTION": "自动跟随 HTTP 重定向",
+      "MAX_REDIRECTS": "最大重定向次数",
+      "MAX_REDIRECTS_DESCRIPTION": "设置允许跟随的重定向次数上限",
+      "TIMEOUT": "超时时间（毫秒）",
+      "TIMEOUT_DESCRIPTION": "设置请求中止前的最长等待时间",
+      "TAG_PLACEHOLDER": "例如：smoke, regression",
+      "TAG_BRU_INVALID": "BRU 格式中的标签只能包含字母、数字、“-”、“_”。",
+      "TAG_INVALID": "标签只能包含字母、数字、空格、“-”、“_”",
+      "TAG_EXISTS": "标签“{{tag}}”已存在"
+    },
+    "PROMPTS": {
+      "ENTER_VALUE": "输入值"
+    },
+    "LARGE_REQUEST": {
+      "FILE_INFO": "文件信息",
+      "LARGE_WARNING": "由于请求文件过大，当前请求尚未加载。请尝试以下选项：",
+      "LOAD_REQUEST": "加载请求",
+      "REGEX_NOTE": "（使用基于正则的解析方式）"
+    },
+    "ERRORS": {
+      "REQUEST_NOT_FOUND_TITLE": "请求已不存在",
+      "REQUEST_NOT_FOUND_MESSAGE": "当此请求关联的文件已从文件系统中删除时，可能会出现这种情况。",
+      "FOLDER_NOT_FOUND_TITLE": "文件夹已不存在",
+      "FOLDER_NOT_FOUND_MESSAGE": "当文件夹已在文件系统中重命名或删除时，可能会出现这种情况。",
+      "EXAMPLE_NOT_FOUND_TITLE": "响应示例已不存在",
+      "EXAMPLE_NOT_FOUND_MESSAGE": "当本地文件中的示例定义已被删除或更新时，可能会出现这种情况。",
+      "SOMETHING_WENT_WRONG": "出现了问题",
+      "TAB_ERROR_CLOSABLE": "此标签页遇到意外错误。请关闭后重新打开请求。如果错误反复出现，请求文件可能已损坏。",
+      "TAB_ERROR_PANEL": "此面板遇到意外错误。请重启 Pulse 以恢复。",
+      "CLOSE_TAB": "关闭标签页"
+    },
+    "PANES": {
+      "REQUEST": "请求",
+      "RESPONSE": "响应",
+      "EXPAND_ARIA": "展开{{pane}}面板",
+      "EXPAND_TITLE": "点击展开{{pane}}面板，或拖动调整大小",
+      "LOADING_REQUEST": "正在加载 {{name}}...",
+      "LOADING_UNNAMED_REQUEST": "正在加载请求..."
+    },
+    "QUERY_BUILDER": {
+      "REMOVE_ITEM": "移除项目",
+      "SELECT_OPTION": "选择选项",
+      "ENTER_VALUE": "输入值",
+      "COLLAPSE": "折叠",
+      "EXPAND": "展开",
+      "UNSUPPORTED_LIST_COMPLEX": "暂不支持复杂类型的列表参数。",
+      "FAILED_TO_LOAD_SCHEMA": "加载 Schema 失败",
+      "NO_SCHEMA_LOADED": "未加载 Schema",
+      "NO_SCHEMA_LOADED_DESCRIPTION": "加载 GraphQL Schema 后，可以可视化浏览操作并构建查询。",
+      "UPLOAD_SCHEMA_FILE": "上传 Schema 文件",
+      "MULTIPLE_OPERATIONS_TITLE": "检测到多个操作",
+      "MULTIPLE_OPERATIONS_DESCRIPTION": "Query Builder 当前一次只支持一个操作。请合并为一个操作后再同步。",
+      "SEARCH_OPERATIONS": "搜索操作...",
+      "NO_MATCHING_FIELDS": "没有匹配字段。",
+      "NO_FIELDS_AVAILABLE": "没有可用字段。",
+      "UNEXPECTED_ERROR": "Query Builder 遇到意外错误。请尝试重新加载 Schema，或手动使用编辑器。",
+      "ARGUMENTS": "参数",
+      "FIELDS": "字段"
     }
+  },
+  "RESPONSE_PANEL": {
+    "RESPONSE": "响应",
+    "TIMELINE": "时间线",
+    "METADATA": "元数据",
+    "TRAILERS": "Trailers",
+    "MESSAGES": "消息",
+    "LARGE_RESPONSE_WARNING": "大响应警告",
+    "LARGE_RESPONSE_DESCRIPTION": "处理超过 <size>{{size}}</size> 的响应可能会降低性能。",
+    "CURRENT_RESPONSE_SIZE": "当前响应大小：<size>{{size}}</size>",
+    "SHOW_RESPONSE_CONTENT": "显示响应内容",
+    "DOWNLOAD_RESPONSE_TO_FILE": "下载响应到文件",
+    "COPY_RESPONSE_TO_CLIPBOARD": "复制响应到剪贴板",
+    "RESPONSE_DOWNLOADED": "响应已下载到文件",
+    "RESPONSE_COPIED": "响应已复制到剪贴板",
+    "COPY_RESPONSE_FAILED": "复制响应失败",
+    "COPY_RESPONSE": "复制响应",
+    "SAVE_RESPONSE": "保存响应",
+    "DOWNLOAD_RESPONSE": "下载响应",
+    "CLEAR_RESPONSE": "清除响应",
+    "CHANGE_LAYOUT": "更改布局",
+    "MORE_ACTIONS": "更多操作",
+    "SAVE_RESPONSE_AS_EXAMPLE": "保存响应为示例",
+    "SAVE_CURRENT_RESPONSE_AS_EXAMPLE": "将当前响应保存为示例",
+    "STREAMING_EXAMPLES_UNSUPPORTED": "暂不支持为流式响应创建响应示例。",
+    "RESPONSE_TOO_LARGE_FOR_EXAMPLE": "响应大小超过 5MB，无法保存为示例。",
+    "NO_VALID_RESPONSE_FOR_EXAMPLE": "没有可保存为示例的有效响应",
+    "EXAMPLE_CREATED": "示例“{{name}}”创建成功",
+    "SAVE_RESPONSE_TO_FILE": "保存响应到文件",
+    "CLEAR_TIMELINE": "清除时间线",
+    "NO_TESTS_FOUND": "未找到测试",
+    "TEST_PASSED": "测试通过",
+    "TEST_FAILED": "测试失败",
+    "PASSED": "通过",
+    "FAILED": "失败",
+    "PRE_REQUEST_TESTS": "请求前测试",
+    "POST_RESPONSE_TESTS": "响应后测试",
+    "TESTS": "测试",
+    "ASSERTIONS": "断言",
+    "SCRIPT_EXECUTION_ERROR": "脚本执行发生错误",
+    "CLOSE_ERROR": "关闭错误",
+    "OPEN_FILE": "打开 {{path}}",
+    "ERROR": "错误",
+    "HIDE_STACK_TRACE": "隐藏堆栈信息",
+    "SHOW_STACK_TRACE": "显示堆栈信息",
+    "PRE_REQUEST_SCRIPT_ERROR": "请求前脚本错误",
+    "POST_RESPONSE_SCRIPT_ERROR": "响应后脚本错误",
+    "TEST_SCRIPT_ERROR": "测试脚本错误",
+    "CANCEL_REQUEST": "取消请求",
+    "SEND_REQUEST": "发送请求",
+    "NEW_REQUEST": "新建请求",
+    "EDIT_ENVIRONMENTS": "编辑环境",
+    "NO_HEADERS_RECEIVED": "未收到 Headers",
+    "NO_METADATA_RECEIVED": "未收到元数据",
+    "NO_TRAILERS_RECEIVED": "未收到 Trailers",
+    "NO_MESSAGES_RECEIVED": "未收到消息",
+    "NO_MESSAGES_YET": "暂无消息。",
+    "NO_MESSAGES_AFTER_DISMISSED_ERROR": "未收到消息。服务器错误已被关闭。",
+    "RESPONSE_NUMBER": "响应 {{number}}",
+    "LATEST": "最新",
+    "LATEST_LAST": "最新在最后",
+    "LATEST_FIRST": "最新在最前",
+    "NETWORK_ERROR": "网络错误",
+    "OAUTH2_CALLS": "OAuth2.0 调用",
+    "NO_DEBUG_INFO": "没有可用的调试信息。",
+    "CANNOT_PREVIEW_JSON": "无法以 JSON 预览",
+    "INVALID_JSON_FORMAT": "JSON 格式无效：{{message}}",
+    "INVALID_JSON_INPUT": "输入无效。期望 JSON 对象、数组或有效 JSON 字符串。",
+    "JSON_DATA_EMPTY": "数据为 null 或 undefined。期望有效的 JSON 对象或数组。",
+    "JSON_DATA_NOT_TREE": "数据无法渲染为 JSON 树。期望 JSON 对象或数组。",
+    "CANNOT_PREVIEW_XML": "无法以 XML 预览",
+    "INVALID_XML_INPUT": "输入无效。期望 XML 字符串。",
+    "INVALID_XML_FORMAT": "解析 XML 字符串失败。XML 格式无效。",
+    "XML_DATA_NOT_TREE": "数据无法渲染为树。期望有效的 XML 字符串。",
+    "XML_ROOT_EMPTY": "无法渲染 XML 树。根对象为空。",
+    "LOADING_VIDEO": "正在加载视频...",
+    "SELF_SIGNED_CERT_HINT_LINE_1": "你可以在偏好设置中关闭 SSL 验证。",
+    "SELF_SIGNED_CERT_HINT_LINE_2": "点击左下角的齿轮图标即可打开偏好设置。",
+    "SOURCES": {
+      "REQUEST": "请求",
+      "COLLECTION": "集合",
+      "FOLDER": "文件夹",
+      "FOLDER_WITH_NAME": "文件夹：{{name}}"
+    }
+  },
+  "OPENAPI_SYNC": {
+    "OPENAPI_ERROR": "OpenAPI 错误",
+    "UPDATES_AVAILABLE": "OpenAPI 有可用更新"
   },
   "AUTH_MODES": {
     "INHERIT": "继承",

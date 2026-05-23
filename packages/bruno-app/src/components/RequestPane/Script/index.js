@@ -10,8 +10,10 @@ import { useTheme } from 'providers/Theme';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from 'components/Tabs';
 import StatusDot from 'components/StatusDot';
 import { usePersistedState } from 'hooks/usePersistedState';
+import { useTranslation } from 'react-i18next';
 
 const Script = ({ item, collection }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const preRequestEditorRef = useRef(null);
   const postResponseEditorRef = useRef(null);
@@ -90,13 +92,13 @@ const Script = ({ item, collection }) => {
       <Tabs value={activeTab} onValueChange={onScriptTabChange}>
         <TabsList>
           <TabsTrigger value="pre-request">
-            Pre Request
+            {t('REQUEST.PRE_REQUEST')}
             {hasPreRequestScript && (
               <StatusDot type={item.preRequestScriptErrorMessage ? 'error' : 'default'} />
             )}
           </TabsTrigger>
           <TabsTrigger value="post-response">
-            Post Response
+            {t('REQUEST.POST_RESPONSE')}
             {hasPostResponseScript && (
               <StatusDot type={item.postResponseScriptErrorMessage ? 'error' : 'default'} />
             )}

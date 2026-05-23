@@ -1,27 +1,29 @@
 import ErrorBanner from 'ui/ErrorBanner';
 import React, { useState, useMemo } from 'react';
 import StyledWrapper from './StyledWrapper';
+import { useTranslation } from 'react-i18next';
 
 // The expected "data" prop must be an XML string.
 export default function XmlPreview({ data, defaultExpanded = true }) {
+  const { t } = useTranslation();
   // Parse XML string
   const parsedData = useMemo(() => {
     if (typeof data !== 'string') {
-      return { error: 'Invalid input. Expected an XML string.' };
+      return { error: t('RESPONSE_PANEL.INVALID_XML_INPUT') };
     }
 
     const parsed = parseXMLString(data);
     if (parsed === null) {
-      return { error: 'Failed to parse XML string. Invalid XML format.' };
+      return { error: t('RESPONSE_PANEL.INVALID_XML_FORMAT') };
     }
     return parsed;
-  }, [data]);
+  }, [data, t]);
 
   // Check for parsing error
   if (parsedData && typeof parsedData === 'object' && parsedData.error) {
     return (
       <div className="px-2">
-        <ErrorBanner errors={[{ title: 'Cannot preview as XML', message: parsedData.error }]} />
+        <ErrorBanner errors={[{ title: t('RESPONSE_PANEL.CANNOT_PREVIEW_XML'), message: parsedData.error }]} />
       </div>
     );
   }
@@ -37,7 +39,7 @@ export default function XmlPreview({ data, defaultExpanded = true }) {
   if (!isValidTreeData(parsedData)) {
     return (
       <div className="px-2">
-        <ErrorBanner errors={[{ title: 'Cannot preview as XML', message: 'Data cannot be rendered as a tree. Expected a valid XML string.' }]} />
+        <ErrorBanner errors={[{ title: t('RESPONSE_PANEL.CANNOT_PREVIEW_XML'), message: t('RESPONSE_PANEL.XML_DATA_NOT_TREE') }]} />
       </div>
     );
   }
@@ -55,7 +57,7 @@ export default function XmlPreview({ data, defaultExpanded = true }) {
       // Empty object with no children
       return (
         <div className="px-2">
-          <ErrorBanner errors={[{ title: 'Cannot preview as XML', message: 'Cannot render XML tree. Root object is empty.' }]} />
+          <ErrorBanner errors={[{ title: t('RESPONSE_PANEL.CANNOT_PREVIEW_XML'), message: t('RESPONSE_PANEL.XML_ROOT_EMPTY') }]} />
         </div>
       );
     }

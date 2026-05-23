@@ -19,35 +19,37 @@ import { updateRequestBody } from 'providers/ReduxStore/slices/collections/index
 import { toastError } from 'utils/common/error';
 import { prettifyJsonString } from 'utils/common/index';
 import xmlFormat from 'xml-formatter';
+import { useTranslation } from 'react-i18next';
 
 const DEFAULT_MODES = [
   {
-    name: 'Form',
+    nameKey: 'BODY_MODES.GROUPS.FORM',
     options: [
-      { id: 'multipartForm', label: 'Multipart Form', leftSection: IconForms },
-      { id: 'formUrlEncoded', label: 'Form URL Encoded', leftSection: IconForms }
+      { id: 'multipartForm', labelKey: 'BODY_MODES.MULTIPART_FORM', leftSection: IconForms },
+      { id: 'formUrlEncoded', labelKey: 'BODY_MODES.FORM_URL_ENCODED', leftSection: IconForms }
     ]
   },
   {
-    name: 'Raw',
+    nameKey: 'BODY_MODES.GROUPS.RAW',
     options: [
-      { id: 'json', label: 'JSON', leftSection: IconBraces },
-      { id: 'xml', label: 'XML', leftSection: IconCode },
-      { id: 'text', label: 'TEXT', leftSection: IconFileText },
-      { id: 'sparql', label: 'SPARQL', leftSection: IconDatabase }
+      { id: 'json', labelKey: 'BODY_MODES.JSON', leftSection: IconBraces },
+      { id: 'xml', labelKey: 'BODY_MODES.XML', leftSection: IconCode },
+      { id: 'text', labelKey: 'BODY_MODES.TEXT', leftSection: IconFileText },
+      { id: 'sparql', labelKey: 'BODY_MODES.SPARQL', leftSection: IconDatabase }
     ]
   },
   {
-    name: 'Other',
+    nameKey: 'BODY_MODES.GROUPS.OTHER',
     options: [
-      { id: 'file', label: 'File / Binary', leftSection: IconFile },
-      { id: 'none', label: 'No Body', leftSection: IconX }
+      { id: 'file', labelKey: 'BODY_MODES.FILE_BINARY', leftSection: IconFile },
+      { id: 'none', labelKey: 'BODY_MODES.NO_BODY', leftSection: IconX }
     ]
   }
 ];
 
 const RequestBodyMode = ({ item, collection }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const body = item.draft ? get(item, 'draft.request.body') : get(item, 'request.body');
   const bodyMode = body?.mode;
 
@@ -73,7 +75,7 @@ const RequestBodyMode = ({ item, collection }) => {
           })
         );
       } catch (e) {
-        toastError(new Error('Unable to prettify. Invalid JSON format.'));
+        toastError(new Error(t('REQUEST.PRETTIFY_INVALID_JSON')));
       }
     } else if (body?.xml && bodyMode === 'xml') {
       try {
@@ -86,7 +88,7 @@ const RequestBodyMode = ({ item, collection }) => {
           })
         );
       } catch (e) {
-        toastError(new Error('Unable to prettify. Invalid XML format.'));
+        toastError(new Error(t('REQUEST.PRETTIFY_INVALID_XML')));
       }
     }
   };
@@ -94,12 +96,14 @@ const RequestBodyMode = ({ item, collection }) => {
   const menuItems = useMemo(() => {
     return DEFAULT_MODES.map((group) => ({
       ...group,
+      name: t(group.nameKey),
       options: group.options.map((option) => ({
         ...option,
+        label: t(option.labelKey),
         onClick: () => onModeChange(option.id)
       }))
     }));
-  }, [onModeChange]);
+  }, [onModeChange, t]);
 
   return (
     <StyledWrapper>
@@ -112,13 +116,13 @@ const RequestBodyMode = ({ item, collection }) => {
           groupStyle="select"
         >
           <div className="flex items-center justify-center pl-3 py-1 select-none selected-body-mode">
-            {humanizeRequestBodyMode(bodyMode)} <IconCaretDown className="caret ml-1" size={14} strokeWidth={2} />
+            {humanizeRequestBodyMode(bodyMode, t)} <IconCaretDown className="caret ml-1" size={14} strokeWidth={2} />
           </div>
         </MenuDropdown>
       </div>
       {(bodyMode === 'json' || bodyMode === 'xml') && (
         <button className="ml-2" onClick={onPrettify}>
-          Prettify
+          {t('REQUEST_PANEL.ACTIONS.PRETTIFY')}
         </button>
       )}
     </StyledWrapper>

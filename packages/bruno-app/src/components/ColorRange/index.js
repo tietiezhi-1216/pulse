@@ -1,6 +1,9 @@
 import StyledWrapper from './StyledWrapper';
+import { useTranslation } from 'react-i18next';
 
 const ColorRangePicker = ({ selectedColor, className, value, onChange, colorRange, ...props }) => {
+  const { t } = useTranslation();
+
   return (
     <StyledWrapper color={selectedColor} className={className}>
       <input
@@ -13,7 +16,7 @@ const ColorRangePicker = ({ selectedColor, className, value, onChange, colorRang
         style={{
           background: `linear-gradient(to right, ${colorRange.join(',')})`
         }}
-        title="Adjust color"
+        title={t('COMMON.ADJUST_COLOR')}
         {...props}
       />
     </StyledWrapper>

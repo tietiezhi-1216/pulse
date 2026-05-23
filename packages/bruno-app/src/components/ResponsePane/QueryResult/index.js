@@ -7,6 +7,7 @@ import LargeResponseWarning from '../LargeResponseWarning';
 import QueryResultFilter from './QueryResultFilter';
 import QueryResultPreview from './QueryResultPreview';
 import StyledWrapper from './StyledWrapper';
+import { useTranslation } from 'react-i18next';
 
 // Raw format options (for byte format types)
 const RAW_FORMAT_OPTIONS = [
@@ -28,8 +29,8 @@ const PREVIEW_FORMAT_OPTIONS = [
   ...RAW_FORMAT_OPTIONS
 ];
 
-const formatErrorMessage = (error) => {
-  if (!error) return 'Something went wrong';
+const formatErrorMessage = (error, fallbackMessage) => {
+  if (!error) return fallbackMessage;
 
   const remoteMethodError = 'Error invoking remote method \'send-http-request\':';
 
@@ -105,6 +106,7 @@ const QueryResult = ({
   onFilterExpandChange,
   docKey
 }) => {
+  const { t } = useTranslation();
   const contentType = getContentType(headers);
   const [showLargeResponse, setShowLargeResponse] = useState(false);
   const { displayedTheme } = useTheme();
@@ -184,13 +186,13 @@ const QueryResult = ({
       {error ? (
         <div>
           {hasScriptError ? null : (
-            <div className="error" style={{ whiteSpace: 'pre-line' }}>{formatErrorMessage(error)}</div>
+            <div className="error" style={{ whiteSpace: 'pre-line' }}>{formatErrorMessage(error, t('REQUEST_PANEL.ERRORS.SOMETHING_WENT_WRONG'))}</div>
           )}
 
           {error && typeof error === 'string' && error.toLowerCase().includes('self signed certificate') ? (
             <div className="mt-6 muted text-xs">
-              You can disable SSL verification in the Preferences. <br />
-              To open the Preferences, click on the gear icon in the bottom left corner.
+              {t('RESPONSE_PANEL.SELF_SIGNED_CERT_HINT_LINE_1')} <br />
+              {t('RESPONSE_PANEL.SELF_SIGNED_CERT_HINT_LINE_2')}
             </div>
           ) : null}
         </div>

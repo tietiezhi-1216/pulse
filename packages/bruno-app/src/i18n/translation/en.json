@@ -16,12 +16,17 @@
     "SKIP": "Skip",
     "BACK": "Back",
     "NEXT": "Next",
+    "CONTINUE": "Continue",
     "BROWSE": "Browse",
     "HOME": "Home",
+    "OR": "or",
     "CANCEL": "Cancel",
     "CREATE": "Create",
+    "CLONE": "Clone",
     "LOADING": "Loading...",
+    "TRY_AGAIN": "Try Again",
     "SAVE": "Save",
+    "SEND": "Send",
     "RENAME": "Rename",
     "SHARE": "Share",
     "REMOVE": "Remove",
@@ -34,9 +39,18 @@
     "CLOSE": "Close",
     "PREVIOUS": "Previous",
     "IMPORT": "Import",
+    "EXPORT": "Export",
     "CONFIGURE": "Configure",
+    "OPEN": "Open",
+    "COPY": "Copy",
+    "DOWNLOAD": "Download",
+    "VIEW": "View",
+    "EDIT": "Edit",
+    "RUN": "Run",
+    "PREVIEW": "Preview",
     "NAME": "Name",
     "VALUE": "Value",
+    "KEY": "Key",
     "RESET": "Reset",
     "ACTIONS": "Actions",
     "OVERVIEW": "Overview",
@@ -49,9 +63,25 @@
     "ADD": "Add",
     "FILE": "File",
     "PATH": "Path",
+    "SIZE": "Size",
     "DIRECTORY": "Directory",
     "NOT_FOUND": "404 | Not found",
-    "ERROR_OCCURRED": "An error occurred!"
+    "ERROR_OCCURRED": "An error occurred!",
+    "INPUT_REQUIRED": "Input Required",
+    "SELECT_FILE": "Select File",
+    "SELECT_FILES": "Select Files",
+    "REMOVE_FILE": "Remove file",
+    "ADD_FILES": "Add files",
+    "SELECTED_FILES": "{{count}} file(s) selected",
+    "FILE_COUNT_ONE": "{{count}} file",
+    "FILE_COUNT_OTHER": "{{count}} files",
+    "MORE_FILES_ONE": "+{{count}} more",
+    "MORE_FILES_OTHER": "+{{count}} more",
+    "REMOVE_TAG": "Remove tag",
+    "CHANGE_COLOR": "Change color",
+    "NO_COLOR": "No color",
+    "CUSTOM_COLOR": "Custom color",
+    "ADJUST_COLOR": "Adjust color"
   },
   "ACTIONS": {
     "CREATE_COLLECTION": "Create Collection",
@@ -147,7 +177,31 @@
     "OPEN_COLLECTION_ERROR": "An error occurred while opening the collection",
     "OPENED": "Workspace opened successfully",
     "OPEN_FAILED": "Failed to open workspace",
-    "SWITCHED_TO": "Switched to {{name}}"
+    "SWITCHED_TO": "Switched to {{name}}",
+    "WORKSPACE": "Workspace",
+    "MANAGE_WORKSPACE": "Manage Workspace",
+    "NO_WORKSPACES_FOUND": "No workspaces found",
+    "DEFAULT": "Default",
+    "CANNOT_CLOSE_DEFAULT": "Cannot close the default workspace",
+    "CANNOT_REMOVE_DEFAULT": "Cannot remove the default workspace",
+    "CREATED": "Workspace created!",
+    "CREATE_FAILED": "An error occurred while creating the workspace",
+    "RENAMED": "Workspace renamed!",
+    "RENAME_FAILED": "An error occurred while renaming the workspace",
+    "EXPORTED": "Workspace exported successfully",
+    "EXPORT_FAILED": "Error exporting workspace",
+    "NAME_REQUIRED": "Name is required",
+    "NAME_MIN_LENGTH": "must be at least 1 character",
+    "NAME_MAX_LENGTH": "Must be 255 characters or less",
+    "NAME_EXISTS": "A workspace with this name already exists",
+    "ADVANCED_OPTIONS": "Advanced options",
+    "REMOVE_WORKSPACE": "Remove Workspace",
+    "RENAME_WORKSPACE": "Rename Workspace",
+    "WORKSPACE_NAME": "Workspace Name",
+    "REMOVING": "Removing...",
+    "REMOVE_FAILED": "An error occurred while removing the workspace",
+    "REMOVE_CONFIRM": "Are you sure you want to remove workspace <name>{{name}}</name>?",
+    "REMOVE_HINT": "The workspace will still be available in the file system and can be re-opened later."
   },
   "WARNINGS": {
     "ROSETTA": "It looks like Pulse was launched as the Intel (x64) build under Rosetta on your Apple Silicon Mac. This can cause reduced performance and unexpected behavior."
@@ -462,6 +516,7 @@
     }
   },
   "COLLECTIONS_LIST": {
+    "UNTITLED_COLLECTION": "Untitled Collection",
     "NEEDS_CLONE": "Collection \"{{name}}\" needs to be cloned first",
     "MISSING_ON_DISK": "Collection \"{{name}}\" does not exist on disk",
     "CANNOT_RENAME_UNCLONED": "Cannot rename collections that are not cloned yet",
@@ -487,7 +542,8 @@
     "LINKING_TO_GIT_REMOTE": "Linking <collectionName>{{collectionName}}</collectionName> to a remote Git repository.",
     "GIT_REMOTE_WORKSPACE_ONLY": "The URL is saved in <workspaceFile>workspace.yml</workspaceFile> only. Your collection files on disk are not modified.",
     "DISCONNECT_GIT_REMOTE": "Disconnect <collectionName>{{collectionName}}</collectionName> from its Git remote?",
-    "REMOVE_GIT_REMOTE_HELP": "This only removes the remote URL from <workspaceFile>workspace.yml</workspaceFile>. Local collection files and any <gitFolder>.git</gitFolder> folder are left untouched."
+    "REMOVE_GIT_REMOTE_HELP": "This only removes the remote URL from <workspaceFile>workspace.yml</workspaceFile>. Local collection files and any <gitFolder>.git</gitFolder> folder are left untouched.",
+    "SELECT_COLLECTION": "Select Collection"
   },
   "AUTH_FIELDS": {
     "USERNAME": "Username",
@@ -506,6 +562,21 @@
     "TOKEN": "Token",
     "ADD_TO": "Add To"
   },
+  "BODY_MODES": {
+    "GROUPS": {
+      "FORM": "Form",
+      "RAW": "Raw",
+      "OTHER": "Other"
+    },
+    "MULTIPART_FORM": "Multipart Form",
+    "FORM_URL_ENCODED": "Form URL Encoded",
+    "JSON": "JSON",
+    "XML": "XML",
+    "TEXT": "TEXT",
+    "SPARQL": "SPARQL",
+    "FILE_BINARY": "File / Binary",
+    "NO_BODY": "No Body"
+  },
   "WEBSOCKET": {
     "CONNECTION_CLOSED": "WebSocket connection closed",
     "CLOSE_FAILED": "Failed to close WebSocket connection",
@@ -518,7 +589,9 @@
     "KEEP_ALIVE_HINT": "Keep the WebSocket alive by sending ping requests to the server at every interval (in milliseconds)",
     "ZERO_OFF": "0 (zero) = off",
     "NO_MESSAGES": "No WebSocket messages available",
-    "ADD_MESSAGE": "Add Message"
+    "ADD_MESSAGE": "Add Message",
+    "AUTH_MODE_UNSUPPORTED": "{{mode}} is not supported by WebSockets yet. Using no auth instead.",
+    "INHERITED_AUTH_UNSUPPORTED": "Inherited auth is not supported by WebSockets. Using no auth instead."
   },
   "FILE_BODY": {
     "FILE": "File",
@@ -528,6 +601,7 @@
     "ADD_FILE": "Add File"
   },
   "WORKSPACE_FORM": {
+    "CREATE_WORKSPACE": "Create Workspace",
     "CREATE_DESCRIPTION": "Give your new workspace a name and choose where to store it.",
     "CREATING": "Creating...",
     "CREATED": "Workspace created!",
@@ -584,6 +658,7 @@
     "REQUEST_URL": "Request URL",
     "CURL_COMMAND": "cURL Command",
     "CURL_PLACEHOLDER": "Enter cURL request here...",
+    "KEY_VALUE_EDIT": "Key/Value Edit",
     "SHOW_FILESYSTEM_NAME": "Show Filesystem Name",
     "HIDE_FILESYSTEM_NAME": "Hide Filesystem Name",
     "REQUEST": "request",
@@ -601,6 +676,10 @@
     "QUERY": "Query",
     "PATH": "Path",
     "BULK_EDIT": "Bulk Edit",
+    "PRE_REQUEST": "Pre Request",
+    "POST_RESPONSE": "Post Response",
+    "QUERY_PARAMETERS": "Query parameters",
+    "PATH_PARAMETERS": "Path parameters",
     "PATH_PARAMS_HINT_PREFIX": "Path variables are automatically added whenever the",
     "PATH_PARAMS_HINT_SUFFIX": "template is used in the URL.",
     "PATH_PARAMS_HINT_EXAMPLE": "For example:",
@@ -614,6 +693,7 @@
     "SAMPLE_MESSAGE_GENERATED": "Sample message generated",
     "SAMPLE_MESSAGE_FAILED": "Failed to generate sample message",
     "PRETTIFY_INVALID_JSON": "Unable to prettify. Invalid JSON format.",
+    "PRETTIFY_INVALID_XML": "Unable to prettify. Invalid XML format.",
     "NO_GRPC_MESSAGES": "No gRPC messages available",
     "SCHEMA": "Schema",
     "DOCS": "Docs",
@@ -629,7 +709,43 @@
     "OPEN": "Open API Spec",
     "ADD_NEW": "Add new API Spec",
     "OPEN_ERROR": "An error occurred while opening the API spec",
-    "API_SPEC": "API Spec"
+    "API_SPEC": "API Spec",
+    "CLOSE": "Close API Spec",
+    "CLOSED": "API Spec closed",
+    "CLOSE_ERROR": "An error occurred while closing the API Spec",
+    "CLOSE_CONFIRM": "Are you sure you want to close API Spec <name>{{name}}</name> in Pulse?",
+    "CLOSE_HINT": "It will still be available in the file system at the above location and can be re-opened later.",
+    "EMPTY": "No API Specs found.",
+    "EMPTY_ACTION": "<open>Open</open> API Spec.",
+    "TEMPLATE": "Template",
+    "BLANK_SPEC": "Blank spec",
+    "FROM_COLLECTION": "From Pulse Collection",
+    "COLLECTION_LOCATION": "Collection Location",
+    "ENVIRONMENT": "Environment",
+    "SPEC_NAME": "Spec Name",
+    "SPEC_LOCATION": "Spec Location",
+    "DEFAULT_WORKSPACE_APISPEC_FOLDER": "(defaults to workspace's apispec folder)",
+    "LOAD_COLLECTION_FAILED": "Failed to load collection",
+    "LOCATION_REQUIRED": "location is required"
+  },
+  "RESPONSE_EXAMPLE": {
+    "CREATE_RESPONSE_EXAMPLE": "Create Response Example",
+    "CREATE_EXAMPLE": "Create Example",
+    "EXAMPLE_NAME": "Example Name",
+    "DESCRIPTION": "Description",
+    "NAME_REQUIRED": "Example name is required",
+    "ENTER_NAME": "Enter example name",
+    "ENTER_DESCRIPTION": "Enter example description",
+    "VIEW_MORE": "View More",
+    "VIEW_LESS": "View Less",
+    "GENERATE_CODE": "Generate Code",
+    "EDIT_EXAMPLE": "Edit Example",
+    "RENAME_EXAMPLE": "Rename Example",
+    "RENAMED": "Example renamed to \"{{name}}\"",
+    "EXAMPLE": "Example",
+    "GENERATE_CODE_FOR": "Generate Code - {{name}}",
+    "INVALID_URL": "Invalid URL: {{url}}",
+    "CHECK_URL": "Please check the URL and try again"
   },
   "IMPORT_LOCATION": {
     "MAX_500": "Must be 500 characters or less",
@@ -658,6 +774,40 @@
     "FOLDER_MESSAGE": "You have unsaved changes in <name>{{name}}</name> folder settings.",
     "COLLECTION_MESSAGE": "You have unsaved changes in <name>{{name}}</name> collection settings.",
     "ENVIRONMENT_MESSAGE": "You have unsaved changes in {{settingsLabel}}."
+  },
+  "SHARE_COLLECTION": {
+    "OPEN_FORMAT_DESC": "An open format for API collections",
+    "PULSE_FORMAT": "Pulse Format",
+    "PULSE_ZIP": "Pulse Collection (ZIP)",
+    "RECOMMENDED": "Recommended",
+    "ZIP_DESCRIPTION": "OpenCollection format organized as folders and files",
+    "ZIP_FEATURE_STRUCTURE": "Folder structure with individual .yml files",
+    "ZIP_FEATURE_COLLABORATE": "Collaborate with your team via pull requests",
+    "ZIP_FEATURE_OPEN": "Extract and open directly in Pulse",
+    "ZIP_BEST_FOR": "Best for: Team collaboration, version control, publishing",
+    "SINGLE_YAML": "Single File (YAML)",
+    "YAML_DESCRIPTION": "OpenCollection format bundled into one .yml file",
+    "YAML_FEATURE_SINGLE": "Everything in a single YAML file",
+    "YAML_FEATURE_SHARE": "Paste in a gist or attach to an issue",
+    "YAML_BEST_FOR": "Best for: Quick sharing as a single file",
+    "OTHER_FORMAT": "Other Format",
+    "EXPORT_FOR_POSTMAN": "Export for Postman",
+    "NON_EXPORTABLE_NOTE": "Note: {{types}} requests in this collection will not be exported",
+    "EXPORTING": "Exporting...",
+    "EXPORTED": "Collection exported successfully",
+    "EXPORT_FAILED": "Failed to export collection: {{message}}"
+  },
+  "TRANSIENT_REQUESTS": {
+    "TITLE": "Unsaved Transient Requests",
+    "MULTIPLE_TITLE": "You have unsaved transient requests",
+    "COUNT_MESSAGE": "You have <count>{{count}}</count> {{label}} that need to be saved.",
+    "REQUEST_ONE": "request",
+    "REQUEST_OTHER": "requests",
+    "SECTION_TITLE_ONE": "Transient Request ({{count}})",
+    "SECTION_TITLE_OTHER": "Transient Requests ({{count}})",
+    "PROCEED_HINT": "These requests need to be saved before you can proceed.",
+    "DISCARDED": "Discarded {{count}} {{label}}",
+    "DISCARD_ALL": "Discard All"
   },
   "ENVIRONMENTS": {
     "GLOBAL": "Global",
@@ -760,7 +910,8 @@
     "NO_PROTO_FILE_SELECTED": "No proto file selected",
     "REFRESH_SERVER_REFLECTION": "Refresh server reflection",
     "REFRESH_PROTO_METHODS": "Refresh proto file methods",
-    "GENERATE_GRPCURL": "Generate grpcurl command"
+    "GENERATE_GRPCURL": "Generate grpcurl command",
+    "INHERITED_AUTH_UNSUPPORTED": "Inherited auth is not supported by gRPC. Using no auth instead."
   },
   "OAUTH1": {
     "FILE_REFERENCE_UPLOAD_ONLY": "File references should be added using the \"Upload File\" button below",
@@ -833,9 +984,15 @@
     "EXPIRED": "Expired",
     "TOKEN_FETCH_ERROR_DETAILS": "Error fetching token. Check network logs for more details.",
     "TOKEN_TYPE": "Token Type",
-    "NO_TOKEN_FOUND": "No token found"
+    "NO_TOKEN_FOUND": "No token found",
+    "ADDITIONAL_PARAMETERS": "Additional Parameters",
+    "AUTHORIZATION": "Authorization",
+    "REFRESH": "Refresh",
+    "SEND_IN": "Send In",
+    "ADD_PARAMETER": "Add Parameter"
   },
   "COLLECTION_SETTINGS": {
+    "TITLE": "Collection Settings",
     "TABS": {
       "OVERVIEW": "Overview",
       "HEADERS": "Headers",
@@ -938,6 +1095,43 @@
     },
     "AUTH": {
       "DESCRIPTION": "Configures authentication for the entire collection. This applies to all requests using the Inherit option in the Auth tab."
+    },
+    "HEADERS": {
+      "DESCRIPTION": "Add request headers that will be sent with every request in this collection."
+    },
+    "SCRIPT": {
+      "DESCRIPTION": "Write pre and post-request scripts that will run before and after any request in this collection is sent."
+    },
+    "TESTS": {
+      "DESCRIPTION": "These tests will run any time a request in this collection is sent."
+    }
+  },
+  "FOLDER_SETTINGS": {
+    "TABS": {
+      "HEADERS": "Headers",
+      "SCRIPT": "Script",
+      "TEST": "Test",
+      "VARS": "Vars",
+      "AUTH": "Auth",
+      "DOCS": "Docs"
+    },
+    "HEADERS": {
+      "DESCRIPTION": "Request headers that will be sent with every request inside this folder.",
+      "INVALID_NAME": "Header name cannot contain spaces or newlines",
+      "INVALID_VALUE": "Header value cannot contain newlines"
+    },
+    "SCRIPT": {
+      "DESCRIPTION": "Pre and post-request scripts that will run before and after any request inside this folder is sent.",
+      "PRE_REQUEST": "Pre Request",
+      "POST_RESPONSE": "Post Response"
+    },
+    "TESTS": {
+      "DESCRIPTION": "These tests will run any time a request in this folder is sent."
+    },
+    "AUTH": {
+      "DESCRIPTION": "Configures authentication for the entire folder. This applies to all requests using the <inherit>Inherit</inherit> option in the <auth>Auth</auth> tab.",
+      "INHERITED_FROM": "Auth inherited from {{name}}:",
+      "SOURCE_COLLECTION": "Collection"
     }
   },
   "REQUEST_PANEL": {
@@ -966,7 +1160,164 @@
     },
     "AUTH": {
       "INHERITED_FROM": "Auth inherited from {{name}}:"
+    },
+    "HEADERS": {
+      "INVALID_NAME": "Header name cannot contain spaces or newlines",
+      "INVALID_VALUE": "Header value cannot contain newlines"
+    },
+    "SETTINGS": {
+      "DESCRIPTION": "Configure request settings for this item.",
+      "TAGS": "Tags",
+      "URL_ENCODING": "URL Encoding",
+      "URL_ENCODING_DESCRIPTION": "Automatically encode query parameters in the URL",
+      "FOLLOW_REDIRECTS": "Automatically Follow Redirects",
+      "FOLLOW_REDIRECTS_DESCRIPTION": "Follow HTTP redirects automatically",
+      "MAX_REDIRECTS": "Max Redirects",
+      "MAX_REDIRECTS_DESCRIPTION": "Set a limit for the number of redirects to follow",
+      "TIMEOUT": "Timeout (ms)",
+      "TIMEOUT_DESCRIPTION": "Set maximum time to wait before aborting the request",
+      "TAG_PLACEHOLDER": "e.g., smoke, regression",
+      "TAG_BRU_INVALID": "Tags in BRU format must only contain letters, numbers, \"-\", \"_\".",
+      "TAG_INVALID": "Tags must only contain letters, numbers, spaces, \"-\", \"_\"",
+      "TAG_EXISTS": "Tag \"{{tag}}\" already exists"
+    },
+    "PROMPTS": {
+      "ENTER_VALUE": "Enter value"
+    },
+    "LARGE_REQUEST": {
+      "FILE_INFO": "File Info",
+      "LARGE_WARNING": "The request wasn't loaded due to its large size. Please try again with the following options:",
+      "LOAD_REQUEST": "Load Request",
+      "REGEX_NOTE": "(Uses a regex based parsing approach)"
+    },
+    "ERRORS": {
+      "REQUEST_NOT_FOUND_TITLE": "Request no longer exists",
+      "REQUEST_NOT_FOUND_MESSAGE": "This can happen when the file associated with this request was deleted on your filesystem.",
+      "FOLDER_NOT_FOUND_TITLE": "Folder no longer exists",
+      "FOLDER_NOT_FOUND_MESSAGE": "This can happen when the folder was renamed or deleted on your filesystem.",
+      "EXAMPLE_NOT_FOUND_TITLE": "Response example no longer exists",
+      "EXAMPLE_NOT_FOUND_MESSAGE": "This can occur when the example definition in your local file has been deleted or updated.",
+      "SOMETHING_WENT_WRONG": "Something went wrong",
+      "TAB_ERROR_CLOSABLE": "This tab encountered an unexpected error. Close it and try reopening the request. If the error repeats, the request file may be corrupt.",
+      "TAB_ERROR_PANEL": "This panel encountered an unexpected error. Restart Pulse to recover.",
+      "CLOSE_TAB": "Close Tab"
+    },
+    "PANES": {
+      "REQUEST": "Request",
+      "RESPONSE": "Response",
+      "EXPAND_ARIA": "Expand {{pane}} pane",
+      "EXPAND_TITLE": "Click to expand {{pane}} pane, or drag to resize",
+      "LOADING_REQUEST": "Loading {{name}}...",
+      "LOADING_UNNAMED_REQUEST": "Loading request..."
+    },
+    "QUERY_BUILDER": {
+      "REMOVE_ITEM": "Remove item",
+      "SELECT_OPTION": "Select option",
+      "ENTER_VALUE": "Enter value",
+      "COLLAPSE": "Collapse",
+      "EXPAND": "Expand",
+      "UNSUPPORTED_LIST_COMPLEX": "List arguments for complex types are not currently supported.",
+      "FAILED_TO_LOAD_SCHEMA": "Failed to Load Schema",
+      "NO_SCHEMA_LOADED": "No Schema Loaded",
+      "NO_SCHEMA_LOADED_DESCRIPTION": "Load a GraphQL schema to explore operations and build queries visually.",
+      "UPLOAD_SCHEMA_FILE": "Upload Schema File",
+      "MULTIPLE_OPERATIONS_TITLE": "Multiple operations detected",
+      "MULTIPLE_OPERATIONS_DESCRIPTION": "The Query Builder supports a single operation at a time. Combine into one operation to sync.",
+      "SEARCH_OPERATIONS": "Search operations...",
+      "NO_MATCHING_FIELDS": "No matching fields.",
+      "NO_FIELDS_AVAILABLE": "No fields available.",
+      "UNEXPECTED_ERROR": "The Query Builder encountered an unexpected error. Try reloading the schema or manually using the editor.",
+      "ARGUMENTS": "ARGUMENTS",
+      "FIELDS": "FIELDS"
     }
+  },
+  "RESPONSE_PANEL": {
+    "RESPONSE": "Response",
+    "TIMELINE": "Timeline",
+    "METADATA": "Metadata",
+    "TRAILERS": "Trailers",
+    "MESSAGES": "Messages",
+    "LARGE_RESPONSE_WARNING": "Large Response Warning",
+    "LARGE_RESPONSE_DESCRIPTION": "Handling responses over <size>{{size}}</size> could degrade performance.",
+    "CURRENT_RESPONSE_SIZE": "Size of current response: <size>{{size}}</size>",
+    "SHOW_RESPONSE_CONTENT": "Show response content",
+    "DOWNLOAD_RESPONSE_TO_FILE": "Download response to file",
+    "COPY_RESPONSE_TO_CLIPBOARD": "Copy response to clipboard",
+    "RESPONSE_DOWNLOADED": "Response downloaded to file",
+    "RESPONSE_COPIED": "Response copied to clipboard",
+    "COPY_RESPONSE_FAILED": "Failed to copy response",
+    "COPY_RESPONSE": "Copy response",
+    "SAVE_RESPONSE": "Save response",
+    "DOWNLOAD_RESPONSE": "Download response",
+    "CLEAR_RESPONSE": "Clear response",
+    "CHANGE_LAYOUT": "Change layout",
+    "MORE_ACTIONS": "More actions",
+    "SAVE_RESPONSE_AS_EXAMPLE": "Save Response as Example",
+    "SAVE_CURRENT_RESPONSE_AS_EXAMPLE": "Save current response as example",
+    "STREAMING_EXAMPLES_UNSUPPORTED": "Response Examples aren't supported in streaming responses yet.",
+    "RESPONSE_TOO_LARGE_FOR_EXAMPLE": "Response size exceeds 5MB limit. Cannot save as example.",
+    "NO_VALID_RESPONSE_FOR_EXAMPLE": "No valid response to save as example",
+    "EXAMPLE_CREATED": "Example \"{{name}}\" created successfully",
+    "SAVE_RESPONSE_TO_FILE": "Save response to file",
+    "CLEAR_TIMELINE": "Clear Timeline",
+    "NO_TESTS_FOUND": "No tests found",
+    "TEST_PASSED": "Test passed",
+    "TEST_FAILED": "Test failed",
+    "PASSED": "Passed",
+    "FAILED": "Failed",
+    "PRE_REQUEST_TESTS": "Pre-Request Tests",
+    "POST_RESPONSE_TESTS": "Post-Response Tests",
+    "TESTS": "Tests",
+    "ASSERTIONS": "Assertions",
+    "SCRIPT_EXECUTION_ERROR": "Script execution error occurred",
+    "CLOSE_ERROR": "Close error",
+    "OPEN_FILE": "Open {{path}}",
+    "ERROR": "Error",
+    "HIDE_STACK_TRACE": "Hide stack trace",
+    "SHOW_STACK_TRACE": "Show stack trace",
+    "PRE_REQUEST_SCRIPT_ERROR": "Pre-Request Script Error",
+    "POST_RESPONSE_SCRIPT_ERROR": "Post-Response Script Error",
+    "TEST_SCRIPT_ERROR": "Test Script Error",
+    "CANCEL_REQUEST": "Cancel Request",
+    "SEND_REQUEST": "Send Request",
+    "NEW_REQUEST": "New Request",
+    "EDIT_ENVIRONMENTS": "Edit Environments",
+    "NO_HEADERS_RECEIVED": "No headers received",
+    "NO_METADATA_RECEIVED": "No metadata received",
+    "NO_TRAILERS_RECEIVED": "No trailers received",
+    "NO_MESSAGES_RECEIVED": "No messages received",
+    "NO_MESSAGES_YET": "No messages yet.",
+    "NO_MESSAGES_AFTER_DISMISSED_ERROR": "No messages received. A server error occurred but has been dismissed.",
+    "RESPONSE_NUMBER": "Response {{number}}",
+    "LATEST": "Latest",
+    "LATEST_LAST": "Latest Last",
+    "LATEST_FIRST": "Latest First",
+    "NETWORK_ERROR": "Network Error",
+    "OAUTH2_CALLS": "OAuth2.0 Calls",
+    "NO_DEBUG_INFO": "No debug information available.",
+    "CANNOT_PREVIEW_JSON": "Cannot preview as JSON",
+    "INVALID_JSON_FORMAT": "Invalid JSON format: {{message}}",
+    "INVALID_JSON_INPUT": "Invalid input. Expected a JSON object, array, or valid JSON string.",
+    "JSON_DATA_EMPTY": "Data is null or undefined. Expected a valid JSON object or array.",
+    "JSON_DATA_NOT_TREE": "Data cannot be rendered as a JSON tree. Expected a JSON object or array.",
+    "CANNOT_PREVIEW_XML": "Cannot preview as XML",
+    "INVALID_XML_INPUT": "Invalid input. Expected an XML string.",
+    "INVALID_XML_FORMAT": "Failed to parse XML string. Invalid XML format.",
+    "XML_DATA_NOT_TREE": "Data cannot be rendered as a tree. Expected a valid XML string.",
+    "XML_ROOT_EMPTY": "Cannot render XML tree. Root object is empty.",
+    "LOADING_VIDEO": "Loading video...",
+    "SELF_SIGNED_CERT_HINT_LINE_1": "You can disable SSL verification in the Preferences.",
+    "SELF_SIGNED_CERT_HINT_LINE_2": "To open the Preferences, click on the gear icon in the bottom left corner.",
+    "SOURCES": {
+      "REQUEST": "Request",
+      "COLLECTION": "Collection",
+      "FOLDER": "Folder",
+      "FOLDER_WITH_NAME": "Folder: {{name}}"
+    }
+  },
+  "OPENAPI_SYNC": {
+    "OPENAPI_ERROR": "OpenAPI Error",
+    "UPDATES_AVAILABLE": "OpenAPI Updates Available"
   },
   "AUTH_MODES": {
     "INHERIT": "Inherit",

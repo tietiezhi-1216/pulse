@@ -10,11 +10,13 @@ import BulkEditor from 'components/BulkEditor';
 import { headers as StandardHTTPHeaders } from 'know-your-http-well';
 import { MimeTypes } from 'utils/codemirror/autocompleteConstants';
 import StyledWrapper from './StyledWrapper';
+import { useTranslation } from 'react-i18next';
 
 const headerAutoCompleteList = StandardHTTPHeaders.map((e) => e.header);
 
 const ResponseExampleHeaders = ({ editMode, item, collection, exampleUid }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { storedTheme } = useTheme();
   const tabs = useSelector((state) => state.tabs.tabs);
   const activeTabUid = useSelector((state) => state.tabs.activeTabUid);
@@ -74,9 +76,9 @@ const ResponseExampleHeaders = ({ editMode, item, collection, exampleUid }) => {
   const columns = [
     {
       key: 'name',
-      name: 'Key',
+      name: t('COMMON.KEY'),
       isKeyField: true,
-      placeholder: 'Key',
+      placeholder: t('COMMON.KEY'),
       width: '40%',
       readOnly: !editMode,
       render: ({ value, onChange }) => (
@@ -89,14 +91,14 @@ const ResponseExampleHeaders = ({ editMode, item, collection, exampleUid }) => {
           autocomplete={headerAutoCompleteList}
           onRun={() => {}}
           collection={collection}
-          placeholder={!value ? 'Key' : ''}
+          placeholder={!value ? t('COMMON.KEY') : ''}
         />
       )
     },
     {
       key: 'value',
-      name: 'Value',
-      placeholder: 'Value',
+      name: t('COMMON.VALUE'),
+      placeholder: t('COMMON.VALUE'),
       width: '60%',
       readOnly: !editMode,
       render: ({ value, onChange }) => (
@@ -111,7 +113,7 @@ const ResponseExampleHeaders = ({ editMode, item, collection, exampleUid }) => {
           allowNewlines={true}
           collection={collection}
           item={item}
-          placeholder={!value ? 'Value' : ''}
+          placeholder={!value ? t('COMMON.VALUE') : ''}
         />
       )
     }
@@ -141,7 +143,7 @@ const ResponseExampleHeaders = ({ editMode, item, collection, exampleUid }) => {
 
   return (
     <StyledWrapper className="w-full mt-4">
-      <div className="mb-3 title text-xs font-bold">Headers</div>
+      <div className="mb-3 title text-xs font-bold">{t('REQUEST_PANEL.TABS.HEADERS')}</div>
       <EditableTable
         tableId="example-headers"
         columnWidths={exampleHeadersWidths}
@@ -162,7 +164,7 @@ const ResponseExampleHeaders = ({ editMode, item, collection, exampleUid }) => {
             className="btn-action text-link select-none"
             onClick={toggleBulkEditMode}
           >
-            Bulk Edit
+            {t('REQUEST.BULK_EDIT')}
           </button>
         </div>
       )}

@@ -20,6 +20,7 @@ import ApiKeyAuth from 'components/RequestPane/Auth/ApiKeyAuth';
 import AwsV4Auth from 'components/RequestPane/Auth/AwsV4Auth';
 import { humanizeRequestAuthMode, getTreePathFromCollectionToItem } from 'utils/collections/index';
 import Button from 'ui/Button';
+import { Trans, useTranslation } from 'react-i18next';
 
 const GrantTypeComponentMap = ({ collection, folder, updateFolderAuth }) => {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ const GrantTypeComponentMap = ({ collection, folder, updateFolderAuth }) => {
 
 const Auth = ({ collection, folder }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const folderRoot = folder?.draft || folder?.root;
   let request = get(folderRoot, 'request', {});
   const authMode = get(folderRoot, 'request.auth.mode');
@@ -59,7 +61,7 @@ const Auth = ({ collection, folder }) => {
     const collectionAuth = get(collectionRoot, 'request.auth');
     let effectiveSource = {
       type: 'collection',
-      name: 'Collection',
+      name: t('FOLDER_SETTINGS.AUTH.SOURCE_COLLECTION'),
       auth: collectionAuth
     };
 
@@ -206,8 +208,8 @@ const Auth = ({ collection, folder }) => {
         return (
           <>
             <div className="flex flex-row w-full mt-2 gap-2">
-              <div>Auth inherited from {source.name}: </div>
-              <div className="inherit-mode-text">{humanizeRequestAuthMode(source.auth?.mode)}</div>
+              <div>{t('FOLDER_SETTINGS.AUTH.INHERITED_FROM', { name: source.name })}</div>
+              <div className="inherit-mode-text">{humanizeRequestAuthMode(source.auth?.mode, t)}</div>
             </div>
           </>
         );
@@ -223,8 +225,13 @@ const Auth = ({ collection, folder }) => {
   return (
     <StyledWrapper className="w-full">
       <div className="text-xs mb-4 text-muted">
-        Configures authentication for the entire folder. This applies to all requests using the{' '}
-        <span className="font-medium">Inherit</span> option in the <span className="font-medium">Auth</span> tab.
+        <Trans
+          i18nKey="FOLDER_SETTINGS.AUTH.DESCRIPTION"
+          components={{
+            inherit: <span className="font-medium" />,
+            auth: <span className="font-medium" />
+          }}
+        />
       </div>
       <div className="flex flex-grow justify-start items-center">
         <AuthMode collection={collection} folder={folder} />
@@ -232,7 +239,7 @@ const Auth = ({ collection, folder }) => {
       {getAuthView()}
       <div className="mt-6">
         <Button type="submit" size="sm" onClick={handleSave}>
-          Save
+          {t('COMMON.SAVE')}
         </Button>
       </div>
     </StyledWrapper>
