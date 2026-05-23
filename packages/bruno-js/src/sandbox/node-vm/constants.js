@@ -66,6 +66,8 @@ const safeGlobals = [
   'AbortController',
   'AbortSignal',
   'Blob',
+  'File',
+  'DOMException',
 
   // Streams API
   'ReadableStream',

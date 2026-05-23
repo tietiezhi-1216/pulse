@@ -34,6 +34,7 @@ test('i18n registers zh-CN and keeps English as fallback', () => {
 
   assert.match(i18nSource, /translationZhCN/);
   assert.match(i18nSource, /['"]zh-CN['"]/);
+  assert.match(i18nSource, /lng:\s*resolveLanguage\(['"]system['"]\)/);
   assert.match(i18nSource, /fallbackLng:\s*['"]en['"]/);
 });
 

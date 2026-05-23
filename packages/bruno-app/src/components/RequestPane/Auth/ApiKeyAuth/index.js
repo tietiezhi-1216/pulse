@@ -8,9 +8,11 @@ import SingleLineEditor from 'components/SingleLineEditor';
 import { sendRequest } from 'providers/ReduxStore/slices/collections/actions';
 import StyledWrapper from './StyledWrapper';
 import { humanizeRequestAPIKeyPlacement } from 'utils/collections';
+import { useTranslation } from 'react-i18next';
 
 const ApiKeyAuth = ({ item, collection, updateAuth, request, save }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { storedTheme } = useTheme();
   const dropdownTippyRef = useRef();
   const onDropdownCreate = (ref) => (dropdownTippyRef.current = ref);
@@ -26,7 +28,7 @@ const ApiKeyAuth = ({ item, collection, updateAuth, request, save }) => {
   const Icon = forwardRef((props, ref) => {
     return (
       <div ref={ref} data-testid="auth-placement-label" className="flex items-center justify-end auth-type-label select-none">
-        {humanizeRequestAPIKeyPlacement(apikeyAuth?.placement)}
+        {humanizeRequestAPIKeyPlacement(apikeyAuth?.placement, t)}
         <IconCaretDown className="caret ml-1 mr-1" size={14} strokeWidth={2} />
       </div>
     );
@@ -62,7 +64,7 @@ const ApiKeyAuth = ({ item, collection, updateAuth, request, save }) => {
 
   return (
     <StyledWrapper className="w-full">
-      <label className="block mb-1">Key</label>
+      <label className="block mb-1">{t('AUTH_FIELDS.KEY')}</label>
       <div className="single-line-editor-wrapper mb-3">
         <SingleLineEditor
           value={apikeyAuth.key || ''}
@@ -75,7 +77,7 @@ const ApiKeyAuth = ({ item, collection, updateAuth, request, save }) => {
         />
       </div>
 
-      <label className="block mb-1">Value</label>
+      <label className="block mb-1">{t('COMMON.VALUE')}</label>
       <div className="single-line-editor-wrapper mb-3">
         <SingleLineEditor
           value={apikeyAuth.value || ''}
@@ -88,7 +90,7 @@ const ApiKeyAuth = ({ item, collection, updateAuth, request, save }) => {
         />
       </div>
 
-      <label className="block mb-1">Add To</label>
+      <label className="block mb-1">{t('AUTH_FIELDS.ADD_TO')}</label>
       <div data-testid="auth-placement-selector" className="inline-flex items-center cursor-pointer auth-placement-selector w-fit">
         <Dropdown onCreate={onDropdownCreate} icon={<Icon />} placement="bottom-end">
           <div
@@ -98,7 +100,7 @@ const ApiKeyAuth = ({ item, collection, updateAuth, request, save }) => {
               handleAuthChange('placement', 'header');
             }}
           >
-            Header
+            {t('AUTH_FIELDS.HEADER')}
           </div>
           <div
             className="dropdown-item"
@@ -107,7 +109,7 @@ const ApiKeyAuth = ({ item, collection, updateAuth, request, save }) => {
               handleAuthChange('placement', 'queryparams');
             }}
           >
-            Query Param
+            {t('REQUEST.QUERY_PARAMS')}
           </div>
         </Dropdown>
       </div>

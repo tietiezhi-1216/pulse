@@ -13,9 +13,11 @@ import StyledWrapper from './StyledWrapper';
 import WSAuth from './WSAuth';
 import WSAuthMode from './WSAuth/WSAuthMode';
 import WSSettingsPane from '../WSSettingsPane/index';
+import { useTranslation } from 'react-i18next';
 
 const WSRequestPane = ({ item, collection, handleRun }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const tabs = useSelector((state) => state.tabs.tabs);
   const activeTabUid = useSelector((state) => state.tabs.activeTabUid);
 
@@ -44,31 +46,31 @@ const WSRequestPane = ({ item, collection, handleRun }) => {
     return [
       {
         key: 'body',
-        label: 'Message',
+        label: t('REQUEST_PANEL.TABS.MESSAGE'),
         indicator: null
       },
       {
         key: 'headers',
-        label: 'Headers',
+        label: t('REQUEST_PANEL.TABS.HEADERS'),
         indicator: activeHeadersLength > 0 ? <sup className="ml-[.125rem] font-medium">{activeHeadersLength}</sup> : null
       },
       {
         key: 'auth',
-        label: 'Auth',
+        label: t('REQUEST_PANEL.TABS.AUTH'),
         indicator: auth.mode !== 'none' ? <StatusDot type="default" /> : null
       },
       {
         key: 'settings',
-        label: 'Settings',
+        label: t('REQUEST_PANEL.TABS.SETTINGS'),
         indicator: null
       },
       {
         key: 'docs',
-        label: 'Docs',
+        label: t('REQUEST_PANEL.TABS.DOCS'),
         indicator: docs && docs.length > 0 ? <StatusDot type="default" /> : null
       }
     ];
-  }, [activeHeadersLength, auth.mode, docs]);
+  }, [activeHeadersLength, auth.mode, docs, t]);
 
   const tabPanel = useMemo(() => {
     switch (requestPaneTab) {
@@ -84,7 +86,7 @@ const WSRequestPane = ({ item, collection, handleRun }) => {
         );
       }
       case 'headers': {
-        return <RequestHeaders item={item} collection={collection} addHeaderText="Add Headers" />;
+        return <RequestHeaders item={item} collection={collection} addHeaderText={t('REQUEST_PANEL.ACTIONS.ADD_HEADERS')} />;
       }
       case 'settings': {
         return <WSSettingsPane item={item} collection={collection} />;
@@ -96,13 +98,13 @@ const WSRequestPane = ({ item, collection, handleRun }) => {
         return <Documentation item={item} collection={collection} />;
       }
       default: {
-        return <div className="mt-4">404 | Not found</div>;
+        return <div className="mt-4">{t('COMMON.NOT_FOUND')}</div>;
       }
     }
-  }, [requestPaneTab, item, collection, handleRun]);
+  }, [requestPaneTab, item, collection, handleRun, t]);
 
   if (!activeTabUid || !focusedTab?.uid || !requestPaneTab) {
-    return <div className="pb-4 px-4">An error occurred!</div>;
+    return <div className="pb-4 px-4">{t('COMMON.ERROR_OCCURRED')}</div>;
   }
 
   const rightContent = requestPaneTab === 'auth' ? (

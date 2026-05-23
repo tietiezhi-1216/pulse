@@ -45,7 +45,13 @@
     "RUNNER": "Runner",
     "BETA": "Beta",
     "UNKNOWN_ERROR": "Unknown error",
-    "CLEAR_SEARCH": "Clear search"
+    "CLEAR_SEARCH": "Clear search",
+    "ADD": "Add",
+    "FILE": "File",
+    "PATH": "Path",
+    "DIRECTORY": "Directory",
+    "NOT_FOUND": "404 | Not found",
+    "ERROR_OCCURRED": "An error occurred!"
   },
   "ACTIONS": {
     "CREATE_COLLECTION": "Create Collection",
@@ -495,7 +501,10 @@
     "PROFILE_NAME": "Profile Name",
     "HEADER": "Header",
     "HEADERS": "Headers",
-    "BODY": "Body"
+    "BODY": "Body",
+    "KEY": "Key",
+    "TOKEN": "Token",
+    "ADD_TO": "Add To"
   },
   "WEBSOCKET": {
     "CONNECTION_CLOSED": "WebSocket connection closed",
@@ -825,5 +834,151 @@
     "TOKEN_FETCH_ERROR_DETAILS": "Error fetching token. Check network logs for more details.",
     "TOKEN_TYPE": "Token Type",
     "NO_TOKEN_FOUND": "No token found"
+  },
+  "COLLECTION_SETTINGS": {
+    "TABS": {
+      "OVERVIEW": "Overview",
+      "HEADERS": "Headers",
+      "VARS": "Vars",
+      "AUTH": "Auth",
+      "SCRIPT": "Script",
+      "TESTS": "Tests",
+      "PRESETS": "Presets",
+      "PROXY": "Proxy",
+      "CLIENT_CERTIFICATES": "Client Certificates",
+      "PROTOBUF": "Protobuf"
+    },
+    "OVERVIEW": {
+      "LOCATION": "Location",
+      "REQUESTS": "Requests",
+      "REQUESTS_LOADED": "{{loaded}} out of {{total}} requests in the collection loaded",
+      "REQUEST_COUNT_ONE": "{{count}} request in collection",
+      "REQUEST_COUNT_OTHER": "{{count}} requests in collection",
+      "COLLECTION_ENVIRONMENT_COUNT_ONE": "{{count}} collection environment",
+      "COLLECTION_ENVIRONMENT_COUNT_OTHER": "{{count}} collection environments",
+      "GLOBAL_ENVIRONMENT_COUNT_ONE": "{{count}} global environment",
+      "GLOBAL_ENVIRONMENT_COUNT_OTHER": "{{count}} global environments",
+      "SHARE_COLLECTION": "Share Collection",
+      "GENERATE_DOCS": "Generate Docs",
+      "REQUESTS_NOT_LOADED": "Following requests were not loaded",
+      "PATHNAME": "Pathname",
+      "SIZE": "Size"
+    },
+    "DOCS": {
+      "PLACEHOLDER": "Welcome to your collection documentation! This space is designed to help you document your API collection effectively.\n\n## Overview\nUse this section to provide a high-level overview of your collection. You can describe:\n- The purpose of these API endpoints\n- Key features and functionalities\n- Target audience or users\n\n## Best Practices\n- Keep documentation up to date\n- Include request/response examples\n- Document error scenarios\n- Add relevant links and references\n\n## Markdown Support\nThis documentation supports Markdown formatting! You can use:\n- **Bold** and *italic* text\n- `code blocks` and syntax highlighting\n- Tables and lists\n- [Links](https://usebruno.com)\n- And more!"
+    },
+    "PRESETS": {
+      "DESCRIPTION": "These presets will be used as the default values for new requests in this collection.",
+      "REQUEST_TYPE": "Request Type",
+      "BASE_URL": "Base URL"
+    },
+    "PROXY": {
+      "DESCRIPTION": "Configure proxy settings for this collection.",
+      "CONFIG": "Config",
+      "INHERIT": "inherit",
+      "ENABLED": "enabled",
+      "DISABLED": "disabled",
+      "INHERIT_HELP": "inherit from global preferences",
+      "ENABLED_HELP": "use collection-specific proxy config",
+      "DISABLED_HELP": "disable proxy for this collection",
+      "VALIDATION": {
+        "HOSTNAME_MAX": "Hostname must be less than 1024 characters",
+        "PORT_NUMBER": "Port must be a valid number",
+        "PORT_RANGE": "Port must be between 1 and 65535",
+        "USERNAME_MAX": "Username must be less than 1024 characters",
+        "PASSWORD_MAX": "Password must be less than 1024 characters",
+        "BYPASS_MAX": "Bypass proxy must be less than 1024 characters"
+      }
+    },
+    "CLIENT_CERTS": {
+      "DESCRIPTION": "Add client certificates to be used for specific domains.",
+      "TITLE": "Client Certificates",
+      "EMPTY": "No client certificates added",
+      "ADD_TITLE": "Add Client Certificate",
+      "CERT_FILE": "Cert file",
+      "KEY_FILE": "Key file",
+      "PFX_FILE": "PFX file",
+      "PASSPHRASE": "Passphrase",
+      "VALIDATION": {
+        "DOMAIN_REQUIRED": "Domain is required",
+        "TYPE_REQUIRED": "Type is required",
+        "CERT_FILE_REQUIRED": "Cert file is required",
+        "KEY_FILE_REQUIRED": "Key file is required",
+        "PFX_FILE_REQUIRED": "PFX file is required"
+      }
+    },
+    "PROTOBUF": {
+      "PROTO_FILES": "Proto Files ({{count}})",
+      "PROTO_FILES_HELP": "Keep your proto files within the collection folder or the corresponding git repository to ensure paths remain valid when sharing the collection.",
+      "INVALID_PROTO_FILES": "Some proto files cannot be found. Use the replace option to update their locations.",
+      "INVALID_PROTO_FILES_SHORT": "Some proto files could not be found.",
+      "NO_PROTO_FILES": "No proto files added",
+      "ADD_PROTO_FILE": "+ Add Proto File",
+      "REPLACE_FILE": "Replace file",
+      "REMOVE_FILE": "Remove file",
+      "IMPORT_PATHS": "Import Paths ({{count}})",
+      "IMPORT_PATHS_HELP": "Add directories that contain proto files to be imported. These paths help resolve import statements in your proto files.",
+      "INVALID_IMPORT_PATHS": "Some import paths cannot be found at their specified locations.",
+      "INVALID_IMPORT_PATHS_SHORT": "Some import paths could not be found.",
+      "NO_IMPORT_PATHS": "No import paths added",
+      "ADD_IMPORT_PATH": "+ Add Import Path",
+      "DISABLE_IMPORT_PATH": "Disable this import path",
+      "ENABLE_IMPORT_PATH": "Enable this import path",
+      "REPLACE_DIRECTORY": "Replace directory",
+      "REMOVE_IMPORT_PATH": "Remove import path",
+      "FROM_COLLECTION_SETTINGS": "From Collection Settings",
+      "MANAGE_PROTO_FILES": "Manage proto files",
+      "MANAGE_IMPORT_PATHS": "Manage import paths",
+      "NO_CONFIGURED_PROTO_FILES": "No proto files configured in collection settings",
+      "NO_CONFIGURED_IMPORT_PATHS": "No import paths configured in collection settings",
+      "BROWSE_PROTO_FILE": "Browse for Proto File",
+      "BROWSE_IMPORT_PATH": "Browse for Import Path",
+      "IMPORT_PATH_ENABLED": "Import path enabled",
+      "IMPORT_PATH_DISABLED": "Import path disabled"
+    },
+    "AUTH": {
+      "DESCRIPTION": "Configures authentication for the entire collection. This applies to all requests using the Inherit option in the Auth tab."
+    }
+  },
+  "REQUEST_PANEL": {
+    "TABS": {
+      "PARAMS": "Params",
+      "BODY": "Body",
+      "HEADERS": "Headers",
+      "AUTH": "Auth",
+      "VARS": "Vars",
+      "SCRIPT": "Script",
+      "ASSERT": "Assert",
+      "TESTS": "Tests",
+      "DOCS": "Docs",
+      "SETTINGS": "Settings",
+      "QUERY": "Query",
+      "MESSAGE": "Message",
+      "METADATA": "Metadata"
+    },
+    "ACTIONS": {
+      "PRETTIFY": "Prettify",
+      "HIDE_QUERY_BUILDER": "Hide Query Builder",
+      "SHOW_QUERY_BUILDER": "Show Query Builder",
+      "MORE_ACTIONS": "More actions",
+      "ADD_HEADERS": "Add Headers",
+      "ADD_METADATA": "Add Metadata"
+    },
+    "AUTH": {
+      "INHERITED_FROM": "Auth inherited from {{name}}:"
+    }
+  },
+  "AUTH_MODES": {
+    "INHERIT": "Inherit",
+    "AWS_SIG_V4": "AWS Sig V4",
+    "BASIC_AUTH": "Basic Auth",
+    "BEARER_TOKEN": "Bearer Token",
+    "DIGEST_AUTH": "Digest Auth",
+    "NTLM_AUTH": "NTLM Auth",
+    "OAUTH1": "OAuth 1.0",
+    "OAUTH2": "OAuth 2.0",
+    "WSSE_AUTH": "WSSE Auth",
+    "API_KEY": "API Key",
+    "NO_AUTH": "No Auth"
   }
 }

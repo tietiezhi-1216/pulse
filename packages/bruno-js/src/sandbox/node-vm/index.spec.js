@@ -258,6 +258,23 @@ describe('node-vm sandbox', () => {
 
       expect(context.bru.setVar).toHaveBeenCalledWith('result', 'function');
     });
+
+    it('should load cheerio and its Web API-compatible dependencies', async () => {
+      const script = `
+        const cheerio = require('cheerio');
+        const $ = cheerio.load('<h2 class="title">Hello world</h2>');
+        bru.setVar('result', $('h2.title').text());
+      `;
+
+      const context = {
+        bru: { setVar: jest.fn() },
+        console: console
+      };
+
+      await runScriptInNodeVm({ script, context, collectionPath, scriptingConfig: {} });
+
+      expect(context.bru.setVar).toHaveBeenCalledWith('result', 'Hello world');
+    });
   });
 
   describe('createCustomRequire - module caching', () => {
@@ -1140,6 +1157,19 @@ describe('node-vm sandbox', () => {
       };
 
       const script = `bru.setVar('result', typeof globalThis.Buffer)`;
+
+      await runScriptInNodeVm({ script, context, collectionPath, scriptingConfig: {} });
+
+      expect(context.bru.setVar).toHaveBeenCalledWith('result', 'function');
+    });
+
+    it('should expose File for Web API-compatible npm modules', async () => {
+      const context = {
+        bru: { setVar: jest.fn() },
+        console: console
+      };
+
+      const script = `bru.setVar('result', typeof globalThis.File)`;
 
       await runScriptInNodeVm({ script, context, collectionPath, scriptingConfig: {} });
 

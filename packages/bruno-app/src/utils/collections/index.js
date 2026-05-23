@@ -923,7 +923,25 @@ export const humanizeRequestBodyMode = (mode) => {
   return label;
 };
 
-export const humanizeRequestAuthMode = (mode) => {
+export const humanizeRequestAuthMode = (mode, t) => {
+  const translationKeys = {
+    inherit: 'AUTH_MODES.INHERIT',
+    awsv4: 'AUTH_MODES.AWS_SIG_V4',
+    basic: 'AUTH_MODES.BASIC_AUTH',
+    bearer: 'AUTH_MODES.BEARER_TOKEN',
+    digest: 'AUTH_MODES.DIGEST_AUTH',
+    ntlm: 'AUTH_MODES.NTLM_AUTH',
+    oauth1: 'AUTH_MODES.OAUTH1',
+    oauth2: 'AUTH_MODES.OAUTH2',
+    wsse: 'AUTH_MODES.WSSE_AUTH',
+    apikey: 'AUTH_MODES.API_KEY',
+    none: 'AUTH_MODES.NO_AUTH'
+  };
+
+  if (t && translationKeys[mode]) {
+    return t(translationKeys[mode]);
+  }
+
   let label = 'No Auth';
   switch (mode) {
     case 'inherit': {
@@ -971,7 +989,16 @@ export const humanizeRequestAuthMode = (mode) => {
   return label;
 };
 
-export const humanizeRequestAPIKeyPlacement = (placement) => {
+export const humanizeRequestAPIKeyPlacement = (placement, t) => {
+  const translationKeys = {
+    header: 'AUTH_FIELDS.HEADER',
+    queryparams: 'REQUEST.QUERY_PARAMS'
+  };
+
+  if (t && translationKeys[placement]) {
+    return t(translationKeys[placement]);
+  }
+
   let label = 'Header';
   switch (placement) {
     case 'header': {

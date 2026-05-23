@@ -8,9 +8,11 @@ import SingleLineEditor from 'components/SingleLineEditor';
 import { updateCollectionAuth } from 'providers/ReduxStore/slices/collections';
 import { saveCollectionSettings } from 'providers/ReduxStore/slices/collections/actions';
 import StyledWrapper from './StyledWrapper';
+import { useTranslation } from 'react-i18next';
 
 const NTLMAuth = ({ collection }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { storedTheme } = useTheme();
 
   const ntlmAuth = collection.draft?.root ? get(collection, 'draft.root.request.auth.ntlm', {}) : get(collection, 'root.request.auth.ntlm', {});
@@ -64,7 +66,7 @@ const NTLMAuth = ({ collection }) => {
 
   return (
     <StyledWrapper className="mt-2 w-full">
-      <label className="block mb-1">Username</label>
+      <label className="block mb-1">{t('AUTH_FIELDS.USERNAME')}</label>
       <div className="single-line-editor-wrapper mb-3">
         <SingleLineEditor
           value={ntlmAuth.username || ''}
@@ -76,7 +78,7 @@ const NTLMAuth = ({ collection }) => {
         />
       </div>
 
-      <label className="block mb-1">Password</label>
+      <label className="block mb-1">{t('AUTH_FIELDS.PASSWORD')}</label>
       <div className="single-line-editor-wrapper mb-3 flex items-center">
         <SingleLineEditor
           value={ntlmAuth.password || ''}
@@ -90,7 +92,7 @@ const NTLMAuth = ({ collection }) => {
         {showWarning && <SensitiveFieldWarning fieldName="ntlm-password" warningMessage={warningMessage} />}
       </div>
 
-      <label className="block mb-1">Domain</label>
+      <label className="block mb-1">{t('AUTH_FIELDS.DOMAIN')}</label>
       <div className="single-line-editor-wrapper">
         <SingleLineEditor
           value={ntlmAuth.domain || ''}

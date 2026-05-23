@@ -2,6 +2,7 @@ import React from 'react';
 import { IconFile, IconSettings, IconAlertCircle } from '@tabler/icons';
 import { getBasename } from 'utils/common/path';
 import StyledWrapper from './StyledWrapper';
+import { useTranslation } from 'react-i18next';
 
 const ProtoFilesTab = ({
   collectionProtoFiles,
@@ -12,12 +13,14 @@ const ProtoFilesTab = ({
   onOpenCollectionProtobufSettings,
   onSelectProtoFile
 }) => {
+  const { t } = useTranslation();
+
   return (
     <StyledWrapper>
       {collectionProtoFiles && collectionProtoFiles.length > 0 && (
         <div className="content-wrapper">
           <div className="header-wrapper">
-            <div className="header-text">From Collection Settings</div>
+            <div className="header-text">{t('COLLECTION_SETTINGS.PROTOBUF.FROM_COLLECTION_SETTINGS')}</div>
             <button
               onClick={onOpenCollectionProtobufSettings}
               className="settings-button"
@@ -30,13 +33,13 @@ const ProtoFilesTab = ({
             <div className="error-wrapper">
               <p className="error-text">
                 <IconAlertCircle size={16} strokeWidth={1.5} style={{ marginRight: '0.25rem' }} />
-                Some proto files could not be found.
+                {t('COLLECTION_SETTINGS.PROTOBUF.INVALID_PROTO_FILES_SHORT')}
                 {' '}
                 <button
                   onClick={onOpenCollectionProtobufSettings}
                   className="error-link"
                 >
-                  Manage proto files
+                  {t('COLLECTION_SETTINGS.PROTOBUF.MANAGE_PROTO_FILES')}
                 </button>
               </p>
             </div>
@@ -85,7 +88,7 @@ const ProtoFilesTab = ({
       {(!collectionProtoFiles || collectionProtoFiles.length === 0) && (
         <div className="empty-wrapper">
           <div className="empty-text">
-            No proto files configured in collection settings
+            {t('COLLECTION_SETTINGS.PROTOBUF.NO_CONFIGURED_PROTO_FILES')}
           </div>
         </div>
       )}
@@ -96,7 +99,7 @@ const ProtoFilesTab = ({
           onClick={onSelectProtoFile}
         >
           <IconFile size={16} strokeWidth={1.5} style={{ marginRight: '0.25rem' }} />
-          Browse for Proto File
+          {t('COLLECTION_SETTINGS.PROTOBUF.BROWSE_PROTO_FILE')}
         </button>
       </div>
     </StyledWrapper>

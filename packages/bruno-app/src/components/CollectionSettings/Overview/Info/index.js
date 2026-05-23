@@ -8,9 +8,11 @@ import ShareCollection from 'components/ShareCollection/index';
 import GenerateDocumentation from 'components/Sidebar/Collections/Collection/GenerateDocumentation';
 import { addTab } from 'providers/ReduxStore/slices/tabs';
 import StyledWrapper from './StyledWrapper';
+import { useTranslation } from 'react-i18next';
 
 const Info = ({ collection }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const totalRequestsInCollection = getTotalRequestCountInCollection(collection);
 
   const isCollectionLoading = areItemsLoading(collection);
@@ -22,6 +24,17 @@ const Info = ({ collection }) => {
 
   const collectionEnvironmentCount = collection.environments?.length || 0;
   const globalEnvironmentCount = globalEnvironments?.length || 0;
+  const requestSummary = isCollectionLoading
+    ? t('COLLECTION_SETTINGS.OVERVIEW.REQUESTS_LOADED', {
+        loaded: totalItems - itemsLoadingCount,
+        total: totalItems
+      })
+    : t(
+        totalRequestsInCollection === 1
+          ? 'COLLECTION_SETTINGS.OVERVIEW.REQUEST_COUNT_ONE'
+          : 'COLLECTION_SETTINGS.OVERVIEW.REQUEST_COUNT_OTHER',
+        { count: totalRequestsInCollection }
+      );
 
   const handleToggleShowShareCollectionModal = (value) => (e) => {
     toggleShowShareCollectionModal(value);
@@ -37,7 +50,7 @@ const Info = ({ collection }) => {
               <IconFolder className="w-5 h-5" stroke={1.5} />
             </div>
             <div className="ml-4">
-              <div className="font-medium">Location</div>
+              <div className="font-medium">{t('COLLECTION_SETTINGS.OVERVIEW.LOCATION')}</div>
               <div className="mt-1 text-muted break-all">
                 {collection.pathname}
               </div>
@@ -50,7 +63,7 @@ const Info = ({ collection }) => {
               <IconWorld className="w-5 h-5" stroke={1.5} />
             </div>
             <div className="ml-4">
-              <div className="font-medium">Environments</div>
+              <div className="font-medium">{t('COMMON.ENVIRONMENTS')}</div>
               <div className="mt-1 flex flex-col gap-1">
                 <button
                   type="button"
@@ -65,7 +78,12 @@ const Info = ({ collection }) => {
                     );
                   }}
                 >
-                  {collectionEnvironmentCount} collection environment{collectionEnvironmentCount !== 1 ? 's' : ''}
+                  {t(
+                    collectionEnvironmentCount === 1
+                      ? 'COLLECTION_SETTINGS.OVERVIEW.COLLECTION_ENVIRONMENT_COUNT_ONE'
+                      : 'COLLECTION_SETTINGS.OVERVIEW.COLLECTION_ENVIRONMENT_COUNT_OTHER',
+                    { count: collectionEnvironmentCount }
+                  )}
                 </button>
                 <button
                   type="button"
@@ -80,7 +98,12 @@ const Info = ({ collection }) => {
                     );
                   }}
                 >
-                  {globalEnvironmentCount} global environment{globalEnvironmentCount !== 1 ? 's' : ''}
+                  {t(
+                    globalEnvironmentCount === 1
+                      ? 'COLLECTION_SETTINGS.OVERVIEW.GLOBAL_ENVIRONMENT_COUNT_ONE'
+                      : 'COLLECTION_SETTINGS.OVERVIEW.GLOBAL_ENVIRONMENT_COUNT_OTHER',
+                    { count: globalEnvironmentCount }
+                  )}
                 </button>
               </div>
             </div>
@@ -92,11 +115,9 @@ const Info = ({ collection }) => {
               <IconApi className="w-5 h-5" stroke={1.5} />
             </div>
             <div className="ml-4">
-              <div className="font-medium">Requests</div>
+              <div className="font-medium">{t('COLLECTION_SETTINGS.OVERVIEW.REQUESTS')}</div>
               <div className="mt-1 text-muted">
-                {
-                  isCollectionLoading ? `${totalItems - itemsLoadingCount} out of ${totalItems} requests in the collection loaded` : `${totalRequestsInCollection} request${totalRequestsInCollection !== 1 ? 's' : ''} in collection`
-                }
+                {requestSummary}
               </div>
             </div>
           </div>
@@ -106,9 +127,9 @@ const Info = ({ collection }) => {
               <IconShare className="w-5 h-5" stroke={1.5} />
             </div>
             <div className="ml-4 h-full flex flex-col justify-start">
-              <div className="font-medium h-fit my-auto">Share</div>
+              <div className="font-medium h-fit my-auto">{t('COMMON.SHARE')}</div>
               <div className="group-hover:underline text-link">
-                Share Collection
+                {t('COLLECTION_SETTINGS.OVERVIEW.SHARE_COLLECTION')}
               </div>
             </div>
           </div>
@@ -119,9 +140,9 @@ const Info = ({ collection }) => {
               <IconBook className="w-5 h-5" stroke={1.5} />
             </div>
             <div className="ml-4 h-full flex flex-col justify-start">
-              <div className="font-medium h-fit my-auto">Documentation</div>
+              <div className="font-medium h-fit my-auto">{t('COMMON.DOCUMENTATION')}</div>
               <div className="group-hover:underline text-link">
-                Generate Docs
+                {t('COLLECTION_SETTINGS.OVERVIEW.GENERATE_DOCS')}
               </div>
             </div>
           </div>

@@ -14,10 +14,12 @@ import OAuth2 from './OAuth2';
 import NTLMAuth from './NTLMAuth';
 import OAuth1 from './Oauth1';
 import Button from 'ui/Button';
+import { useTranslation } from 'react-i18next';
 
 const Auth = ({ collection }) => {
   const authMode = collection.draft?.root ? get(collection, 'draft.root.request.auth.mode') : get(collection, 'root.request.auth.mode');
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleSave = () => dispatch(saveCollectionSettings(collection.uid));
 
@@ -56,8 +58,7 @@ const Auth = ({ collection }) => {
   return (
     <StyledWrapper className="w-full h-full">
       <div className="text-xs mb-4 text-muted">
-        Configures authentication for the entire collection. This applies to all requests using the{' '}
-        <span className="font-medium">Inherit</span> option in the <span className="font-medium">Auth</span> tab.
+        {t('COLLECTION_SETTINGS.AUTH.DESCRIPTION')}
       </div>
       <div className="flex flex-grow justify-start items-center">
         <AuthMode collection={collection} />
@@ -65,7 +66,7 @@ const Auth = ({ collection }) => {
       {getAuthView()}
       <div className="mt-6">
         <Button type="submit" size="sm" onClick={handleSave}>
-          Save
+          {t('COMMON.SAVE')}
         </Button>
       </div>
     </StyledWrapper>
