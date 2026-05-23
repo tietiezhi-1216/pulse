@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: Release tag, for example v2.0.0
+        description: Release tag, for example v1.0.0
         required: true
         type: string
       prerelease:
@@ -87,6 +87,9 @@ jobs:
 
       - name: Build Electron package
         run: pnpm build:electron
+
+      - name: Verify Electron app runtime dependencies
+        run: pnpm check:electron-asar
 
       - name: Build Linux deb and rpm packages
         if: matrix.name == 'Linux'

@@ -10,6 +10,9 @@ const readJson = (relativePath) => JSON.parse(readFileSync(path.join(repoRoot, r
 const rootPackage = readJson('package.json');
 const electronPackage = readJson('packages/bruno-electron/package.json');
 const appPackage = readJson('packages/bruno-app/package.json');
+const buildElectronScript = readFileSync(path.join(repoRoot, 'scripts/build-electron.js'), 'utf8');
+const buildElectronShellScript = readFileSync(path.join(repoRoot, 'scripts/build-electron.sh'), 'utf8');
+const releaseWorkflow = readFileSync(path.join(repoRoot, '.github/workflows/release.yml'), 'utf8');
 
 const workspacePackagePaths = new Map([
   ['@usebruno/common', 'packages/bruno-common/package.json'],
@@ -53,4 +56,25 @@ test('Electron runtime workspace packages with dist entrypoints are built before
       `${name} must be included in build:workspace-libs so Electron releases contain its dist files`
     );
   }
+});
+
+test('Electron packaging materializes pnpm runtime dependencies before building installers', () => {
+  assert.match(
+    buildElectronScript,
+    /materialize-electron-runtime-deps\.mjs/,
+    'scripts/build-electron.js must materialize pnpm runtime dependencies before electron-builder runs'
+  );
+  assert.match(
+    buildElectronShellScript,
+    /materialize-electron-runtime-deps\.mjs/,
+    'scripts/build-electron.sh must materialize pnpm runtime dependencies before electron-builder runs'
+  );
+});
+
+test('Release workflow verifies packaged app.asar runtime dependencies before publishing artifacts', () => {
+  assert.match(
+    releaseWorkflow,
+    /pnpm check:electron-asar/,
+    'release workflow must inspect built app.asar files before uploading desktop artifacts'
+  );
 });

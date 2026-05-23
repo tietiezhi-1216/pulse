@@ -115,6 +115,7 @@ async function main() {
 
     // Run pnpm dist command
     console.log('Building the Electron distribution');
+    await execCommandWithOutput('node ./scripts/materialize-electron-runtime-deps.mjs');
 
     // Determine the OS and set the appropriate argument
     let osArg;

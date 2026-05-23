@@ -34,7 +34,7 @@ body:
     attributes:
       label: Pulse 版本
       description: 请填写出现问题的 Pulse 版本或 commit hash。
-      placeholder: 2.0.0 / 5891e2896
+      placeholder: 1.0.0 / 5891e2896
     validations:
       required: true
 

@@ -71,7 +71,7 @@ open /Applications/Pulse.app
 如果还没有安装，只是下载了 DMG，也可以先解除 DMG 的 quarantine 标记：
 
 ```bash
-xattr -d com.apple.quarantine ~/Downloads/pulse_2.0.1_arm64_mac.dmg
+xattr -d com.apple.quarantine ~/Downloads/pulse_1.0.0_arm64_mac.dmg
 ```
 
 后续发布流程会补齐 macOS 签名和公证，减少首次安装时的系统拦截。

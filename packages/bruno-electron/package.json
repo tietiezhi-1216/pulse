@@ -1,5 +1,5 @@
 {
-  "version": "2.0.1",
+  "version": "1.0.0",
   "name": "pulse",
   "description": "AI-ready, local-first API client forked from Bruno",
   "homepage": "https://github.com/pulse-api/pulse",
@@ -79,10 +79,8 @@
     "uuid": "^10.0.0",
     "yup": "^0.32.11"
   },
-  "optionalDependencies": {
-    "dmg-license": "^1.0.11"
-  },
   "devDependencies": {
+    "dmg-license": "^1.0.11",
     "electron": "~37.6.1",
     "electron-builder": "^24.13.3",
     "electron-devtools-installer": "^4.0.0"

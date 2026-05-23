@@ -23,6 +23,8 @@ sed -i'' -e 's@/static/font@../../static/font@g' packages/bruno-electron/web/sta
 # Remove sourcemaps
 find packages/bruno-electron/web -name '*.map' -type f -delete
 
+node ./scripts/materialize-electron-runtime-deps.mjs
+
 if [ "$1" == "snap" ]; then
   echo "Building snap distribution"
   pnpm --filter pulse dist:snap
