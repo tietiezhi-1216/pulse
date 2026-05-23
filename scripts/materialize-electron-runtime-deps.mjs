@@ -1,4 +1,4 @@
-import { execFileSync } from 'node:child_process';
+import { execSync } from 'node:child_process';
 import { existsSync, lstatSync, mkdirSync, readlinkSync, symlinkSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -6,7 +6,6 @@ import { fileURLToPath } from 'node:url';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const electronDir = path.join(repoRoot, 'packages/bruno-electron');
 const electronNodeModules = path.join(electronDir, 'node_modules');
-const pnpmCommand = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm';
 
 function normalizePath(filePath) {
   return path.resolve(filePath);
@@ -55,15 +54,11 @@ function linkDependency(name, targetPath) {
 function main() {
   mkdirSync(electronNodeModules, { recursive: true });
 
-  const listOutput = execFileSync(
-    pnpmCommand,
-    ['--filter', 'pulse', 'list', '--prod', '--depth', 'Infinity', '--json'],
-    {
-      cwd: repoRoot,
-      encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'inherit']
-    }
-  );
+  const listOutput = execSync('pnpm --filter pulse list --prod --depth Infinity --json', {
+    cwd: repoRoot,
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'inherit']
+  });
 
   const [pulsePackage] = JSON.parse(listOutput);
   if (!pulsePackage) {

@@ -75,11 +75,11 @@ test('Electron packaging materializes pnpm runtime dependencies before building 
   );
 });
 
-test('Electron runtime dependency materialization invokes pnpm cross-platform', () => {
+test('Electron runtime dependency materialization invokes pnpm through the shell', () => {
   assert.match(
     materializeRuntimeDepsScript,
-    /process\.platform === 'win32' \? 'pnpm\.cmd' : 'pnpm'/,
-    'runtime dependency materialization must use pnpm.cmd on Windows runners'
+    /execSync\('pnpm --filter pulse list --prod --depth Infinity --json'/,
+    'runtime dependency materialization must invoke pnpm through the shell for Windows runners'
   );
 });
 
