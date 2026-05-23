@@ -21,7 +21,7 @@
 
 ```md
 <p align="center">
-  <img src="./assets/brand/pulse-icon.svg" width="96" alt="Pulse Logo" />
+  <img src="./packages/bruno-app/public/pulse.svg" width="96" alt="Pulse Logo" />
 </p>
 
 <h1 align="center">Pulse</h1>
@@ -129,7 +129,7 @@ Pulse fork 自 Bruno。Bruno 采用 MIT License 发布，Pulse 保留原始版�
 Run:
 
 ```bash
-test -f assets/brand/pulse-icon.svg && test -f license.md
+test -f packages/bruno-app/public/pulse.svg && test -f license.md
 ```
 
 Expected: exit code `0`.

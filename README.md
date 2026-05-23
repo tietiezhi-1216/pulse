@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/brand/pulse-icon.svg" width="96" alt="Pulse Logo" />
+  <img src="./packages/bruno-app/public/pulse.svg" width="96" alt="Pulse Logo" />
 </p>
 
 <h1 align="center">Pulse</h1>

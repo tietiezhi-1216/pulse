@@ -10,7 +10,7 @@
 - `origin/main` 与本地 `main` 一致。
 - `upstream/*` 是 Bruno 原仓库的远程分支，不是 Pulse 自有分支。
 - 当前只有一个本地产品分支：`main`。
-- 项目已有 Pulse 图标资源：`assets/brand/pulse-icon.svg`、`packages/bruno-app/public/pulse.svg`、Electron 图标资源。
+- 项目已有 Pulse 白底图标资源：`packages/bruno-app/public/pulse.svg`、Electron 图标资源。
 
 ## README 方向
 
@@ -43,7 +43,7 @@ README 主体结构：
 使用仓库内现有 Pulse 图标，不依赖外部图片服务。README 顶部引用：
 
 ```md
-<img src="./assets/brand/pulse-icon.svg" width="96" alt="Pulse Logo" />
+<img src="./packages/bruno-app/public/pulse.svg" width="96" alt="Pulse Logo" />
 ```
 
 建议设置 GitHub 仓库元信息：

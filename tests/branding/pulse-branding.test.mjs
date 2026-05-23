@@ -31,7 +31,7 @@ test('about window presents Pulse as an independent fork', () => {
 
   assert.match(about, /<title>About Pulse<\/title>/);
   assert.match(about, /Pulse \$\{version\}/);
-  assert.match(about, /independent fork/i);
+  assert.match(about, /independent, multilingual API client/i);
   assert.doesNotMatch(about, /Bruno Software Inc/);
 });
 
@@ -42,14 +42,15 @@ test('root metadata and README describe Pulse without pretending to be Bruno off
 
   assert.match(rootPackage, /"name":\s*"pulse-api-client"/);
   assert.match(electronPackage, /"name":\s*"pulse"/);
-  assert.match(readme, /^# Pulse/m);
-  assert.match(readme, /fork of Bruno/i);
-  assert.match(readme, /not affiliated with or endorsed by Bruno/i);
+  assert.match(readme, /<h1 align="center">Pulse<\/h1>/);
+  assert.match(readme, /Pulse fork 自 Bruno/);
+  assert.match(readme, /不隶属于 Bruno，也不代表 Bruno 官方/);
 });
 
 test('Pulse icon assets exist for Electron packaging', () => {
   const requiredAssets = [
-    ['assets/brand/pulse-icon.svg', 1000],
+    ['packages/bruno-app/public/pulse.svg', 1000],
+    ['packages/bruno-electron/resources/icons/pulse.svg', 1000],
     ['packages/bruno-electron/resources/icons/png/16x16.png', 100],
     ['packages/bruno-electron/resources/icons/png/256x256.png', 1000],
     ['packages/bruno-electron/resources/icons/png/1024x1024.png', 1000],
