@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const electronDir = path.join(repoRoot, 'packages/bruno-electron');
 const electronNodeModules = path.join(electronDir, 'node_modules');
+const pnpmCommand = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm';
 
 function normalizePath(filePath) {
   return path.resolve(filePath);
@@ -55,7 +56,7 @@ function main() {
   mkdirSync(electronNodeModules, { recursive: true });
 
   const listOutput = execFileSync(
-    'pnpm',
+    pnpmCommand,
     ['--filter', 'pulse', 'list', '--prod', '--depth', 'Infinity', '--json'],
     {
       cwd: repoRoot,

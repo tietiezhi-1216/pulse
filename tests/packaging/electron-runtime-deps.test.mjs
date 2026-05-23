@@ -12,6 +12,10 @@ const electronPackage = readJson('packages/bruno-electron/package.json');
 const appPackage = readJson('packages/bruno-app/package.json');
 const buildElectronScript = readFileSync(path.join(repoRoot, 'scripts/build-electron.js'), 'utf8');
 const buildElectronShellScript = readFileSync(path.join(repoRoot, 'scripts/build-electron.sh'), 'utf8');
+const materializeRuntimeDepsScript = readFileSync(
+  path.join(repoRoot, 'scripts/materialize-electron-runtime-deps.mjs'),
+  'utf8'
+);
 const releaseWorkflow = readFileSync(path.join(repoRoot, '.github/workflows/release.yml'), 'utf8');
 
 const workspacePackagePaths = new Map([
@@ -68,6 +72,14 @@ test('Electron packaging materializes pnpm runtime dependencies before building 
     buildElectronShellScript,
     /materialize-electron-runtime-deps\.mjs/,
     'scripts/build-electron.sh must materialize pnpm runtime dependencies before electron-builder runs'
+  );
+});
+
+test('Electron runtime dependency materialization invokes pnpm cross-platform', () => {
+  assert.match(
+    materializeRuntimeDepsScript,
+    /process\.platform === 'win32' \? 'pnpm\.cmd' : 'pnpm'/,
+    'runtime dependency materialization must use pnpm.cmd on Windows runners'
   );
 });
 
