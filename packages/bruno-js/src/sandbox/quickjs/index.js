@@ -106,6 +106,7 @@ const executeQuickJsVmAsync = async ({ script: externalScript, context: external
 
     vm.evalCode(
       `
+        var buffer = { Buffer: globalThis.Buffer };
         (${bundledCode})()
         ${getRequireCode()}
       `
