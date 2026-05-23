@@ -1,68 +1,68 @@
-name: Bug Report
-description: File a bug report
+name: 缺陷反馈
+description: 报告 Pulse 中的错误或异常行为
 labels: ['bug']
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        感谢你帮助改进 Pulse。
 
-        Before submitting, please make sure you've searched existing issues:
-        👉 [Search existing issues](https://github.com/usebruno/bruno/issues?q=is%3Aissue)
+        提交前请先搜索已有 Issue，避免重复反馈：
+        👉 [搜索已有 Issue](https://github.com/tietiezhi-1216/pulse/issues?q=is%3Aissue)
 
   - type: checkboxes
     attributes:
-      label: 'I have checked the following:'
+      label: 提交前确认
       options:
-        - label: "I have searched existing issues and found nothing related to my issue."
+        - label: 我已经搜索已有 Issue，没有找到相同或高度相关的问题。
           required: true
 
   - type: checkboxes
     attributes:
-      label: 'This bug is:'
+      label: 问题影响
       options:
-        - label: making Bruno unusable for me
+        - label: 这个问题让我无法继续使用 Pulse。
           required: false
-        - label: slowing me down but I'm able to continue working
+        - label: 这个问题明显影响效率，但仍可继续工作。
           required: false
-        - label: annoying
+        - label: 这个问题轻微但需要修复。
           required: false
-        - label: this feature was working in a previous version but is broken in the current release.
+        - label: 这个功能曾经正常，现在版本出现回退。
           required: false
 
   - type: input
     attributes:
-      label: Bruno version
-      description: Please specify the version of Bruno you are using in which the issue occurs.
-      placeholder: 1.38.1
+      label: Pulse 版本
+      description: 请填写出现问题的 Pulse 版本或 commit hash。
+      placeholder: 2.0.0 / 5891e2896
     validations:
       required: true
 
   - type: input
     attributes:
-      label: Operating System
-      description: Information about the operating system the issue occurs on.
+      label: 操作系统
+      description: 请填写出现问题的系统信息。
       placeholder: Windows 11 26100.3037 / macOS 15.1 (24B83) / Linux 6.13.1
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: Describe the bug
-      description: A clear and concise description of the bug and how it's effecting your work along with steps to reproduce. 
+      label: 问题描述
+      description: 请清楚描述发生了什么、你期望发生什么，以及复现步骤。
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: .bru file to reproduce the bug
-      description: Attach your .bru file here that can reproduce the problem.
+      label: 可复现的 .bru 文件或集合片段
+      description: 如果问题与请求文件有关，请粘贴或附上可复现问题的内容。
     validations:
       required: false
 
   - type: textarea
     attributes:
-      label: Screenshots/Live demo link
-      description: Add some screenshots to help explain the problem.
+      label: 截图或录屏
+      description: 如果是界面问题，请附上截图、录屏或错误堆栈。
     validations:
-      required: true
+      required: false

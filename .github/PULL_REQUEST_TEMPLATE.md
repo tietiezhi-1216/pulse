@@ -1,18 +1,29 @@
-### Description
+## 变更说明
 
-<!-- Explain here the changes your PR introduces and text to help us understand the context of this change. -->
+请说明这次 PR 修改了什么，以及为什么需要这次修改。
 
-#### Contribution Checklist:
+## 类型
 
-- [ ] **I've used AI significantly to create this pull request**
-- [ ] **The pull request only addresses one issue or adds one feature.**
-- [ ] **The pull request does not introduce any breaking changes**
-- [ ] **I have added screenshots or gifs to help explain the change if applicable.**
-- [ ] **I have read the [contribution guidelines](https://github.com/usebruno/bruno/blob/main/contributing.md).**
-- [ ] **Create an issue and link to the pull request.**
+- [ ] 修复问题
+- [ ] 新功能
+- [ ] 文档
+- [ ] 国际化
+- [ ] 构建 / 工程配置
+- [ ] 其他
 
-Note: Keeping the PR small and focused helps make it easier to review and merge. If you have multiple changes you want to make, please consider submitting them as separate pull requests.
+## 检查清单
 
-#### Publishing to New Package Managers
+- [ ] 我确认这次改动范围聚焦，便于审查。
+- [ ] 我已经运行了相关测试或说明了无法运行的原因。
+- [ ] 如果改动涉及界面，我已附上截图或说明可见变化。
+- [ ] 如果新增文案，我已同步更新英文和简体中文翻译。
+- [ ] 我理解 Pulse fork 自 Bruno，并会保留必要的原始版权与许可证声明。
 
-Please see [here](../publishing.md) for more information.
+## 验证方式
+
+请填写你运行过的命令，例如：
+
+```bash
+node tests/i18n/pulse-i18n.test.mjs
+pnpm build:web
+```

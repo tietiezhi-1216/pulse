@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
-  - name: Discussions
-    url: https://github.com/usebruno/bruno/discussions
-    about: You can ask general questions or give feedback here.
-  - name: Discord Server
-    url: https://discord.com/invite/KgcZUncpjq
-    about: Join our Discord community to chat about Bruno.
+  - name: Pulse Discussions
+    url: https://github.com/tietiezhi-1216/pulse/discussions
+    about: 适合一般问题、想法讨论和使用反馈。
+  - name: Pulse Repository
+    url: https://github.com/tietiezhi-1216/pulse
+    about: 返回 Pulse 仓库首页，查看 README、路线图和开发说明。

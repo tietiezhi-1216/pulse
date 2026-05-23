@@ -1,36 +1,42 @@
-name: Feature Request
-description: Suggest an idea for this project.
+name: 功能建议
+description: 为 Pulse 提出新功能、改进或产品方向建议
 labels: ['enhancement']
 body:
   - type: checkboxes
     attributes:
-      label: 'I have checked the following:'
+      label: 提交前确认
       options:
-        - label: I've searched existing issues and found nothing related to my issue.
+        - label: 我已经搜索已有 Issue，没有找到相同或高度相关的建议。
           required: true
+
   - type: checkboxes
     attributes:
-      label: 'This feature'
+      label: 这个功能
       options:
-        - label: blocks me from using Bruno 
+        - label: 会解除我当前使用 Pulse 的阻碍。
           required: false
-        - label: would improve my quality of life in Bruno 
+        - label: 会明显改善 Pulse 的使用体验。
           required: false
-        - label: is something I've never seen an API client do before
+        - label: 是我希望 Pulse 区别于其他 API 客户端的独特能力。
           required: false
+        - label: 与中文化、国际化或 AI 辅助接口开发相关。
+          required: false
+
   - type: markdown
     attributes:
       value: |
-        Suggest an idea for this project.
+        请尽量说明使用场景，而不仅是功能名称。好的功能建议通常包含：谁会用、什么时候用、现在为什么不方便、希望 Pulse 如何改进。
+
   - type: textarea
     attributes:
-      label: Describe the feature you want to add, and how it would change your usage of Bruno 
-      description: A clear and concise description of the feature you want to be added.
+      label: 功能描述
+      description: 请描述你想添加或改进什么，以及它会如何改变你的使用方式。
     validations:
       required: true
+
   - type: textarea
     attributes:
-      label: Mockups or Images of the feature
-      description: Add some images to support your feature.
+      label: 参考截图、原型或链接
+      description: 如果有截图、草图、竞品参考或更完整的说明，请放在这里。
     validations:
       required: false
