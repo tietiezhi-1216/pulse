@@ -44,6 +44,38 @@ pnpm dev
 
 如果依赖下载较慢，可以按本机环境启用代理后再安装依赖。
 
+## 下载安装
+
+你可以在 GitHub Releases 下载当前发布版本：
+
+https://github.com/tietiezhi-1216/pulse/releases
+
+### macOS 提示应用已损坏
+
+当前 Pulse 的 macOS 安装包尚未接入 Apple Developer ID 签名和公证。从 GitHub 下载后，macOS 可能会给应用添加 `com.apple.quarantine` 标记，并提示“Pulse 已损坏，无法打开”。这通常不是安装包真的损坏，而是系统安全策略拦截。
+
+如果已经把 Pulse 拖到“应用程序”，可以执行：
+
+```bash
+sudo xattr -rd com.apple.quarantine /Applications/Pulse.app
+open /Applications/Pulse.app
+```
+
+如果仍然无法打开，可以进一步清理扩展属性：
+
+```bash
+sudo xattr -cr /Applications/Pulse.app
+open /Applications/Pulse.app
+```
+
+如果还没有安装，只是下载了 DMG，也可以先解除 DMG 的 quarantine 标记：
+
+```bash
+xattr -d com.apple.quarantine ~/Downloads/pulse_2.0.0_arm64_mac.dmg
+```
+
+后续发布流程会补齐 macOS 签名和公证，减少首次安装时的系统拦截。
+
 ## 开发与构建
 
 ```bash
