@@ -4,6 +4,7 @@ const config = {
   appId: 'app.pulse.client',
   productName: 'Pulse',
   electronVersion: '37.6.1',
+  npmRebuild: false,
   directories: {
     buildResources: 'resources',
     output: 'out'

@@ -12,6 +12,10 @@ const electronPackage = readJson('packages/bruno-electron/package.json');
 const appPackage = readJson('packages/bruno-app/package.json');
 const buildElectronScript = readFileSync(path.join(repoRoot, 'scripts/build-electron.js'), 'utf8');
 const buildElectronShellScript = readFileSync(path.join(repoRoot, 'scripts/build-electron.sh'), 'utf8');
+const electronBuilderConfig = readFileSync(
+  path.join(repoRoot, 'packages/bruno-electron/electron-builder-config.js'),
+  'utf8'
+);
 const materializeRuntimeDepsScript = readFileSync(
   path.join(repoRoot, 'scripts/materialize-electron-runtime-deps.mjs'),
   'utf8'
@@ -88,5 +92,13 @@ test('Release workflow verifies packaged app.asar runtime dependencies before pu
     releaseWorkflow,
     /pnpm check:electron-asar/,
     'release workflow must inspect built app.asar files before uploading desktop artifacts'
+  );
+});
+
+test('Electron builder does not rebuild package-manager native helper dependencies in CI', () => {
+  assert.match(
+    electronBuilderConfig,
+    /npmRebuild:\s*false/,
+    'electron-builder must not invoke pnpm native rebuild helpers during release packaging'
   );
 });
