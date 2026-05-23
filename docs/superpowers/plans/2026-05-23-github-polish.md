@@ -31,7 +31,7 @@
 </p>
 
 <p align="center">
-  <a href="./LICENSE.md"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg" /></a>
+  <a href="./license.md"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg" /></a>
   <img alt="pnpm" src="https://img.shields.io/badge/package-pnpm-F69220.svg" />
   <img alt="Electron" src="https://img.shields.io/badge/desktop-Electron-47848F.svg" />
   <img alt="中文优先" src="https://img.shields.io/badge/i18n-%E4%B8%AD%E6%96%87%E4%BC%98%E5%85%88-red.svg" />
@@ -129,7 +129,7 @@ Pulse fork 自 Bruno。Bruno 采用 MIT License 发布，Pulse 保留原始版�
 Run:
 
 ```bash
-test -f assets/brand/pulse-icon.svg && test -f LICENSE.md
+test -f assets/brand/pulse-icon.svg && test -f license.md
 ```
 
 Expected: exit code `0`.
