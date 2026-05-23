@@ -102,3 +102,11 @@ test('Electron builder does not rebuild package-manager native helper dependenci
     'electron-builder must not invoke pnpm native rebuild helpers during release packaging'
   );
 });
+
+test('Electron package keeps Windows certificate helper loader available at runtime', () => {
+  assert.equal(
+    electronPackage.dependencies?.bindings,
+    '1.5.0',
+    'bindings must be a direct Electron runtime dependency so Windows arm64 packages keep win-export-certificate-and-key usable'
+  );
+});
