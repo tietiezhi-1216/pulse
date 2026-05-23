@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, 'release/v*']
+  pull_request:
+    branches: [main, 'release/v*']
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node Dependencies
+        uses: ./.github/actions/common/setup-node-deps
+        with:
+          skip-build: 'true'
+
+      - name: Lint
+        run: pnpm lint
+        env:
+          ESLINT_PLUGIN_DIFF_COMMIT: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || 'main' }}
+
+      - name: Pulse branding tests
+        run: node tests/branding/pulse-branding.test.mjs
+
+      - name: Pulse i18n tests
+        run: node tests/i18n/pulse-i18n.test.mjs
+
+      - name: Build web app
+        run: pnpm build:web

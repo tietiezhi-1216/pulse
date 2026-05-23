@@ -1,0 +1,141 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag, for example v2.0.0
+        required: true
+        type: string
+      prerelease:
+        description: Mark this release as a prerelease
+        required: true
+        default: false
+        type: boolean
+  push:
+    tags:
+      - 'v*'
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    name: Validate Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node Dependencies
+        uses: ./.github/actions/common/setup-node-deps
+        with:
+          skip-build: 'true'
+
+      - name: Lint
+        run: pnpm lint
+        env:
+          ESLINT_PLUGIN_DIFF_COMMIT: main
+
+      - name: Pulse branding tests
+        run: node tests/branding/pulse-branding.test.mjs
+
+      - name: Pulse i18n tests
+        run: node tests/i18n/pulse-i18n.test.mjs
+
+      - name: Build web app
+        run: pnpm build:web
+
+  build:
+    name: Build ${{ matrix.name }}
+    needs: validate
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS
+            os: macos-latest
+            artifact: pulse-macos
+          - name: Windows
+            os: windows-latest
+            artifact: pulse-windows
+          - name: Linux
+            os: ubuntu-24.04
+            artifact: pulse-linux
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Linux packaging dependencies
+        if: matrix.name == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get --no-install-recommends install -y rpm
+
+      - name: Setup Node Dependencies
+        uses: ./.github/actions/common/setup-node-deps
+        with:
+          skip-build: 'true'
+
+      - name: Build Electron package
+        run: pnpm build:electron
+
+      - name: Build Linux deb and rpm packages
+        if: matrix.name == 'Linux'
+        run: |
+          pnpm --filter pulse dist:deb
+          pnpm --filter pulse dist:rpm
+
+      - name: Upload desktop artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ matrix.artifact }}
+          path: |
+            packages/bruno-electron/out/*.AppImage
+            packages/bruno-electron/out/*.deb
+            packages/bruno-electron/out/*.dmg
+            packages/bruno-electron/out/*.exe
+            packages/bruno-electron/out/*.rpm
+            packages/bruno-electron/out/*.zip
+            packages/bruno-electron/out/*.blockmap
+            packages/bruno-electron/out/latest*.yml
+          if-no-files-found: error
+          retention-days: 14
+
+  publish:
+    name: Publish GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Download desktop artifacts
+        uses: actions/download-artifact@v6
+        with:
+          path: release-assets
+
+      - name: Create release notes
+        run: |
+          cat > RELEASE_NOTES.md <<'EOF'
+          Pulse 首个公开版本。
+
+          - 独立 Pulse 品牌和白底红色脉搏图标
+          - 中文优先界面和语言设置
+          - 本地优先 API 集合、脚本、测试和文档工作流
+          - macOS、Windows、Linux 桌面安装包
+          EOF
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+          name: Pulse ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+          body_path: RELEASE_NOTES.md
+          prerelease: ${{ github.event_name == 'workflow_dispatch' && inputs.prerelease || false }}
+          files: release-assets/**/*

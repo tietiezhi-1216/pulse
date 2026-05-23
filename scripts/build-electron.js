@@ -1,7 +1,6 @@
 const os = require('os');
 const fs = require('fs-extra');
-const util = require('util');
-const spawn = util.promisify(require('child_process').spawn);
+const { spawn } = require('child_process');
 const path = require('path');
 
 async function deleteFileIfExists(filePath) {
@@ -48,11 +47,12 @@ async function removeSourceMapFiles(directory) {
 }
 
 async function execCommandWithOutput(command) {
-  return new Promise(async (resolve, reject) => {
-    const childProcess = await spawn(command, {
+  return new Promise((resolve, reject) => {
+    const childProcess = spawn(command, {
       stdio: 'inherit',
       shell: true
     });
+
     childProcess.on('error', (error) => {
       reject(error);
     });
@@ -129,6 +129,7 @@ async function main() {
     await execCommandWithOutput(`pnpm --filter pulse dist:${osArg}`);
   } catch (error) {
     console.error('An error occurred:', error);
+    process.exitCode = 1;
   }
 }
 
