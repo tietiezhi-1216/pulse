@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.0.1",
   "name": "pulse",
   "description": "AI-ready, local-first API client forked from Bruno",
   "homepage": "https://github.com/pulse-api/pulse",

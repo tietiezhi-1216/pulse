@@ -61,7 +61,7 @@
     "watch": "pnpm dev:watch",
     "dev:watch": "node ./scripts/dev-hot-reload.js",
     "dev:web": "pnpm --filter @usebruno/app dev",
-    "build:workspace-libs": "pnpm build:schema-types && pnpm build:bruno-common && pnpm build:bruno-converters && pnpm build:graphql-docs",
+    "build:workspace-libs": "pnpm build:schema-types && pnpm build:bruno-common && pnpm build:bruno-requests && pnpm build:bruno-filestore && pnpm build:bruno-converters && pnpm build:graphql-docs",
     "build:web": "pnpm build:workspace-libs && pnpm --filter @usebruno/app build",
     "dev:electron": "pnpm --filter pulse dev",
     "dev:electron:debug": "pnpm --filter pulse debug",
