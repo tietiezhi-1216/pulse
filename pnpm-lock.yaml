@@ -34,7 +34,7 @@ importers:
         version: 1.60.0
       '@rollup/plugin-json':
         specifier: ^6.1.0
-        version: 6.1.0(rollup@3.30.0)
+        version: 6.1.0(rollup@4.60.4)
       '@storybook/addon-webpack5-compiler-babel':
         specifier: ^4.0.0
         version: 4.0.1(@rspack/core@1.7.11(@swc/helpers@0.5.21))(webpack@5.107.1)
@@ -557,17 +557,17 @@ importers:
         specifier: ^29.7.0
         version: 29.7.0
       '@rollup/plugin-commonjs':
-        specifier: ^23.0.2
-        version: 23.0.7(rollup@3.30.0)
+        specifier: ^29.0.2
+        version: 29.0.2(rollup@4.60.4)
       '@rollup/plugin-node-resolve':
-        specifier: ^15.0.1
-        version: 15.3.1(rollup@3.30.0)
+        specifier: ^16.0.3
+        version: 16.0.3(rollup@4.60.4)
       '@rollup/plugin-terser':
         specifier: ^1.0.0
-        version: 1.0.0(rollup@3.30.0)
+        version: 1.0.0(rollup@4.60.4)
       '@rollup/plugin-typescript':
-        specifier: ^12.1.2
-        version: 12.3.0(rollup@3.30.0)(tslib@2.8.1)(typescript@5.9.3)
+        specifier: ^12.3.0
+        version: 12.3.0(rollup@4.60.4)(tslib@2.8.1)(typescript@5.9.3)
       '@types/jest':
         specifier: ^29.5.14
         version: 29.5.14
@@ -593,14 +593,14 @@ importers:
         specifier: ^2.29.4
         version: 2.30.1
       rollup:
-        specifier: 3.30.0
-        version: 3.30.0
+        specifier: 4.60.4
+        version: 4.60.4
       rollup-plugin-dts:
-        specifier: ^5.0.0
-        version: 5.3.1(rollup@3.30.0)(typescript@5.9.3)
+        specifier: ^6.4.1
+        version: 6.4.1(rollup@4.60.4)(typescript@5.9.3)
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
-        version: 2.2.4(rollup@3.30.0)
+        version: 2.2.4(rollup@4.60.4)
       tslib:
         specifier: 2.8.1
         version: 2.8.1
@@ -642,20 +642,20 @@ importers:
         specifier: 0.9.1
         version: 0.9.1
       '@rollup/plugin-alias':
-        specifier: ^5.1.0
-        version: 5.1.1(rollup@3.30.0)
+        specifier: ^6.0.0
+        version: 6.0.0(rollup@4.60.4)
       '@rollup/plugin-commonjs':
-        specifier: ^23.0.2
-        version: 23.0.7(rollup@3.30.0)
+        specifier: ^29.0.2
+        version: 29.0.2(rollup@4.60.4)
       '@rollup/plugin-node-resolve':
-        specifier: ^15.0.1
-        version: 15.3.1(rollup@3.30.0)
+        specifier: ^16.0.3
+        version: 16.0.3(rollup@4.60.4)
       '@rollup/plugin-terser':
         specifier: ^1.0.0
-        version: 1.0.0(rollup@3.30.0)
+        version: 1.0.0(rollup@4.60.4)
       '@rollup/plugin-typescript':
-        specifier: ^9.0.2
-        version: 9.0.2(rollup@3.30.0)(tslib@2.8.1)(typescript@4.9.5)
+        specifier: ^12.3.0
+        version: 12.3.0(rollup@4.60.4)(tslib@2.8.1)(typescript@4.9.5)
       '@usebruno/schema-types':
         specifier: 0.0.1
         version: link:../bruno-schema-types
@@ -669,14 +669,14 @@ importers:
         specifier: ^5.0.7
         version: 5.0.10
       rollup:
-        specifier: 3.30.0
-        version: 3.30.0
+        specifier: 4.60.4
+        version: 4.60.4
       rollup-plugin-dts:
-        specifier: ^5.0.0
-        version: 5.3.1(rollup@3.30.0)(typescript@4.9.5)
+        specifier: ^6.4.1
+        version: 6.4.1(rollup@4.60.4)(typescript@4.9.5)
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
-        version: 2.2.4(rollup@3.30.0)
+        version: 2.2.4(rollup@4.60.4)
       typescript:
         specifier: ^4.8.4
         version: 4.9.5
@@ -871,20 +871,20 @@ importers:
         specifier: ^7.22.0
         version: 7.28.5(@babel/core@7.29.0)
       '@rollup/plugin-commonjs':
-        specifier: ^23.0.2
-        version: 23.0.7(rollup@3.30.0)
+        specifier: ^29.0.2
+        version: 29.0.2(rollup@4.60.4)
       '@rollup/plugin-json':
         specifier: ^6.1.0
-        version: 6.1.0(rollup@3.30.0)
+        version: 6.1.0(rollup@4.60.4)
       '@rollup/plugin-node-resolve':
-        specifier: ^15.0.1
-        version: 15.3.1(rollup@3.30.0)
+        specifier: ^16.0.3
+        version: 16.0.3(rollup@4.60.4)
       '@rollup/plugin-terser':
         specifier: ^1.0.0
-        version: 1.0.0(rollup@3.30.0)
+        version: 1.0.0(rollup@4.60.4)
       '@rollup/plugin-typescript':
-        specifier: ^12.1.2
-        version: 12.3.0(rollup@3.30.0)(tslib@2.8.1)(typescript@4.9.5)
+        specifier: ^12.3.0
+        version: 12.3.0(rollup@4.60.4)(tslib@2.8.1)(typescript@4.9.5)
       '@types/jest':
         specifier: ^29.5.11
         version: 29.5.14
@@ -910,14 +910,14 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       rollup:
-        specifier: 3.30.0
-        version: 3.30.0
+        specifier: 4.60.4
+        version: 4.60.4
       rollup-plugin-dts:
-        specifier: ^5.0.0
-        version: 5.3.1(rollup@3.30.0)(typescript@4.9.5)
+        specifier: ^6.4.1
+        version: 6.4.1(rollup@4.60.4)(typescript@4.9.5)
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
-        version: 2.2.4(rollup@3.30.0)
+        version: 2.2.4(rollup@4.60.4)
       typescript:
         specifier: ^4.8.4
         version: 4.9.5
@@ -925,17 +925,17 @@ importers:
   packages/bruno-graphql-docs:
     devDependencies:
       '@rollup/plugin-commonjs':
-        specifier: ^23.0.2
-        version: 23.0.7(rollup@3.30.0)
+        specifier: ^29.0.2
+        version: 29.0.2(rollup@4.60.4)
       '@rollup/plugin-node-resolve':
-        specifier: ^15.0.1
-        version: 15.3.1(rollup@3.30.0)
+        specifier: ^16.0.3
+        version: 16.0.3(rollup@4.60.4)
       '@rollup/plugin-terser':
         specifier: ^1.0.0
-        version: 1.0.0(rollup@3.30.0)
+        version: 1.0.0(rollup@4.60.4)
       '@rollup/plugin-typescript':
-        specifier: ^9.0.2
-        version: 9.0.2(rollup@3.30.0)(tslib@2.8.1)(typescript@4.9.5)
+        specifier: ^12.3.0
+        version: 12.3.0(rollup@4.60.4)(tslib@2.8.1)(typescript@4.9.5)
       '@types/markdown-it':
         specifier: ^12.2.3
         version: 12.2.3
@@ -958,14 +958,14 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@19.0.0)
       rollup:
-        specifier: 3.30.0
-        version: 3.30.0
+        specifier: 4.60.4
+        version: 4.60.4
       rollup-plugin-dts:
-        specifier: ^5.0.0
-        version: 5.3.1(rollup@3.30.0)(typescript@4.9.5)
+        specifier: ^6.4.1
+        version: 6.4.1(rollup@4.60.4)(typescript@4.9.5)
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
-        version: 2.2.4(rollup@3.30.0)
+        version: 2.2.4(rollup@4.60.4)
       rollup-plugin-postcss:
         specifier: ^4.0.2
         version: 4.0.2(postcss@8.4.47)
@@ -1055,20 +1055,20 @@ importers:
         version: 2.9.0
     devDependencies:
       '@rollup/plugin-commonjs':
-        specifier: ^23.0.2
-        version: 23.0.7(rollup@3.30.0)
+        specifier: ^29.0.2
+        version: 29.0.2(rollup@4.60.4)
       '@rollup/plugin-json':
         specifier: ^6.0.0
-        version: 6.1.0(rollup@3.30.0)
+        version: 6.1.0(rollup@4.60.4)
       '@rollup/plugin-node-resolve':
-        specifier: ^15.0.1
-        version: 15.3.1(rollup@3.30.0)
+        specifier: ^16.0.3
+        version: 16.0.3(rollup@4.60.4)
       '@rollup/plugin-terser':
         specifier: ^1.0.0
-        version: 1.0.0(rollup@3.30.0)
+        version: 1.0.0(rollup@4.60.4)
       rollup:
-        specifier: 3.30.0
-        version: 3.30.0
+        specifier: 4.60.4
+        version: 4.60.4
 
   packages/bruno-lang:
     dependencies:
@@ -1088,26 +1088,26 @@ importers:
   packages/bruno-query:
     devDependencies:
       '@rollup/plugin-commonjs':
-        specifier: ^23.0.2
-        version: 23.0.7(rollup@3.30.0)
+        specifier: ^29.0.2
+        version: 29.0.2(rollup@4.60.4)
       '@rollup/plugin-node-resolve':
-        specifier: ^15.0.1
-        version: 15.3.1(rollup@3.30.0)
+        specifier: ^16.0.3
+        version: 16.0.3(rollup@4.60.4)
       '@rollup/plugin-terser':
         specifier: ^1.0.0
-        version: 1.0.0(rollup@3.30.0)
+        version: 1.0.0(rollup@4.60.4)
       '@rollup/plugin-typescript':
-        specifier: ^9.0.2
-        version: 9.0.2(rollup@3.30.0)(tslib@2.8.1)(typescript@4.9.5)
+        specifier: ^12.3.0
+        version: 12.3.0(rollup@4.60.4)(tslib@2.8.1)(typescript@4.9.5)
       rollup:
-        specifier: 3.30.0
-        version: 3.30.0
+        specifier: 4.60.4
+        version: 4.60.4
       rollup-plugin-dts:
-        specifier: ^5.0.0
-        version: 5.3.1(rollup@3.30.0)(typescript@4.9.5)
+        specifier: ^6.4.1
+        version: 6.4.1(rollup@4.60.4)(typescript@4.9.5)
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
-        version: 2.2.4(rollup@3.30.0)
+        version: 2.2.4(rollup@4.60.4)
       typescript:
         specifier: ^4.8.4
         version: 4.9.5
@@ -1188,23 +1188,23 @@ importers:
         specifier: ^7.22.0
         version: 7.28.5(@babel/core@7.29.0)
       '@rollup/plugin-alias':
-        specifier: ^5.1.1
-        version: 5.1.1(rollup@3.30.0)
+        specifier: ^6.0.0
+        version: 6.0.0(rollup@4.60.4)
       '@rollup/plugin-commonjs':
-        specifier: ^23.0.2
-        version: 23.0.7(rollup@3.30.0)
+        specifier: ^29.0.2
+        version: 29.0.2(rollup@4.60.4)
       '@rollup/plugin-json':
         specifier: ^6.1.0
-        version: 6.1.0(rollup@3.30.0)
+        version: 6.1.0(rollup@4.60.4)
       '@rollup/plugin-node-resolve':
-        specifier: ^15.0.1
-        version: 15.3.1(rollup@3.30.0)
+        specifier: ^16.0.3
+        version: 16.0.3(rollup@4.60.4)
       '@rollup/plugin-terser':
         specifier: ^1.0.0
-        version: 1.0.0(rollup@3.30.0)
+        version: 1.0.0(rollup@4.60.4)
       '@rollup/plugin-typescript':
-        specifier: ^9.0.2
-        version: 9.0.2(rollup@3.30.0)(tslib@2.8.1)(typescript@4.9.5)
+        specifier: ^12.3.0
+        version: 12.3.0(rollup@4.60.4)(tslib@2.8.1)(typescript@4.9.5)
       '@types/jest':
         specifier: ^29.5.11
         version: 29.5.14
@@ -1218,14 +1218,14 @@ importers:
         specifier: ^29.2.0
         version: 29.7.0(@types/node@22.19.19)
       rollup:
-        specifier: 3.30.0
-        version: 3.30.0
+        specifier: 4.60.4
+        version: 4.60.4
       rollup-plugin-dts:
-        specifier: ^5.0.0
-        version: 5.3.1(rollup@3.30.0)(typescript@4.9.5)
+        specifier: ^6.4.1
+        version: 6.4.1(rollup@4.60.4)(typescript@4.9.5)
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
-        version: 2.2.4(rollup@3.30.0)
+        version: 2.2.4(rollup@4.60.4)
       typescript:
         specifier: ^4.8.4
         version: 4.9.5
@@ -1446,6 +1446,10 @@ packages:
     resolution: {integrity: sha512-9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/code-frame@7.29.7':
+    resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/compat-data@7.29.3':
     resolution: {integrity: sha512-LIVqM46zQWZhj17qA8wb4nW/ixr2y1Nw+r1etiAWgRM6U1IqP+LNhL1yg440jYZR72jCWcWbLWzIosH+uP1fqg==}
     engines: {node: '>=6.9.0'}
@@ -1531,6 +1535,10 @@ packages:
 
   '@babel/helper-validator-identifier@7.28.5':
     resolution: {integrity: sha512-qSs4ifwzKJSV39ucNjsvc6WVHs6b7S03sOh2OcHF9UHfVPqWWALUsNUVzhSBiItjRZoLHx7nIarVjqKVusUZ1Q==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/helper-validator-identifier@7.29.7':
+    resolution: {integrity: sha512-qehxGkRj55h/ff8EMaJ+cYhyaKlHIxqYDn682wQD7RNp9UujOQsHog2uS0r2vzr4pW+sXf90NeeayjcNaX3fFg==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-option@7.27.1':
@@ -3547,20 +3555,20 @@ packages:
   '@repeaterjs/repeater@3.0.6':
     resolution: {integrity: sha512-Javneu5lsuhwNCryN+pXH93VPQ8g0dBX7wItHFgYiwQmzE1sVdg5tWHiOgHywzL2W21XQopa7IwIEnNbmeUJYA==}
 
-  '@rollup/plugin-alias@5.1.1':
-    resolution: {integrity: sha512-PR9zDb+rOzkRb2VD+EuKB7UC41vU5DIwZ5qqCpk0KJudcWAyi8rvYOhS7+L5aZCspw1stTViLgN5v6FF1p5cgQ==}
-    engines: {node: '>=14.0.0'}
+  '@rollup/plugin-alias@6.0.0':
+    resolution: {integrity: sha512-tPCzJOtS7uuVZd+xPhoy5W4vThe6KWXNmsFCNktaAh5RTqcLiSfT4huPQIXkgJ6YCOjJHvecOAzQxLFhPxKr+g==}
+    engines: {node: '>=20.19.0'}
     peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+      rollup: '>=4.0.0'
     peerDependenciesMeta:
       rollup:
         optional: true
 
-  '@rollup/plugin-commonjs@23.0.7':
-    resolution: {integrity: sha512-hsSD5Qzyuat/swzrExGG5l7EuIlPhwTsT7KwKbSCQzIcJWjRxiimi/0tyMYY2bByitNb3i1p+6JWEDGa0NvT0Q==}
-    engines: {node: '>=14.0.0'}
+  '@rollup/plugin-commonjs@29.0.2':
+    resolution: {integrity: sha512-S/ggWH1LU7jTyi9DxZOKyxpVd4hF/OZ0JrEbeLjXk/DFXwRny0tjD2c992zOUYQobLrVkRVMDdmHP16HKP7GRg==}
+    engines: {node: '>=16.0.0 || 14 >= 14.17'}
     peerDependencies:
-      rollup: ^2.68.0||^3.0.0
+      rollup: ^2.68.0||^3.0.0||^4.0.0
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -3574,8 +3582,8 @@ packages:
       rollup:
         optional: true
 
-  '@rollup/plugin-node-resolve@15.3.1':
-    resolution: {integrity: sha512-tgg6b91pAybXHJQMAAwW9VuWBO6Thi+q7BCNARLwSqlmsHz0XYURtGvh/AuwSADXSI4h/2uHbs7s4FzlZDGSGA==}
+  '@rollup/plugin-node-resolve@16.0.3':
+    resolution: {integrity: sha512-lUYM3UBGuM93CnMPG1YocWu7X802BrNF3jW2zny5gQyLQgRFJhV1Sq0Zi74+dh/6NBx1DxFC4b4GXg9wUCG5Qg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.78.0||^3.0.0||^4.0.0
@@ -3605,19 +3613,6 @@ packages:
       tslib:
         optional: true
 
-  '@rollup/plugin-typescript@9.0.2':
-    resolution: {integrity: sha512-/sS93vmHUMjzDUsl5scNQr1mUlNE1QjBBvOhmRwJCH8k2RRhDIm3c977B3wdu3t3Ap17W6dDeXP3hj1P1Un1bA==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^2.14.0||^3.0.0
-      tslib: '*'
-      typescript: '>=3.7.0'
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-      tslib:
-        optional: true
-
   '@rollup/pluginutils@5.3.0':
     resolution: {integrity: sha512-5EdhGZtnu3V88ces7s53hhfK5KSASnJZv8Lulpc04cWO3REESroJXg73DFsOmgbU2BhwV0E20bu2IDZb3VKW4Q==}
     engines: {node: '>=14.0.0'}
@@ -3626,6 +3621,153 @@ packages:
     peerDependenciesMeta:
       rollup:
         optional: true
+
+  '@rollup/pluginutils@5.4.0':
+    resolution: {integrity: sha512-MfPp06CjRLfXQ3wY0R8vJDYBy/MvVcc9OulEfR0B8Iv9ko+GCNaRZ+EpJYFl27LhKsZK0o420sYCRHCjfCgeUg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
+  '@rollup/rollup-android-arm-eabi@4.60.4':
+    resolution: {integrity: sha512-F5QXMSiFebS9hKZj02XhWLLnRpJ3B3AROP0tWbFBSj+6kCbg5m9j5JoHKd4mmSVy5mS/IMQloYgYxCuJC0fxEQ==}
+    cpu: [arm]
+    os: [android]
+
+  '@rollup/rollup-android-arm64@4.60.4':
+    resolution: {integrity: sha512-GxxTKApUpzRhof7poWvCJHRF51C67u1R7D6DiluBE8wKU1u5GWE8t+v81JvJYtbawoBFX1hLv5Ei4eVjkWokaw==}
+    cpu: [arm64]
+    os: [android]
+
+  '@rollup/rollup-darwin-arm64@4.60.4':
+    resolution: {integrity: sha512-tua0TaJxMOB1R0V0RS1jFZ/RpURFDJIOR2A6jWwQeawuFyS4gBW+rntLRaQd0EQ4bd6Vp44Z2rXW+YYDBsj6IA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@rollup/rollup-darwin-x64@4.60.4':
+    resolution: {integrity: sha512-CSKq7MsP+5PFIcydhAiR1K0UhEI1A2jWXVKHPCBZ151yOutENwvnPocgVHkivu2kviURtCEB6zUQw0vs8RrhMg==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@rollup/rollup-freebsd-arm64@4.60.4':
+    resolution: {integrity: sha512-+O8OkVdyvXMtJEciu2wS/pzm1IxntEEQx3z5TAVy4l32G0etZn+RsA48ARRrFm6Ri8fvqPQfgrvNxSjKAbnd3g==}
+    cpu: [arm64]
+    os: [freebsd]
+
+  '@rollup/rollup-freebsd-x64@4.60.4':
+    resolution: {integrity: sha512-Iw3oMskH3AfNuhU0MSN7vNbdi4me/NiYo2azqPz/Le16zHSa+3RRmliCMWWQmh4lcndccU40xcJuTYJZxNo/lw==}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@rollup/rollup-linux-arm-gnueabihf@4.60.4':
+    resolution: {integrity: sha512-EIPRXTVQpHyF8WOo219AD2yEltPehLTcTMz2fn6JsatLYSzQf00hj3rulF+yauOlF9/FtM2WpkT/hJh/KJFGhA==}
+    cpu: [arm]
+    os: [linux]
+    libc: [glibc]
+
+  '@rollup/rollup-linux-arm-musleabihf@4.60.4':
+    resolution: {integrity: sha512-J3Yh9PzzF1Ovah2At+lHiGQdsYgArxBbXv/zHfSyaiFQEqvNv7DcW98pCrmdjCZBrqBiKrKKe2V+aaSGWuBe/w==}
+    cpu: [arm]
+    os: [linux]
+    libc: [musl]
+
+  '@rollup/rollup-linux-arm64-gnu@4.60.4':
+    resolution: {integrity: sha512-BFDEZMYfUvLn37ONE1yMBojPxnMlTFsdyNoqncT0qFq1mAfllL+ATMMJd8TeuVMiX84s1KbcxcZbXInmcO2mRg==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@rollup/rollup-linux-arm64-musl@4.60.4':
+    resolution: {integrity: sha512-pc9EYOSlOgdQ2uPl1o9PF6/kLSgaUosia7gOuS8mB69IxJvlclko1MECXysjs5ryez1/5zjYqx3+xYU0TU6R1A==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@rollup/rollup-linux-loong64-gnu@4.60.4':
+    resolution: {integrity: sha512-NxnomyxYerDh5n4iLrNa+sH+Z+U4BMEE46V2PgQ/hoB909i8gV1M5wPojWg9fk1jWpO3IQnOs20K4wyZuFLEFQ==}
+    cpu: [loong64]
+    os: [linux]
+    libc: [glibc]
+
+  '@rollup/rollup-linux-loong64-musl@4.60.4':
+    resolution: {integrity: sha512-nbJnQ8a3z1mtmrwImCYhc6BGpThAyYVRQxw9uKSKG4wR6aAYno9sVjJ0zaZcW9BPJX1GbrDPf+SvdWjgTuDmnw==}
+    cpu: [loong64]
+    os: [linux]
+    libc: [musl]
+
+  '@rollup/rollup-linux-ppc64-gnu@4.60.4':
+    resolution: {integrity: sha512-2EU6acNrQLd8tYvo/LXW535wupT3m6fo7HKo6lr7ktQoItxTyOL1ZCR/GfGCuXl2vR+zmfI6eRXkSemafv+iVg==}
+    cpu: [ppc64]
+    os: [linux]
+    libc: [glibc]
+
+  '@rollup/rollup-linux-ppc64-musl@4.60.4':
+    resolution: {integrity: sha512-WeBtoMuaMxiiIrO2IYP3xs6GMWkJP2C0EoT8beTLkUPmzV1i/UcOSVw1d5r9KBODtHKilG5yFxsGRnBbK3wJ4A==}
+    cpu: [ppc64]
+    os: [linux]
+    libc: [musl]
+
+  '@rollup/rollup-linux-riscv64-gnu@4.60.4':
+    resolution: {integrity: sha512-FJHFfqpKUI3A10WrWKiFbBZ7yVbGT4q4B5o1qKFFojqpaYoh9LrQgqWCmmcxQzVSXYtyB5bzkXrYzlHTs21MYA==}
+    cpu: [riscv64]
+    os: [linux]
+    libc: [glibc]
+
+  '@rollup/rollup-linux-riscv64-musl@4.60.4':
+    resolution: {integrity: sha512-mcEl6CUT5IAUmQf1m9FYSmVqCJlpQ8r8eyftFUHG8i9OhY7BkBXSUdnLH5DOf0wCOjcP9v/QO93zpmF1SptCCw==}
+    cpu: [riscv64]
+    os: [linux]
+    libc: [musl]
+
+  '@rollup/rollup-linux-s390x-gnu@4.60.4':
+    resolution: {integrity: sha512-ynt3JxVd2w2buzoKDWIyiV1pJW93xlQic1THVLXilz429oijRpSHivZAgp65KBu+cMcgf1eVVjdnTLvPxgCuoQ==}
+    cpu: [s390x]
+    os: [linux]
+    libc: [glibc]
+
+  '@rollup/rollup-linux-x64-gnu@4.60.4':
+    resolution: {integrity: sha512-Boiz5+MsaROEWDf+GGEwF8VMHGhlUoQMtIPjOgA5fv4osupqTVnJteQNKJwUcnUog2G55jYXH7KZFFiJe0TEzQ==}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@rollup/rollup-linux-x64-musl@4.60.4':
+    resolution: {integrity: sha512-+qfSY27qIrFfI/Hom04KYFw3GKZSGU4lXus51wsb5EuySfFlWRwjkKWoE9emgRw/ukoT4Udsj4W/+xxG8VbPKg==}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@rollup/rollup-openbsd-x64@4.60.4':
+    resolution: {integrity: sha512-VpTfOPHgVXEBeeR8hZ2O0F3aSso+JDWqTWmTmzcQKted54IAdUVbxE+j/MVxUsKa8L20HJhv3vUezVPoquqWjA==}
+    cpu: [x64]
+    os: [openbsd]
+
+  '@rollup/rollup-openharmony-arm64@4.60.4':
+    resolution: {integrity: sha512-IPOsh5aRYuLv/nkU51X10Bf75Bsf6+gZdx1X+QP5QM6lIJFHHqbHLG0uJn/hWthzo13UAc2umiUorqZy3axoZg==}
+    cpu: [arm64]
+    os: [openharmony]
+
+  '@rollup/rollup-win32-arm64-msvc@4.60.4':
+    resolution: {integrity: sha512-4QzE9E81OohJ/HKzHhsqU+zcYYojVOXlFMs1DdyMT6qXl/niOH7AVElmmEdUNHHS/oRkc++d5k6Vy85zFs0DEw==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@rollup/rollup-win32-ia32-msvc@4.60.4':
+    resolution: {integrity: sha512-zTPgT1YuHHcd+Tmx7h8aml0FWFVelV5N54oHow9SLj+GfoDy/huQ+UV396N/C7KpMDMiPspRktzM1/0r1usYEA==}
+    cpu: [ia32]
+    os: [win32]
+
+  '@rollup/rollup-win32-x64-gnu@4.60.4':
+    resolution: {integrity: sha512-DRS4G7mi9lJxqEDezIkKCaUIKCrLUUDCUaCsTPCi/rtqaC6D/jjwslMQyiDU50Ka0JKpeXeRBFBAXwArY52vBw==}
+    cpu: [x64]
+    os: [win32]
+
+  '@rollup/rollup-win32-x64-msvc@4.60.4':
+    resolution: {integrity: sha512-QVTUovf40zgTqlFVrKA1uXMVvU2QWEFWfAH8Wdc48IxLvrJMQVMBRjuQyUpzZCDkakImib9eVazbWlC6ksWtJw==}
+    cpu: [x64]
+    os: [win32]
 
   '@rsbuild/core@1.1.2':
     resolution: {integrity: sha512-HM2roS0z6gFDGIdJqA1suZHNa0zQ0sOcsII3DVs9LvdbweoaSLFNbRdpnYwZO479Ijzlec3jXGQMTlQBe/I0Sw==}
@@ -4270,6 +4412,9 @@ packages:
 
   '@types/doctrine@0.0.9':
     resolution: {integrity: sha512-eOIHzCUSH7SMfonMG1LsC2f8vxBFtho6NGBznK41R84YzPuvSBzrhEps33IsQiOW9+VL6NQ9DbjQJznk/S4uRA==}
+
+  '@types/estree@1.0.8':
+    resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
   '@types/estree@1.0.9':
     resolution: {integrity: sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg==}
@@ -6608,11 +6753,6 @@ packages:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
     deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
-  glob@8.1.0:
-    resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
-    engines: {node: '>=12'}
-    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-
   global-agent@3.0.0:
     resolution: {integrity: sha512-PT6XReJ+D07JvGoxQMkT6qji/jVNfX/h364XHZOWeRzy64sSFr+xJ5OX7LI3b4MPQzdL4H8Y8M0xzPpsVMwA8Q==}
     engines: {node: '>=10.0'}
@@ -6730,6 +6870,10 @@ packages:
 
   hasown@2.0.3:
     resolution: {integrity: sha512-ej4AhfhfL2Q2zpMmLo7U1Uv9+PyhIZpgQLGT1F9miIGmiCJIoCgSmczFdrc97mWT4kVY72KA+WnnhJ5pghSvSg==}
+    engines: {node: '>= 0.4'}
+
+  hasown@2.0.4:
+    resolution: {integrity: sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==}
     engines: {node: '>= 0.4'}
 
   hast-util-parse-selector@4.0.0:
@@ -7619,10 +7763,6 @@ packages:
   macos-export-certificate-and-key@1.2.4:
     resolution: {integrity: sha512-y5QZEywlBNKd+EhPZ1Hz1FmDbbeQKtuVHJaTlawdl7vXw9bi/4tJB2xSMwX4sMVcddy3gbQ8K0IqXAi2TpDo2g==}
     os: [darwin]
-
-  magic-string@0.27.0:
-    resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
-    engines: {node: '>=12'}
 
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
@@ -9152,12 +9292,12 @@ packages:
     resolution: {integrity: sha512-CHhPh+UNHD2GTXNYhPWLnU8ONHdI+5DI+4EYIAOaiD63rHeYlZvyh8P+in5999TTSFgUYuKUAjzRI4mdh/p+2A==}
     engines: {node: '>=8.0'}
 
-  rollup-plugin-dts@5.3.1:
-    resolution: {integrity: sha512-gusMi+Z4gY/JaEQeXnB0RUdU82h1kF0WYzCWgVmV4p3hWXqelaKuCvcJawfeg+EKn2T1Ie+YWF2OiN1/L8bTVg==}
-    engines: {node: '>=v14.21.3'}
+  rollup-plugin-dts@6.4.1:
+    resolution: {integrity: sha512-l//F3Zf7ID5GoOfLfD8kroBjQKEKpy1qfhtAdnpibFZMffPaylrg1CoDC2vGkPeTeyxUe4bVFCln2EFuL7IGGg==}
+    engines: {node: '>=20'}
     peerDependencies:
-      rollup: ^3.0
-      typescript: ^4.1 || ^5.0
+      rollup: ^3.29.4 || ^4
+      typescript: ^4.5 || ^5.0 || ^6.0
 
   rollup-plugin-peer-deps-external@2.2.4:
     resolution: {integrity: sha512-AWdukIM1+k5JDdAqV/Cxd+nejvno2FVLVeZ74NKggm3Q5s9cbbcOgUPGdbxPi4BXu7xGaZ8HG12F+thImYu/0g==}
@@ -9173,9 +9313,9 @@ packages:
   rollup-pluginutils@2.8.2:
     resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
 
-  rollup@3.30.0:
-    resolution: {integrity: sha512-kQvGasUgN+AlWGliFn2POSajRQEsULVYFGTvOZmK06d7vCD+YhZztt70kGk3qaeAXeWYL5eO7zx+rAubBc55eA==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
+  rollup@4.60.4:
+    resolution: {integrity: sha512-WHeFSbZYsPu3+bLoNRUuAO+wavNlocOPf3wSHTP7hcFKVnJeWsYlCDbr3mTS14FCizf9ccIxXA8sGL8zKeQN3g==}
+    engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
   run-applescript@7.1.0:
@@ -10834,6 +10974,12 @@ snapshots:
       js-tokens: 4.0.0
       picocolors: 1.1.1
 
+  '@babel/code-frame@7.29.7':
+    dependencies:
+      '@babel/helper-validator-identifier': 7.29.7
+      js-tokens: 4.0.0
+      picocolors: 1.1.1
+
   '@babel/compat-data@7.29.3': {}
 
   '@babel/core@7.29.0':
@@ -10966,6 +11112,8 @@ snapshots:
   '@babel/helper-string-parser@7.27.1': {}
 
   '@babel/helper-validator-identifier@7.28.5': {}
+
+  '@babel/helper-validator-identifier@7.29.7': {}
 
   '@babel/helper-validator-option@7.27.1': {}
 
@@ -13092,79 +13240,154 @@ snapshots:
 
   '@repeaterjs/repeater@3.0.6': {}
 
-  '@rollup/plugin-alias@5.1.1(rollup@3.30.0)':
+  '@rollup/plugin-alias@6.0.0(rollup@4.60.4)':
     optionalDependencies:
-      rollup: 3.30.0
+      rollup: 4.60.4
 
-  '@rollup/plugin-commonjs@23.0.7(rollup@3.30.0)':
+  '@rollup/plugin-commonjs@29.0.2(rollup@4.60.4)':
     dependencies:
-      '@rollup/pluginutils': 5.3.0(rollup@3.30.0)
+      '@rollup/pluginutils': 5.4.0(rollup@4.60.4)
       commondir: 1.0.1
       estree-walker: 2.0.2
-      glob: 8.1.0
+      fdir: 6.5.0(picomatch@4.0.4)
       is-reference: 1.2.1
-      magic-string: 0.27.0
+      magic-string: 0.30.21
+      picomatch: 4.0.4
     optionalDependencies:
-      rollup: 3.30.0
+      rollup: 4.60.4
 
-  '@rollup/plugin-json@6.1.0(rollup@3.30.0)':
+  '@rollup/plugin-json@6.1.0(rollup@4.60.4)':
     dependencies:
-      '@rollup/pluginutils': 5.3.0(rollup@3.30.0)
+      '@rollup/pluginutils': 5.3.0(rollup@4.60.4)
     optionalDependencies:
-      rollup: 3.30.0
+      rollup: 4.60.4
 
-  '@rollup/plugin-node-resolve@15.3.1(rollup@3.30.0)':
+  '@rollup/plugin-node-resolve@16.0.3(rollup@4.60.4)':
     dependencies:
-      '@rollup/pluginutils': 5.3.0(rollup@3.30.0)
+      '@rollup/pluginutils': 5.4.0(rollup@4.60.4)
       '@types/resolve': 1.20.2
       deepmerge: 4.3.1
       is-module: 1.0.0
       resolve: 1.22.12
     optionalDependencies:
-      rollup: 3.30.0
+      rollup: 4.60.4
 
-  '@rollup/plugin-terser@1.0.0(rollup@3.30.0)':
+  '@rollup/plugin-terser@1.0.0(rollup@4.60.4)':
     dependencies:
       serialize-javascript: 7.0.5
       smob: 1.6.2
       terser: 5.48.0
     optionalDependencies:
-      rollup: 3.30.0
+      rollup: 4.60.4
 
-  '@rollup/plugin-typescript@12.3.0(rollup@3.30.0)(tslib@2.8.1)(typescript@4.9.5)':
+  '@rollup/plugin-typescript@12.3.0(rollup@4.60.4)(tslib@2.8.1)(typescript@4.9.5)':
     dependencies:
-      '@rollup/pluginutils': 5.3.0(rollup@3.30.0)
+      '@rollup/pluginutils': 5.4.0(rollup@4.60.4)
       resolve: 1.22.12
       typescript: 4.9.5
     optionalDependencies:
-      rollup: 3.30.0
+      rollup: 4.60.4
       tslib: 2.8.1
 
-  '@rollup/plugin-typescript@12.3.0(rollup@3.30.0)(tslib@2.8.1)(typescript@5.9.3)':
+  '@rollup/plugin-typescript@12.3.0(rollup@4.60.4)(tslib@2.8.1)(typescript@5.9.3)':
     dependencies:
-      '@rollup/pluginutils': 5.3.0(rollup@3.30.0)
+      '@rollup/pluginutils': 5.4.0(rollup@4.60.4)
       resolve: 1.22.12
       typescript: 5.9.3
     optionalDependencies:
-      rollup: 3.30.0
+      rollup: 4.60.4
       tslib: 2.8.1
 
-  '@rollup/plugin-typescript@9.0.2(rollup@3.30.0)(tslib@2.8.1)(typescript@4.9.5)':
-    dependencies:
-      '@rollup/pluginutils': 5.3.0(rollup@3.30.0)
-      resolve: 1.22.12
-      typescript: 4.9.5
-    optionalDependencies:
-      rollup: 3.30.0
-      tslib: 2.8.1
-
-  '@rollup/pluginutils@5.3.0(rollup@3.30.0)':
+  '@rollup/pluginutils@5.3.0(rollup@4.60.4)':
     dependencies:
       '@types/estree': 1.0.9
       estree-walker: 2.0.2
       picomatch: 4.0.4
     optionalDependencies:
-      rollup: 3.30.0
+      rollup: 4.60.4
+
+  '@rollup/pluginutils@5.4.0(rollup@4.60.4)':
+    dependencies:
+      '@types/estree': 1.0.9
+      estree-walker: 2.0.2
+      picomatch: 4.0.4
+    optionalDependencies:
+      rollup: 4.60.4
+
+  '@rollup/rollup-android-arm-eabi@4.60.4':
+    optional: true
+
+  '@rollup/rollup-android-arm64@4.60.4':
+    optional: true
+
+  '@rollup/rollup-darwin-arm64@4.60.4':
+    optional: true
+
+  '@rollup/rollup-darwin-x64@4.60.4':
+    optional: true
+
+  '@rollup/rollup-freebsd-arm64@4.60.4':
+    optional: true
+
+  '@rollup/rollup-freebsd-x64@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-arm-gnueabihf@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-arm-musleabihf@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-arm64-gnu@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-arm64-musl@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-loong64-gnu@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-loong64-musl@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-ppc64-gnu@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-ppc64-musl@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-riscv64-gnu@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-riscv64-musl@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-s390x-gnu@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-x64-gnu@4.60.4':
+    optional: true
+
+  '@rollup/rollup-linux-x64-musl@4.60.4':
+    optional: true
+
+  '@rollup/rollup-openbsd-x64@4.60.4':
+    optional: true
+
+  '@rollup/rollup-openharmony-arm64@4.60.4':
+    optional: true
+
+  '@rollup/rollup-win32-arm64-msvc@4.60.4':
+    optional: true
+
+  '@rollup/rollup-win32-ia32-msvc@4.60.4':
+    optional: true
+
+  '@rollup/rollup-win32-x64-gnu@4.60.4':
+    optional: true
+
+  '@rollup/rollup-win32-x64-msvc@4.60.4':
+    optional: true
 
   '@rsbuild/core@1.1.2':
     dependencies:
@@ -14257,6 +14480,8 @@ snapshots:
   '@types/deep-eql@4.0.2': {}
 
   '@types/doctrine@0.0.9': {}
+
+  '@types/estree@1.0.8': {}
 
   '@types/estree@1.0.9': {}
 
@@ -16838,7 +17063,7 @@ snapshots:
 
   fork-ts-checker-webpack-plugin@9.1.0(typescript@5.9.3)(webpack@5.107.1):
     dependencies:
-      '@babel/code-frame': 7.29.0
+      '@babel/code-frame': 7.29.7
       chalk: 4.1.2
       chokidar: 4.0.3
       cosmiconfig: 8.3.6(typescript@5.9.3)
@@ -16858,7 +17083,7 @@ snapshots:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       es-set-tostringtag: 2.1.0
-      hasown: 2.0.3
+      hasown: 2.0.4
       mime-types: 2.1.35
 
   form-data@4.0.4:
@@ -16874,7 +17099,7 @@ snapshots:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       es-set-tostringtag: 2.1.0
-      hasown: 2.0.3
+      hasown: 2.0.4
       mime-types: 2.1.35
 
   format@0.2.2: {}
@@ -17054,14 +17279,6 @@ snapshots:
       once: 1.4.0
       path-is-absolute: 1.0.1
 
-  glob@8.1.0:
-    dependencies:
-      fs.realpath: 1.0.0
-      inflight: 1.0.6
-      inherits: 2.0.4
-      minimatch: 5.1.9
-      once: 1.4.0
-
   global-agent@3.0.0:
     dependencies:
       boolean: 3.2.0
@@ -17215,6 +17432,10 @@ snapshots:
       minimalistic-assert: 1.0.1
 
   hasown@2.0.3:
+    dependencies:
+      function-bind: 1.1.2
+
+  hasown@2.0.4:
     dependencies:
       function-bind: 1.1.2
 
@@ -17507,7 +17728,7 @@ snapshots:
 
   is-core-module@2.16.2:
     dependencies:
-      hasown: 2.0.3
+      hasown: 2.0.4
 
   is-decimal@2.0.1: {}
 
@@ -17582,7 +17803,7 @@ snapshots:
       call-bound: 1.0.4
       gopd: 1.2.0
       has-tostringtag: 1.0.2
-      hasown: 2.0.3
+      hasown: 2.0.4
 
   is-regexp@1.0.0: {}
 
@@ -17878,7 +18099,7 @@ snapshots:
 
   jest-message-util@29.7.0:
     dependencies:
-      '@babel/code-frame': 7.29.0
+      '@babel/code-frame': 7.29.7
       '@jest/types': 29.6.3
       '@types/stack-utils': 2.0.3
       chalk: 4.1.2
@@ -18382,10 +18603,6 @@ snapshots:
       node-addon-api: 4.3.0
     optional: true
 
-  magic-string@0.27.0:
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.5
-
   magic-string@0.30.21:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
@@ -18884,7 +19101,7 @@ snapshots:
 
   parse-json@5.2.0:
     dependencies:
-      '@babel/code-frame': 7.29.0
+      '@babel/code-frame': 7.29.7
       error-ex: 1.3.4
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
@@ -19928,25 +20145,31 @@ snapshots:
       sprintf-js: 1.1.3
     optional: true
 
-  rollup-plugin-dts@5.3.1(rollup@3.30.0)(typescript@4.9.5):
+  rollup-plugin-dts@6.4.1(rollup@4.60.4)(typescript@4.9.5):
     dependencies:
+      '@jridgewell/remapping': 2.3.5
+      '@jridgewell/sourcemap-codec': 1.5.5
+      convert-source-map: 2.0.0
       magic-string: 0.30.21
-      rollup: 3.30.0
+      rollup: 4.60.4
       typescript: 4.9.5
     optionalDependencies:
-      '@babel/code-frame': 7.29.0
+      '@babel/code-frame': 7.29.7
 
-  rollup-plugin-dts@5.3.1(rollup@3.30.0)(typescript@5.9.3):
+  rollup-plugin-dts@6.4.1(rollup@4.60.4)(typescript@5.9.3):
     dependencies:
+      '@jridgewell/remapping': 2.3.5
+      '@jridgewell/sourcemap-codec': 1.5.5
+      convert-source-map: 2.0.0
       magic-string: 0.30.21
-      rollup: 3.30.0
+      rollup: 4.60.4
       typescript: 5.9.3
     optionalDependencies:
-      '@babel/code-frame': 7.29.0
+      '@babel/code-frame': 7.29.7
 
-  rollup-plugin-peer-deps-external@2.2.4(rollup@3.30.0):
+  rollup-plugin-peer-deps-external@2.2.4(rollup@4.60.4):
     dependencies:
-      rollup: 3.30.0
+      rollup: 4.60.4
 
   rollup-plugin-postcss@4.0.2(postcss@8.4.47):
     dependencies:
@@ -19971,8 +20194,35 @@ snapshots:
     dependencies:
       estree-walker: 0.6.1
 
-  rollup@3.30.0:
+  rollup@4.60.4:
+    dependencies:
+      '@types/estree': 1.0.8
     optionalDependencies:
+      '@rollup/rollup-android-arm-eabi': 4.60.4
+      '@rollup/rollup-android-arm64': 4.60.4
+      '@rollup/rollup-darwin-arm64': 4.60.4
+      '@rollup/rollup-darwin-x64': 4.60.4
+      '@rollup/rollup-freebsd-arm64': 4.60.4
+      '@rollup/rollup-freebsd-x64': 4.60.4
+      '@rollup/rollup-linux-arm-gnueabihf': 4.60.4
+      '@rollup/rollup-linux-arm-musleabihf': 4.60.4
+      '@rollup/rollup-linux-arm64-gnu': 4.60.4
+      '@rollup/rollup-linux-arm64-musl': 4.60.4
+      '@rollup/rollup-linux-loong64-gnu': 4.60.4
+      '@rollup/rollup-linux-loong64-musl': 4.60.4
+      '@rollup/rollup-linux-ppc64-gnu': 4.60.4
+      '@rollup/rollup-linux-ppc64-musl': 4.60.4
+      '@rollup/rollup-linux-riscv64-gnu': 4.60.4
+      '@rollup/rollup-linux-riscv64-musl': 4.60.4
+      '@rollup/rollup-linux-s390x-gnu': 4.60.4
+      '@rollup/rollup-linux-x64-gnu': 4.60.4
+      '@rollup/rollup-linux-x64-musl': 4.60.4
+      '@rollup/rollup-openbsd-x64': 4.60.4
+      '@rollup/rollup-openharmony-arm64': 4.60.4
+      '@rollup/rollup-win32-arm64-msvc': 4.60.4
+      '@rollup/rollup-win32-ia32-msvc': 4.60.4
+      '@rollup/rollup-win32-x64-gnu': 4.60.4
+      '@rollup/rollup-win32-x64-msvc': 4.60.4
       fsevents: 2.3.3
 
   run-applescript@7.1.0: {}
